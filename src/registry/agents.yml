@@ -1,0 +1,33 @@
+agents:
+# Schema Descriptions for agents (organizations) in the context of AEDG
+#
+#  code (string): code used in configurations
+#  name (string): the title of the organization
+#  home_page (string): URL where can find more information on the organization
+#  description (string): a mission statement or description of the organization to give context
+#  These fields will be used in various OEMetadata contexts
+#
+  - code: dcra
+    name: Alaska Division of Community and Regional Affairs (DCRA)
+    home_page: https://www.commerce.alaska.gov/web/dcra/
+    description:
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum 
+      eros maximus, ullamcorper neque quis, commodo lorem. Maecenas non dui 
+      vel mauris aliquam tincidunt ac eget magna. Nullam lacinia sem ac est 
+      laoreet, ac ultricies dui bibendum. Aenean feugiat, eros nec consequat 
+      egestas, nibh leo posuere sem, non tristique nunc magna sit amet leo. 
+      Cras ultrices lorem fringilla urna commodo euismod. Ut pulvinar dictum 
+      tortor placerat convallis. Praesent eget ante a nisi ornare vestibulum 
+      mattis id velit. Cras dictum sapien enim, id placerat orci fringilla eget. 
+      Etiam in fermentum nisi. Maecenas ac tortor nunc.
+  - code: acep
+    name: Alaska Center for Energy and Power, University of Alaska Fairbanks
+    home_page: https://www.uaf.edu/acep/
+    description:  
+      Donec ex ligula, ultricies sed laoreet vel, posuere ut turpis. Nulla in 
+      leo ac leo auctor dignissim. Vestibulum eu enim at felis lacinia 
+      hendrerit. Suspendisse potenti. Nullam vel leo vestibulum nisl vehicula 
+      aliquam sit amet id ligula. Mauris nec mauris libero. Interdum et 
+      malesuada fames ac ante ipsum primis in faucibus. Sed mauris mauris, 
+      varius egestas sapien volutpat, rutrum varius ligula.
+    

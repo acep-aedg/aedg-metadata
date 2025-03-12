@@ -6,11 +6,15 @@ name = "aedg-metadata"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "oemetadata" },
     { name = "typer" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "typer", specifier = ">=0.15.2" }]
+requires-dist = [
+    { name = "oemetadata", specifier = ">=2.0.4" },
+    { name = "typer", specifier = ">=0.15.2" },
+]
 
 [[package]]
 name = "click"
@@ -55,6 +59,18 @@ wheels = [
 ]
 
 [[package]]
+name = "oemetadata"
+version = "2.0.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "stringcase" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/71/80/1da733c261bf3b59c5b83cdae6e07a9c2e80d5ad0c9e9a71e0bb9bbf1ec6/oemetadata-2.0.4.tar.gz", hash = "sha256:95fedcdaa44896ffd51c42556c18d8794e88e69cb9484c8a0cc646e738e752ee", size = 179381 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c9/6b/aad6456e53e3547eeda3b9ae201df24848e1e1d16be4e7266428558b595b/oemetadata-2.0.4-py3-none-any.whl", hash = "sha256:8bac9e21fc46070e412d2152c373b29f9cc929ae49fa6c76667e3284bc0b15f2", size = 235463 },
+]
+
+[[package]]
 name = "pygments"
 version = "2.19.1"
 source = { registry = "https://pypi.org/simple" }
@@ -84,6 +100,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/58/15/8b3609fd3830ef7b2
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e0/f9/0595336914c5619e5f28a1fb793285925a8cd4b432c9da0a987836c7f822/shellingham-1.5.4-py2.py3-none-any.whl", hash = "sha256:7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686", size = 9755 },
 ]
+
+[[package]]
+name = "stringcase"
+version = "1.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f3/1f/1241aa3d66e8dc1612427b17885f5fcd9c9ee3079fc0d28e9a3aeeb36fa3/stringcase-1.2.0.tar.gz", hash = "sha256:48a06980661908efe8d9d34eab2b6c13aefa2163b3ced26972902e3bdfd87008", size = 2958 }
 
 [[package]]
 name = "typer"

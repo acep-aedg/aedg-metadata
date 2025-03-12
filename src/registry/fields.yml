@@ -1,0 +1,56 @@
+fields:
+# Schema Descriptions from OEMETADATA_LATEST_SCHEMA
+#
+#  name (string)*: name of the field, lowercase alphanumeric characters or underscores
+#  description (string)**: text describing the field
+#  type(string)*: data type of the field (example: geometry(Point, 4326))
+#  nullable (boolean): specify that a column can be nullable. Defaults to True
+#  unit (string)**: unit of a field. If it does not apply, use 'null'
+#  isAbout (list): schema.org subject that describes the field in ontology terms
+#    name (string):	the class label of the ontology term
+#    @id (string): The path of the ontology term (IRI).
+#  valueReference (list): describe the values the field can be (categories?)
+#    value (string): name of the value in the column
+#    name (string): the class label of the ontology term in the column
+#    @id (string): The path of the ontology term (IRI) in the column
+#
+#  * mandatory for OEMetadata
+#  ** mandatory for AEDG
+#
+  idxcols:
+    fips_code:
+      description: Federal Information Processing Standard, identifying geographic locations
+      type: string
+      nullable: false
+      unit: null
+    grid_id:
+      description: A unique identifier of the grid in Alaska as determined for AEDG
+      type: string
+      nullable: false
+      unit: null
+  cols:
+    name:
+      description: Name
+      type: string
+      nullable: false
+      unit: null
+    net_generation_mwh:
+      description: Net electrical generation aggregated by grid
+      type: number
+      nullable: true
+      unit:  Megawatt Hour 
+    fuel_type:
+      description: Code indicating generation fuel
+      type: string
+      nullable: true
+      unit: null
+    year:
+      description: Year
+      type: integer
+      nullable: false
+      unit: null
+    month:
+      description: Month
+      type: integer
+      nullable: false
+      unit: null
