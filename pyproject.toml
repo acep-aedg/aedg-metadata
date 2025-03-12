@@ -1,0 +1,19 @@
+[project]
+name = "aedg-metadata"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Elizabeth (Liz) Dobbins", email = "eldobbins@alaska.edu" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "typer>=0.15.2",
+]
+
+[project.scripts]
+aedg-metadata = "aedg_metadata.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
