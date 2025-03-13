@@ -1,5 +1,5 @@
 [project]
-name = "aedg-metadata"
+name = "aedg_metadata"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -15,8 +15,24 @@ dependencies = [
 ]
 
 [project.scripts]
-aedg-metadata = "aedg_metadata.cli:app"
+aedg_metadata = "aedg_metadata.cli:app"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+]
+
+[tool.pytest.ini_options]
+# from https://learn.scientific-python.org/development/guides/pytest/
+minversion = "6.0"
+addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
+xfail_strict = true
+filterwarnings = ["error"]
+log_cli_level = "info"
+testpaths = [
+  "tests",
+]
