@@ -158,4 +158,4 @@ if __name__ == "__main__":
     check_schema(data_package)
 
     with Path(METADATA_FILE).open(mode="w") as file:
-        json.dump(data_package, file, indent=2)
+        json.dump(data_package, file, indent=4)
