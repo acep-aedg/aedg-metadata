@@ -19,16 +19,14 @@ def check_schema(package: dict) -> None:
     """Function from OEMetadata to check schema against standard"""
     try:
         validate(package, OEMETADATA_LATEST_SCHEMA)
-        print(
-            "Metadata is valid according to OEMetadata Schema (Latest)."
-        )  # noqa: T201
+        print("Metadata is valid according to OEMetadata Schema (Latest).")  # noqa: T201
     except ValidationError as e:
         print(  # noqa: T201
             "Cannot validate the metadata according to OEMetadata Schema (Latest)!", e
         )
 
 
-class AedgOemetadata(object):
+class AedgOemetadata:
     """
     Attributes
     ----------
@@ -37,7 +35,6 @@ class AedgOemetadata(object):
     package: dict
         data package metadata conforming to the OEMetadata standard
     """
-
     def __init__(self):
         """Kick off the process by importing the template and config files"""
         # Read YAML files
@@ -52,6 +49,7 @@ class AedgOemetadata(object):
             self.agents = yaml.safe_load(stream)
 
         self.data_package = OEMETADATA_LATEST_TEMPLATE.copy()
+
 
     def prep_aedg(self) -> None:
         """Make some basic changes that will be true of all AEDG metadata"""
@@ -91,9 +89,7 @@ class AedgOemetadata(object):
         # One day we will do Ontology, but this is not the day :(
         self.data_package["resources"][0].pop("subject", None)
         self.data_package["resources"][0]["schema"]["fields"][0].pop("isAbout", None)
-        self.data_package["resources"][0]["schema"]["fields"][0].pop(
-            "valueReference", None
-        )
+        self.data_package["resources"][0]["schema"]["fields"][0].pop("valueReference", None)
 
     def apply_config(self) -> None:
         """Copy in configs specific to this file"""
@@ -105,18 +101,10 @@ class AedgOemetadata(object):
         # resource is same as the package, I guess
         self.data_package["resources"][0]["name"] = self.config["metadata"]["name"]
         self.data_package["resources"][0]["title"] = self.config["metadata"]["title"]
-        self.data_package["resources"][0]["description"] = self.config["metadata"][
-            "description"
-        ]
-        self.data_package["resources"][0]["keywords"] = self.config["metadata"][
-            "resources"
-        ][0]["keywords"]
-        self.data_package["resources"][0]["topics"] = self.config["metadata"][
-            "resources"
-        ][0]["topics"]
-        self.data_package["resources"][0]["path"] = self.config["metadata"][
-            "resources"
-        ][0]["path"]
+        self.data_package["resources"][0]["description"] = self.config["metadata"]["description"]
+        self.data_package["resources"][0]["keywords"] = self.config["metadata"]["resources"][0]["keywords"]
+        self.data_package["resources"][0]["topics"] = self.config["metadata"]["resources"][0]["topics"]
+        self.data_package["resources"][0]["path"] = self.config["metadata"]["resources"][0]["path"]
         if self.config["metadata"]["resources"][0]["path"].endswith(".csv"):
             self.data_package["resources"][0]["type"] = "table"
             self.data_package["resources"][0]["format"] = "CSV"
@@ -125,6 +113,7 @@ class AedgOemetadata(object):
         ):  # I don't know if OEMetadata does this
             self.data_package["resources"][0]["type"] = "geospatial"
             self.data_package["resources"][0]["format"] = "GEOJOSN"
+
 
     def add_license(self) -> None:
         """Add the license"""
@@ -141,6 +130,7 @@ class AedgOemetadata(object):
         else:
             # remove the empty template field
             self.data_package["resources"][0].pop("resources", None)
+
 
     def add_fields(self) -> None:
         """Add the fields"""
@@ -160,6 +150,7 @@ class AedgOemetadata(object):
         assert len(all_schemas) > 0
         # replace the empty template field
         self.data_package["resources"][0]["schema"]["fields"] = all_schemas
+
 
     def generate(self) -> None:
         """Run all the steps"""

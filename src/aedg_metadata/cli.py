@@ -1,4 +1,5 @@
 """Entry point for metadata generating CLI"""
+from __future__ import annotations
 
 from typing import Annotated
 

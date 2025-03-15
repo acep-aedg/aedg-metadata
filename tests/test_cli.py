@@ -1,7 +1,8 @@
 """Tests to make sure CLI is working right"""
+from __future__ import annotations
 
-from typer.testing import CliRunner
 import pytest
+from typer.testing import CliRunner
 
 from aedg_metadata.cli import app
 
