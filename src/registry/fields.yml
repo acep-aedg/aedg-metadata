@@ -38,7 +38,7 @@ fields:
       description: Net electrical generation aggregated by grid
       type: number
       nullable: true
-      unit:  Megawatt Hour 
+      unit:  Megawatt Hour
     fuel_type:
       description: Code indicating generation fuel
       type: string

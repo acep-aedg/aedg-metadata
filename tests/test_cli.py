@@ -11,13 +11,13 @@ runner = CliRunner()
 def test_app():
     result = runner.invoke(app, ["Camila", "--count", 14])
     assert result.exit_code == 0
-    lines = result.stdout.split('\n')
+    lines = result.stdout.split("\n")
     assert "Hello Camila" in result.stdout
-    assert len(lines) == pytest.approx(14+1)
+    assert len(lines) == pytest.approx(14 + 1)
+
 
 def test_raises():
     result = runner.invoke(app, ["--count", 14])
     assert result.exit_code == 2
     assert "Usage" in result.stdout
     assert "Error" in result.stdout
-
