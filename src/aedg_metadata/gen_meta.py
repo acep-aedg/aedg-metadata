@@ -35,7 +35,7 @@ class AedgOemetadata:
     package: dict
         data package metadata conforming to the OEMetadata standard
     """
-    def __init__(self):
+    def __init__(self) -> None:
         """Kick off the process by importing the template and config files"""
         # Read YAML files
         with Path(CONFIG_FILE).open() as stream:

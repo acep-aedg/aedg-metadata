@@ -9,7 +9,7 @@ from aedg_metadata.cli import app
 runner = CliRunner()
 
 
-def test_app():
+def test_app() -> None:
     result = runner.invoke(app, ["Camila", "--count", 14])
     assert result.exit_code == 0
     lines = result.stdout.split("\n")
@@ -17,7 +17,7 @@ def test_app():
     assert len(lines) == pytest.approx(14 + 1)
 
 
-def test_raises():
+def test_raises() -> None:
     result = runner.invoke(app, ["--count", 14])
     assert result.exit_code == 2
     assert "Usage" in result.stdout
