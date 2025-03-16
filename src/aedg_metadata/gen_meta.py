@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 import yaml
 from jsonschema import ValidationError, validate
@@ -15,7 +16,7 @@ CONFIG_FILE = "../config/public/public_communities_monthly_generation.yml"
 METADATA_FILE = "../../metadata/public/public_communities_monthly_generation.json"
 
 
-def check_schema(package: dict) -> None:
+def check_schema(package: dict[Any, Any]) -> None:
     """Function from OEMetadata to check schema against standard"""
     try:
         validate(package, OEMETADATA_LATEST_SCHEMA)

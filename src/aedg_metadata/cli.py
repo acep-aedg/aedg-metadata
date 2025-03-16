@@ -8,7 +8,7 @@ import typer
 app = typer.Typer()
 
 
-@app.command()
+@app.command()  # type: ignore[misc]
 def hello(
     name: Annotated[str, typer.Argument(help="Last name of person to greet.")],
     count: Annotated[int, typer.Option(help="Number of times to repeat.")] = 1,

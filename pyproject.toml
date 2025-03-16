@@ -73,3 +73,19 @@ isort.required-imports = ["from __future__ import annotations"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["T20"]
+
+
+[tool.mypy]
+# these will be used with "uvx mypy ." (instead of mypy.ini)
+files = ["src", "tests"]
+exclude = ["noxfile.py"]
+python_version = "3.12"
+strict = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+disable_error_code = ["import-not-found"]
+warn_unreachable = true
+
+# You can disable imports or control per-module/file settings here
+[[tool.mypy.overrides]]
+module = [ "yaml.*", "jsonschema.*", ]
+ignore_missing_imports = true
