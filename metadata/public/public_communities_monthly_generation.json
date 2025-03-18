@@ -22,7 +22,7 @@
                 "foo",
                 "bar"
             ],
-            "publicationDate": "2025-03-13",
+            "publicationDate": "2025-03-17",
             "context": {
                 "title": "Alaska Energy Data Gateway",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -31,17 +31,14 @@
             },
             "spatial": {
                 "extent": {
-                    "name": "",
-                    "@id": "",
-                    "resolutionValue": "",
-                    "resolutionUnit": "",
+                    "name": "Alaska",
                     "boundingBox": [
-                        0,
-                        0,
-                        0,
-                        0
+                        -187.55,
+                        51.21,
+                        -130.0,
+                        71.35
                     ],
-                    "crs": ""
+                    "crs": "null"
                 }
             },
             "temporal": {
@@ -89,7 +86,7 @@
                 {
                     "path": "https://github.com/acep-aedg/aedg-etl-2024",
                     "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
-                    "date": "2025-03-13",
+                    "date": "2025-03-17",
                     "object": "[Fill in object of the change]",
                     "comment": "[Fill in how it was changed]"
                 }
@@ -101,6 +98,7 @@
                 "fields": [
                     {
                         "name": "fips_code",
+                        "long_name": "FIPS Code",
                         "description": "Federal Information Processing Standard, identifying geographic locations",
                         "type": "string",
                         "nullable": false,
@@ -108,6 +106,7 @@
                     },
                     {
                         "name": "grid_id",
+                        "long_name": "Grid ID",
                         "description": "A unique identifier of the grid in Alaska as determined for AEDG",
                         "type": "string",
                         "nullable": false,
@@ -115,6 +114,7 @@
                     },
                     {
                         "name": "name",
+                        "long_name": "Name",
                         "description": "Name",
                         "type": "string",
                         "nullable": false,
@@ -122,6 +122,7 @@
                     },
                     {
                         "name": "net_generation_mwh",
+                        "long_name": "Net Generation (MWh)",
                         "description": "Net electrical generation aggregated by grid",
                         "type": "number",
                         "nullable": true,
@@ -129,6 +130,7 @@
                     },
                     {
                         "name": "fuel_type",
+                        "long_name": "Fuel Type",
                         "description": "Code indicating generation fuel",
                         "type": "string",
                         "nullable": true,
@@ -136,6 +138,7 @@
                     },
                     {
                         "name": "year",
+                        "long_name": "Year",
                         "description": "Year",
                         "type": "integer",
                         "nullable": false,
@@ -143,6 +146,7 @@
                     },
                     {
                         "name": "month",
+                        "long_name": "Month",
                         "description": "Month",
                         "type": "integer",
                         "nullable": false,

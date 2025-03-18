@@ -49,6 +49,11 @@ class AedgOemetadata:
         with Path("../registry/agents.yml").open() as stream:
             self.agents = yaml.safe_load(stream)
 
+        # set a geographic bounding box for all of Alaska
+        # The covered area specified by the coordinates of a bounding box.
+        # The format is [minLon, minLat, maxLon, maxLat] or [W,S,E,N].
+        self.all_alaska_bb = [-187.55, 51.21, -130.0, 71.35]
+
         self.data_package = OEMETADATA_LATEST_TEMPLATE.copy()
 
 
@@ -57,6 +62,11 @@ class AedgOemetadata:
 
         # None are at a single spatial location
         self.data_package["resources"][0]["spatial"].pop("location", None)
+        # None are gridded
+        self.data_package["resources"][0]["spatial"]["extent"].pop("resolutionValue", None)
+        self.data_package["resources"][0]["spatial"]["extent"].pop("resolutionUnit", None)
+        # Won't be using a path or URI to a specific location (Wikidata or OpenStreetMap)
+        self.data_package["resources"][0]["spatial"]["extent"].pop("@id", None)
         # None are embargoed
         self.data_package["resources"][0].pop("embargoPeriod", None)
         # everything is in US english
@@ -103,17 +113,38 @@ class AedgOemetadata:
         self.data_package["resources"][0]["name"] = self.config["metadata"]["name"]
         self.data_package["resources"][0]["title"] = self.config["metadata"]["title"]
         self.data_package["resources"][0]["description"] = self.config["metadata"]["description"]
+
+        # add keywords
         self.data_package["resources"][0]["keywords"] = self.config["metadata"]["resources"][0]["keywords"]
         self.data_package["resources"][0]["topics"] = self.config["metadata"]["resources"][0]["topics"]
-        self.data_package["resources"][0]["path"] = self.config["metadata"]["resources"][0]["path"]
-        if self.config["metadata"]["resources"][0]["path"].endswith(".csv"):
+
+        # add info about the file being described
+        file_path = self.config["metadata"]["resources"][0]["path"]
+        self.data_package["resources"][0]["path"] = file_path
+        if file_path.endswith(".csv"):
             self.data_package["resources"][0]["type"] = "table"
             self.data_package["resources"][0]["format"] = "CSV"
-        if self.config["metadata"]["resources"][0]["path"].endswith(
-            ".geojson"
-        ):  # I don't know if OEMetadata does this
+        if file_path.endswith(".geojson"):  # I don't know if OEMetadata does this
             self.data_package["resources"][0]["type"] = "geospatial"
             self.data_package["resources"][0]["format"] = "GEOJOSN"
+
+        # add spatial extents - TODO: split into own function if it gets too complicated
+        bounding_box = self.config["metadata"]["resources"][0]['spatial']["boundingBox"]
+        crs = self.config["metadata"]["resources"][0]['spatial']["crs"]
+        if self.data_package["resources"][0]["format"] == "CSV":
+            if not crs:
+                crs = "null"
+            if not bounding_box:
+                bounding_box = self.all_alaska_bb
+                name = "Alaska"
+        if self.data_package["resources"][0]["format"] == "GEOJSON":
+            # TODO: can pull crs and bounds from file
+            pass
+        self.data_package["resources"][0]["spatial"]["extent"]["boundingBox"] = bounding_box
+        self.data_package["resources"][0]["spatial"]["extent"]["crs"] = crs
+        if name:
+            self.data_package["resources"][0]["spatial"]["extent"]["name"] = name
+
 
 
     def add_license(self) -> None:

@@ -2,6 +2,7 @@ fields:
 # Schema Descriptions from OEMETADATA_LATEST_SCHEMA
 #
 #  name (string)*: name of the field, lowercase alphanumeric characters or underscores
+#  long_name (string)**: non-standard field for text labels to use within AEDG
 #  description (string)**: text describing the field
 #  type(string)*: data type of the field (example: geometry(Point, 4326))
 #  nullable (boolean): specify that a column can be nullable. Defaults to True
@@ -19,37 +20,44 @@ fields:
 #
   idxcols:
     fips_code:
+      long_name: FIPS Code
       description: Federal Information Processing Standard, identifying geographic locations
       type: string
       nullable: false
       unit: null
     grid_id:
+      long_name: Grid ID
       description: A unique identifier of the grid in Alaska as determined for AEDG
       type: string
       nullable: false
       unit: null
   cols:
     name:
+      long_name: Name
       description: Name
       type: string
       nullable: false
       unit: null
     net_generation_mwh:
+      long_name: Net Generation (MWh)
       description: Net electrical generation aggregated by grid
       type: number
       nullable: true
       unit:  Megawatt Hour
     fuel_type:
+      long_name: Fuel Type
       description: Code indicating generation fuel
       type: string
       nullable: true
       unit: null
     year:
+      long_name: Year
       description: Year
       type: integer
       nullable: false
       unit: null
     month:
+      long_name: Month
       description: Month
       type: integer
       nullable: false
