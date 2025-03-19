@@ -1,0 +1,8 @@
+html[data-theme="light"] {
+    --pst-color-primary: #0084c1;
+    --pst-color-secondary: #0084c1;
+    --pst-color-table-row-hover-bg: #e6f3f9;
+    --pst-font-family-base: Barlow, var(--pst-font-family-base-system);
+    --pst-font-family-heading: Barlow, Georgia, Times, var(--pst-font-family-base-system);
+    --pst-font-family-monospace: Courier, var(--pst-font-family-monospace-system);
+}
