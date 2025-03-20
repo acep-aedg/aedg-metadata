@@ -12,9 +12,6 @@ from jsonschema import ValidationError, validate
 from oemetadata.latest.schema import OEMETADATA_LATEST_SCHEMA
 from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
-CONFIG_FILE = "../config/public/public_communities_monthly_generation.yml"
-METADATA_FILE = "../../metadata/public/public_communities_monthly_generation.json"
-
 
 def check_schema(package: dict[Any, Any]) -> None:
     """Function from OEMetadata to check schema against standard"""
@@ -38,16 +35,26 @@ class AedgOemetadata:
     """
     def __init__(self) -> None:
         """Kick off the process by importing the template and config files"""
-        # Read YAML files
-        with Path(CONFIG_FILE).open() as stream:
+
+        file_stem = "public_communities_monthly_generation"
+
+        # Read YAML configuration file
+        input_dir = Path(__file__).parents[1] / "config" / "public"
+        with (input_dir / f"{file_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
 
-        with Path("../registry/fields.yml").open() as stream:
+        # Read YAML registry files
+        registry_dir = Path(__file__).parents[1] / "registry"
+        with (registry_dir / "fields.yml").open() as stream:
             self.fields = yaml.safe_load(stream)
-        with Path("../registry/licenses.yml").open() as stream:
+        with (registry_dir / "licenses.yml").open() as stream:
             self.licenses = yaml.safe_load(stream)
-        with Path("../registry/agents.yml").open() as stream:
+        with (registry_dir / "agents.yml").open() as stream:
             self.agents = yaml.safe_load(stream)
+
+        # define the output file
+        output_dir = Path(__file__).parents[2] / "metadata" / "public"
+        self.output_file = output_dir / f"{file_stem}.json"
 
         # set a geographic bounding box for all of Alaska
         # The covered area specified by the coordinates of a bounding box.
@@ -198,5 +205,5 @@ if __name__ == "__main__":
     new_pkg.generate()
     check_schema(new_pkg.data_package)
 
-    with Path(METADATA_FILE).open(mode="w") as file:
+    with new_pkg.output_file.open(mode="w") as file:
         json.dump(new_pkg.data_package, file, indent=4)
