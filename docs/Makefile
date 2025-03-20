@@ -1,9 +1,10 @@
-# Minimal makefile for Sphinx documentation
+# Makefile for Sphinx documentation
 #
 
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-SPHINXOPTS    ?=
+# -a = write all files because Having trouble with caching in GitHub action
+SPHINXOPTS    ?= -a
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = _build

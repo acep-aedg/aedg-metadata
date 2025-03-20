@@ -5,11 +5,13 @@ from typing import Annotated
 
 import typer
 
+from .gen_meta import run_generate
+
 app = typer.Typer()
 
 
 @app.command()  # type: ignore[misc]
-def hello(
+def greet(
     name: Annotated[str, typer.Argument(help="Last name of person to greet.")],
     count: Annotated[int, typer.Option(help="Number of times to repeat.")] = 1,
 ) -> None:
@@ -18,5 +20,22 @@ def hello(
         print(f"Hello {name}!")  # noqa: T201
 
 
-if __name__ == "__main__":
-    app()
+@app.command()  # type: ignore[misc]
+def generate(
+    config: Annotated[
+        str,
+        typer.Argument(
+            help="File stem of config file (req)."
+        ),
+    ],
+    subdirectory: Annotated[
+        str,
+        typer.Option(
+            "-d",
+            help="Subdirectory of data/ where target file lives in the AEDG pond."
+        ),
+    ] = "public",
+) -> None:
+    """To call gen_meta.py."""
+    print(f"Hello {config} in {subdirectory}!")  # noqa: T201
+    run_generate(config, subdirectory)

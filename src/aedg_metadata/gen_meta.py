@@ -13,6 +13,16 @@ from oemetadata.latest.schema import OEMETADATA_LATEST_SCHEMA
 from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
 
+def run_generate(file_stem: str, flavor: str) -> None:
+    """Use the class to make and write a new package"""
+    new_pkg = AedgOemetadata(file_stem, flavor)
+    new_pkg.generate()
+    check_schema(new_pkg.data_package)
+
+    with new_pkg.output_file.open(mode="w") as file:
+        json.dump(new_pkg.data_package, file, indent=4)
+
+
 def check_schema(package: dict[Any, Any]) -> None:
     """Function from OEMetadata to check schema against standard"""
     try:
@@ -33,13 +43,13 @@ class AedgOemetadata:
     package: dict
         data package metadata conforming to the OEMetadata standard
     """
-    def __init__(self) -> None:
+    def __init__(self, file_stem: str, flavor: str) -> None:
         """Kick off the process by importing the template and config files"""
 
         file_stem = "public_communities_monthly_generation"
 
         # Read YAML configuration file
-        input_dir = Path(__file__).parents[1] / "config" / "public"
+        input_dir = Path(__file__).parents[1] / "config" / flavor
         with (input_dir / f"{file_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
 
@@ -53,7 +63,7 @@ class AedgOemetadata:
             self.agents = yaml.safe_load(stream)
 
         # define the output file
-        output_dir = Path(__file__).parents[2] / "metadata" / "public"
+        output_dir = Path(__file__).parents[2] / "metadata" / flavor
         self.output_file = output_dir / f"{file_stem}.json"
 
         # set a geographic bounding box for all of Alaska
@@ -201,9 +211,4 @@ class AedgOemetadata:
 
 if __name__ == "__main__":
 
-    new_pkg = AedgOemetadata()
-    new_pkg.generate()
-    check_schema(new_pkg.data_package)
-
-    with new_pkg.output_file.open(mode="w") as file:
-        json.dump(new_pkg.data_package, file, indent=4)
+    pass
