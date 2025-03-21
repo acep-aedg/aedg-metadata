@@ -22,7 +22,7 @@
                 "foo",
                 "bar"
             ],
-            "publicationDate": "2025-03-17",
+            "publicationDate": "2025-03-20",
             "context": {
                 "title": "Alaska Energy Data Gateway",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -38,7 +38,7 @@
                         -130.0,
                         71.35
                     ],
-                    "crs": "null"
+                    "crs": "OGC:CRS84"
                 }
             },
             "temporal": {
@@ -86,7 +86,7 @@
                 {
                     "path": "https://github.com/acep-aedg/aedg-etl-2024",
                     "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
-                    "date": "2025-03-17",
+                    "date": "2025-03-20",
                     "object": "[Fill in object of the change]",
                     "comment": "[Fill in how it was changed]"
                 }

@@ -14,9 +14,9 @@ metadata:
       topics: ["Electricity"]
       licenses: ["CC0-1.0"]
       spatial:
-        name: Null
-        boundingBox: Null  # defaults to all Alaska
-        crs: Null
+        name: "use infer"
+        boundingBox: [0, 1, 2, 3]
+        crs: "null"
       fields:
         - fips_code
         - grid_id

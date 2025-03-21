@@ -17,11 +17,12 @@ from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 def run_generate(
     file_stem: str,
     flavor: str,
+    bbox_type: str,
     write_file: bool
 ) -> None:
     """Use the class to make and write a new package."""
 
-    new_pkg = AedgOemetadata(file_stem, flavor)
+    new_pkg = AedgOemetadata(file_stem, flavor, bbox_type)
     new_pkg.generate()
     check_schema(new_pkg.data_package)
 
@@ -45,18 +46,13 @@ def check_schema(package: dict[Any, Any]) -> None:
 
 
 class AedgOemetadata:
-    """
-    Attributes
-    ----------
-    config: dict
-        configuration info for metadata generation
-    data_package: dict
-        data package metadata conforming to the OEMetadata standard
-    """
+    """Makes an OEMetadata formatted metadata records and adds AEDG information to it."""
+
     def __init__(
         self,
         file_stem: str,
         flavor: str,
+        bbox_type: str
     ) -> None:
         """Kick off the process by importing the template and config files"""
 
@@ -80,10 +76,8 @@ class AedgOemetadata:
         output_dir = Path(__file__).parents[2] / "metadata" / flavor
         self.output_file = output_dir / f"{file_stem}.json"
 
-        # set a geographic bounding box for all of Alaska
-        # The covered area specified by the coordinates of a bounding box.
-        # The format is [minLon, minLat, maxLon, maxLat] or [W,S,E,N].
-        self.all_alaska_bb = [-187.55, 51.21, -130.0, 71.35]
+        # How shall the bounding box be set?
+        self.bbox = bbox_type
 
         self.data_package = OEMETADATA_LATEST_TEMPLATE.copy()
 
@@ -164,23 +158,6 @@ class AedgOemetadata:
             resource["type"] = "geospatial"
             resource["format"] = "GEOJOSN"
 
-        # add spatial extents - TODO: split into own function if it gets too complicated
-        bounding_box = self.config["metadata"]["resources"][0]['spatial']["boundingBox"]
-        crs = self.config["metadata"]["resources"][0]['spatial']["crs"]
-        if resource["format"] == "CSV":
-            if not crs:
-                crs = "null"
-            if not bounding_box:
-                bounding_box = self.all_alaska_bb
-                name = "Alaska"
-        if resource["format"] == "GEOJSON":
-            # TODO: can pull crs and bounds from file
-            pass
-        resource["spatial"]["extent"]["boundingBox"] = bounding_box
-        resource["spatial"]["extent"]["crs"] = crs
-        if name:
-            resource["spatial"]["extent"]["name"] = name
-
         self.data_package["resources"][0] = resource
 
     def add_license(self) -> None:
@@ -198,7 +175,6 @@ class AedgOemetadata:
         else:
             # remove the empty template field
             self.data_package["resources"][0].pop("resources", None)
-
 
     def add_fields(self) -> None:
         """Add the fields"""
@@ -220,12 +196,49 @@ class AedgOemetadata:
         self.data_package["resources"][0]["schema"]["fields"] = all_schemas
 
 
+    def add_bbox(self) -> None:
+        """Add the spatial extent.
+        infer: Annotated[str, "Infer the bounding box from the file suffix."] = "infer"
+        calc: Annotated[str, "Calculate the bounding box from the GeoJSON."] = "calc"
+        specify: Annotated[str, "Specify the bounding box in the config file."] = "specify"
+        none: Annotated[str, "Do not include a bounding box."] = "none"
+        """
+
+        # prep
+        resource = self.data_package["resources"][0]
+
+        if self.bbox == 'none':
+            resource.pop('spatial', None)
+        else:
+            if self.bbox == 'calc':
+                # TODO: can pull crs and bounds from file
+                bounding_box = []
+                crs = "null"
+                name = "none"
+            elif self.bbox == 'specify':
+                bounding_box = self.config["metadata"]["resources"][0]['spatial']["boundingBox"]
+                crs = self.config["metadata"]["resources"][0]['spatial']["crs"]
+                name = self.config["metadata"]["resources"][0]['spatial']["name"]
+            else:  # self.bbox == 'infer'
+                # set the geographic bounding box to all of Alaska.
+                # The format is [minLon, minLat, maxLon, maxLat] or [W,S,E,N]
+                bounding_box = [-187.55, 51.21, -130.0, 71.35]
+                crs = "OGC:CRS84"
+                name = "Alaska"
+
+            resource["spatial"]["extent"]["boundingBox"] = bounding_box
+            resource["spatial"]["extent"]["crs"] = crs
+            resource["spatial"]["extent"]["name"] = name
+
+        self.data_package["resources"][0] = resource
+
     def generate(self) -> None:
         """Run all the steps"""
         self.prep_aedg()
         self.apply_config()
         self.add_license()
         self.add_fields()
+        self.add_bbox()
 
 
 if __name__ == "__main__":
