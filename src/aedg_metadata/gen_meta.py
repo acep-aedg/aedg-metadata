@@ -29,6 +29,8 @@ def run_generate(
     if write_file:
         with new_pkg.output_file.open(mode="w") as file:
             json.dump(new_pkg.data_package, file, indent=4)
+            # for pre-commit end of file check
+            file.write("\n")
     else:
         # write output to the screen for debugging
         pprint(new_pkg.data_package, depth=None, sort_dicts=False)  # noqa: T203
