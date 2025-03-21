@@ -1,6 +1,7 @@
 
 # Metadata Standards
 
+(oemetadata-target)=
 ## OEMetadata
 
 [Open Energy Platform](https://openenergyplatform.org/), based in Germany, has a catalog of data that can be used for energy modeling. To ensure reusability of these data, they defined a metadata standard. We chose to use this standard because:
@@ -31,6 +32,7 @@ Because OEMetadata is compliant with Datapackages, it is possible to download fu
 
 ![image](_static/oeplatform_screenshot.png)
 
+(datapackage-target)=
 ## Data Packages / Frictionless
 
 ### Data Package
