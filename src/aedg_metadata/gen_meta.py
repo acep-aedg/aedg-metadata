@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from datetime import date
 from pathlib import Path
+from pprint import pprint
 from typing import Any
 
 import yaml
@@ -13,14 +14,23 @@ from oemetadata.latest.schema import OEMETADATA_LATEST_SCHEMA
 from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
 
-def run_generate(file_stem: str, flavor: str) -> None:
-    """Use the class to make and write a new package"""
+def run_generate(
+    file_stem: str,
+    flavor: str,
+    write_file: bool
+) -> None:
+    """Use the class to make and write a new package."""
+
     new_pkg = AedgOemetadata(file_stem, flavor)
     new_pkg.generate()
     check_schema(new_pkg.data_package)
 
-    with new_pkg.output_file.open(mode="w") as file:
-        json.dump(new_pkg.data_package, file, indent=4)
+    if write_file:
+        with new_pkg.output_file.open(mode="w") as file:
+            json.dump(new_pkg.data_package, file, indent=4)
+    else:
+        # write output to the screen for debugging
+        pprint(new_pkg.data_package, depth=None, sort_dicts=False)  # noqa: T203
 
 
 def check_schema(package: dict[Any, Any]) -> None:
@@ -40,10 +50,14 @@ class AedgOemetadata:
     ----------
     config: dict
         configuration info for metadata generation
-    package: dict
+    data_package: dict
         data package metadata conforming to the OEMetadata standard
     """
-    def __init__(self, file_stem: str, flavor: str) -> None:
+    def __init__(
+        self,
+        file_stem: str,
+        flavor: str,
+    ) -> None:
         """Kick off the process by importing the template and config files"""
 
         file_stem = "public_communities_monthly_generation"
@@ -77,27 +91,29 @@ class AedgOemetadata:
     def prep_aedg(self) -> None:
         """Make some basic changes that will be true of all AEDG metadata"""
 
+        resource = self.data_package["resources"][0]
+
         # None are at a single spatial location
-        self.data_package["resources"][0]["spatial"].pop("location", None)
+        resource["spatial"].pop("location", None)
         # None are gridded
-        self.data_package["resources"][0]["spatial"]["extent"].pop("resolutionValue", None)
-        self.data_package["resources"][0]["spatial"]["extent"].pop("resolutionUnit", None)
+        resource["spatial"]["extent"].pop("resolutionValue", None)
+        resource["spatial"]["extent"].pop("resolutionUnit", None)
         # Won't be using a path or URI to a specific location (Wikidata or OpenStreetMap)
-        self.data_package["resources"][0]["spatial"]["extent"].pop("@id", None)
+        resource["spatial"]["extent"].pop("@id", None)
         # None are embargoed
-        self.data_package["resources"][0].pop("embargoPeriod", None)
+        resource.pop("embargoPeriod", None)
         # everything is in US english
-        self.data_package["resources"][0]["languages"] = ["en-US"]
+        resource["languages"] = ["en-US"]
         # publishing today
-        self.data_package["resources"][0]["publicationDate"] = f"{date.today()}"
+        resource["publicationDate"] = f"{date.today()}"
         # we aren't using the OEMetadata review system
-        self.data_package["resources"][0].pop("review", None)
+        resource.pop("review", None)
         # CSV files will always be comma delimited
-        self.data_package["resources"][0]["dialect"]["delimiter"] = ","
+        resource["dialect"]["delimiter"] = ","
         # We use "." in our floating point numbers
-        self.data_package["resources"][0]["dialect"]["decimalSeparator"] = "."
+        resource["dialect"]["decimalSeparator"] = "."
         # ACEP is a contributor to all (fill in details later)
-        self.data_package["resources"][0]["contributors"] = [
+        resource["contributors"] = [
             {
                 "path": "https://github.com/acep-aedg/aedg-etl-2024",
                 "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
@@ -107,7 +123,7 @@ class AedgOemetadata:
             }
         ]
         # Context is AEDG
-        self.data_package["resources"][0]["context"] = {
+        resource["context"] = {
             "title": "Alaska Energy Data Gateway",
             "homepage": "https://akenergygateway.alaska.edu/",
             "publisher": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
@@ -115,9 +131,11 @@ class AedgOemetadata:
         }
 
         # One day we will do Ontology, but this is not the day :(
-        self.data_package["resources"][0].pop("subject", None)
-        self.data_package["resources"][0]["schema"]["fields"][0].pop("isAbout", None)
-        self.data_package["resources"][0]["schema"]["fields"][0].pop("valueReference", None)
+        resource.pop("subject", None)
+        resource["schema"]["fields"][0].pop("isAbout", None)
+        resource["schema"]["fields"][0].pop("valueReference", None)
+
+        self.data_package["resources"][0] = resource
 
     def apply_config(self) -> None:
         """Copy in configs specific to this file"""
@@ -126,43 +144,44 @@ class AedgOemetadata:
         self.data_package["title"] = self.config["metadata"]["title"]
         self.data_package["description"] = self.config["metadata"]["description"]
 
-        # resource is same as the package, I guess
-        self.data_package["resources"][0]["name"] = self.config["metadata"]["name"]
-        self.data_package["resources"][0]["title"] = self.config["metadata"]["title"]
-        self.data_package["resources"][0]["description"] = self.config["metadata"]["description"]
+        # there is only 1 resource and it is same as the package
+        resource = self.data_package["resources"][0]
+        resource["name"] = self.config["metadata"]["name"]
+        resource["title"] = self.config["metadata"]["title"]
+        resource["description"] = self.config["metadata"]["description"]
 
         # add keywords
-        self.data_package["resources"][0]["keywords"] = self.config["metadata"]["resources"][0]["keywords"]
-        self.data_package["resources"][0]["topics"] = self.config["metadata"]["resources"][0]["topics"]
+        resource["keywords"] = self.config["metadata"]["resources"][0]["keywords"]
+        resource["topics"] = self.config["metadata"]["resources"][0]["topics"]
 
         # add info about the file being described
         file_path = self.config["metadata"]["resources"][0]["path"]
-        self.data_package["resources"][0]["path"] = file_path
+        resource["path"] = file_path
         if file_path.endswith(".csv"):
-            self.data_package["resources"][0]["type"] = "table"
-            self.data_package["resources"][0]["format"] = "CSV"
+            resource["type"] = "table"
+            resource["format"] = "CSV"
         if file_path.endswith(".geojson"):  # I don't know if OEMetadata does this
-            self.data_package["resources"][0]["type"] = "geospatial"
-            self.data_package["resources"][0]["format"] = "GEOJOSN"
+            resource["type"] = "geospatial"
+            resource["format"] = "GEOJOSN"
 
         # add spatial extents - TODO: split into own function if it gets too complicated
         bounding_box = self.config["metadata"]["resources"][0]['spatial']["boundingBox"]
         crs = self.config["metadata"]["resources"][0]['spatial']["crs"]
-        if self.data_package["resources"][0]["format"] == "CSV":
+        if resource["format"] == "CSV":
             if not crs:
                 crs = "null"
             if not bounding_box:
                 bounding_box = self.all_alaska_bb
                 name = "Alaska"
-        if self.data_package["resources"][0]["format"] == "GEOJSON":
+        if resource["format"] == "GEOJSON":
             # TODO: can pull crs and bounds from file
             pass
-        self.data_package["resources"][0]["spatial"]["extent"]["boundingBox"] = bounding_box
-        self.data_package["resources"][0]["spatial"]["extent"]["crs"] = crs
+        resource["spatial"]["extent"]["boundingBox"] = bounding_box
+        resource["spatial"]["extent"]["crs"] = crs
         if name:
-            self.data_package["resources"][0]["spatial"]["extent"]["name"] = name
+            resource["spatial"]["extent"]["name"] = name
 
-
+        self.data_package["resources"][0] = resource
 
     def add_license(self) -> None:
         """Add the license"""

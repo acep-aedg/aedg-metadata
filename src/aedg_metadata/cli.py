@@ -31,11 +31,17 @@ def generate(
     subdirectory: Annotated[
         str,
         typer.Option(
-            "-d",
+            "--directory", "-d",
             help="Subdirectory of data/ where target file lives in the AEDG pond."
         ),
     ] = "public",
+    save: Annotated[
+        bool,
+        typer.Option(
+            help="Write generated metadata to the file or else to the screen."
+        ),
+    ] = False
 ) -> None:
     """To call gen_meta.py."""
     print(f"Hello {config} in {subdirectory}!")  # noqa: T201
-    run_generate(config, subdirectory)
+    run_generate(config, subdirectory, save)
