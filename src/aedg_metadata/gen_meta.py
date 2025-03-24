@@ -2,50 +2,30 @@
 
 from __future__ import annotations
 
-import json
 from datetime import date
 from pathlib import Path
-from pprint import pprint
-from typing import Any
 
 import yaml
-from jsonschema import ValidationError, validate
-from oemetadata.latest.schema import OEMETADATA_LATEST_SCHEMA
 from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
+
+from aedg_metadata import ExtentTypes
+
+from .helpers import check_schema
 
 
 def run_generate(
     file_stem: str,
     flavor: str,
-    bbox_opt: str,
-    temporal_opt: str,
-    write_file: bool
-) -> None:
-    """Use the class to make and write a new package."""
+    bbox_opt: ExtentTypes,
+    temporal_opt: ExtentTypes,
+) -> AedgOemetadata:
+    """Use the class to make a new package."""
 
     new_pkg = AedgOemetadata(file_stem, flavor)
     new_pkg.generate(bbox_opt, temporal_opt)
     check_schema(new_pkg.data_package)
 
-    if write_file:
-        with new_pkg.output_file.open(mode="w") as file:
-            json.dump(new_pkg.data_package, file, indent=4)
-            # for pre-commit end of file check
-            file.write("\n")
-    else:
-        # write output to the screen for debugging
-        pprint(new_pkg.data_package, depth=None, sort_dicts=False)  # noqa: T203
-
-
-def check_schema(package: dict[Any, Any]) -> None:
-    """Function from OEMetadata to check schema against standard"""
-    try:
-        validate(package, OEMETADATA_LATEST_SCHEMA)
-        print("Metadata is valid according to OEMetadata Schema (Latest).")  # noqa: T201
-    except ValidationError as e:
-        print(  # noqa: T201
-            "Cannot validate the metadata according to OEMetadata Schema (Latest)!", e
-        )
+    return new_pkg
 
 
 class AedgOemetadata:
@@ -198,7 +178,7 @@ class AedgOemetadata:
         assert set(primaryKeys).issubset(set(con_fields))
         self.data_package["resources"][0]["schema"]["primaryKey"] = primaryKeys
 
-    def add_bbox(self, bbopt: str) -> None:
+    def add_bbox(self, bbopt: ExtentTypes) -> None:
         """Add the spatial extent.
         infer: Annotated[str, "Infer the bounding box from the file suffix."] = "infer"
         calc: Annotated[str, "Calculate the bounding box from the GeoJSON."] = "calc"
@@ -229,7 +209,7 @@ class AedgOemetadata:
 
         self.data_package["resources"][0] = resource
 
-    def add_temporal(self, topt: str) -> None:
+    def add_temporal(self, topt: ExtentTypes) -> None:
         """Add the temporal characteristics.
         infer: Annotated[str, "Set a default temporal description."] = "infer"
         calc: Annotated[str, "Calculate the temporal bounds from the file."] = "calc"
@@ -267,7 +247,7 @@ class AedgOemetadata:
 
         self.data_package["resources"][0] = resource
 
-    def generate(self, bbopt: str, topt: str) -> None:
+    def generate(self, bbopt: ExtentTypes, topt: ExtentTypes) -> None:
         """Run all the steps"""
         self.prep_aedg()
         self.apply_config()

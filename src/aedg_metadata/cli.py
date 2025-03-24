@@ -1,28 +1,17 @@
 """Entry point for metadata generating CLI"""
 from __future__ import annotations
 
-from enum import Enum
+import json
+from pprint import pprint
 from typing import Annotated
 
 import typer
 
+from aedg_metadata import ExtentTypes
+
 from .gen_meta import run_generate
 
 app = typer.Typer()
-
-
-class ExtentTypes(str, Enum):
-    """Different ways to make spatial and temporal extents.
-    Annotations failed syntax checks, or they would look like:
-    infer: Annotated[str, "Infer the extent from the file qualities."] = "infer"
-    calc: Annotated[str, "Calculate the extent from values in the file."] = "calc"
-    specify: Annotated[str, "Read the extent from values in the config file."] = "specify"
-    none: Annotated[str, "Do not include extent."] = "none"
-    """
-    infer = 'infer'
-    calc = 'calc'
-    specify = 'specify'
-    none = 'none'
 
 
 @app.command()  # type: ignore[misc]
@@ -72,5 +61,14 @@ def generate(
     ] = False,
 ) -> None:
     """To call gen_meta.py."""
-    print(f"Hello {config} in {subdirectory}!")  # noqa: T201
-    run_generate(config, subdirectory, bbox, temporal, save)
+
+    package = run_generate(config, subdirectory, bbox, temporal)
+
+    if save:
+        with package.output_file.open(mode="w") as file:
+            json.dump(package.data_package, file, indent=4)
+            # for pre-commit end of file check
+            file.write("\n")
+    else:
+        # write output to the screen for debugging
+        pprint(package.data_package, depth=None, sort_dicts=False)  # noqa: T203

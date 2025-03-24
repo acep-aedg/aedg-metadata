@@ -1,0 +1,176 @@
+{
+    "@context": "",
+    "name": "public_communities_monthly_generation",
+    "title": "Monthly electrical generation by community",
+    "description": "Monthly electrical generation is aggregated by grid and associated with every community connected to the grid.\n",
+    "@id": "",
+    "resources": [
+        {
+            "@id": "",
+            "name": "public_communities_monthly_generation",
+            "topics": [
+                "Electricity"
+            ],
+            "title": "Monthly electrical generation by community",
+            "path": "https://github.com/acep-aedg/aedg-data-pond/blob/main/data/public/public_communities_monthly_generation.csv",
+            "description": "Monthly electrical generation is aggregated by grid and associated with every community connected to the grid.\n",
+            "languages": [
+                "en-US"
+            ],
+            "keywords": [
+                "generation",
+                "foo",
+                "bar"
+            ],
+            "publicationDate": "2025-03-24",
+            "context": {
+                "title": "Alaska Energy Data Gateway",
+                "homepage": "https://akenergygateway.alaska.edu/",
+                "publisher": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
+                "fundingAgency": "State of Alaska"
+            },
+            "spatial": {
+                "extent": {
+                    "name": "Alaska",
+                    "boundingBox": [
+                        -187.55,
+                        51.21,
+                        -130.0,
+                        71.35
+                    ],
+                    "crs": "OGC:CRS84"
+                }
+            },
+            "temporal": {
+                "referenceDate": "2025-01-01",
+                "timeseries": [
+                    {
+                        "start": "2021-01",
+                        "end": "2021-12",
+                        "resolutionValue": "1",
+                        "resolutionUnit": "month",
+                        "aggregationType": "sum"
+                    }
+                ]
+            },
+            "sources": [
+                {
+                    "title": "",
+                    "authors": [
+                        ""
+                    ],
+                    "description": "",
+                    "publicationYear": "",
+                    "path": "",
+                    "sourceLicenses": [
+                        {
+                            "name": "",
+                            "title": "",
+                            "path": "",
+                            "instruction": "",
+                            "attribution": "",
+                            "copyrightStatement": ""
+                        }
+                    ]
+                }
+            ],
+            "licenses": [
+                {
+                    "name": "CC0-1.0",
+                    "path": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "title": "CC0 1.0 Universal"
+                }
+            ],
+            "contributors": [
+                {
+                    "path": "https://github.com/acep-aedg/aedg-etl-2024",
+                    "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
+                    "date": "2025-03-24",
+                    "object": "[Fill in object of the change]",
+                    "comment": "[Fill in how it was changed]"
+                }
+            ],
+            "type": "table",
+            "format": "CSV",
+            "encoding": "",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "fips_code",
+                        "long_name": "FIPS Code",
+                        "description": "Federal Information Processing Standard, identifying geographic locations",
+                        "type": "string",
+                        "nullable": false,
+                        "unit": null
+                    },
+                    {
+                        "name": "grid_id",
+                        "long_name": "Grid ID",
+                        "description": "A unique identifier of the grid in Alaska as determined for AEDG",
+                        "type": "string",
+                        "nullable": false,
+                        "unit": null
+                    },
+                    {
+                        "name": "name",
+                        "long_name": "Name",
+                        "description": "Name",
+                        "type": "string",
+                        "nullable": false,
+                        "unit": null
+                    },
+                    {
+                        "name": "net_generation_mwh",
+                        "long_name": "Net Generation (MWh)",
+                        "description": "Net electrical generation aggregated by grid",
+                        "type": "number",
+                        "nullable": true,
+                        "unit": "Megawatt Hour"
+                    },
+                    {
+                        "name": "fuel_type",
+                        "long_name": "Fuel Type",
+                        "description": "Code indicating generation fuel",
+                        "type": "string",
+                        "nullable": false,
+                        "unit": null
+                    },
+                    {
+                        "name": "year",
+                        "long_name": "Year",
+                        "description": "Year",
+                        "type": "integer",
+                        "nullable": false,
+                        "unit": null
+                    },
+                    {
+                        "name": "month",
+                        "long_name": "Month",
+                        "description": "Month",
+                        "type": "integer",
+                        "nullable": false,
+                        "unit": null
+                    }
+                ],
+                "primaryKey": [
+                    "grid_id",
+                    "fuel_type",
+                    "year",
+                    "month"
+                ]
+            },
+            "dialect": {
+                "delimiter": ",",
+                "decimalSeparator": "."
+            }
+        }
+    ],
+    "metaMetadata": {
+        "metadataVersion": "OEMetadata-2.0.4",
+        "metadataLicense": {
+            "name": "CC0-1.0",
+            "title": "Creative Commons Zero v1.0 Universal",
+            "path": "https://creativecommons.org/publicdomain/zero/1.0"
+        }
+    }
+}
