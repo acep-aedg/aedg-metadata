@@ -6,11 +6,13 @@ resource:
       and associated with every community connected to the grid.
   path: "https://github.com/acep-aedg/aedg-data-pond/blob/main/data/public/public_communities_monthly_generation.csv"
   keywords:
-    - "generation"
-    - "foo"
-    - "bar"
-  topics: ["Electricity"]
-  licenses: ["CC0-1.0"]
+    - generation
+    - foo
+    - bar
+  topics:
+    - Electricity
+  licenses:
+    - CC0-1.0
   spatial:
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]
@@ -25,11 +27,16 @@ resource:
         resolutionUnit: month
         alignment: null
         aggregationType: sum
-  fields:
+  fields: # column names
     - fips_code
     - grid_id
     - name
     - net_generation_mwh
+    - fuel_type
+    - year
+    - month
+  primaryKey: # An array of fields that uniquely identifies each row in the table
+    - grid_id
     - fuel_type
     - year
     - month

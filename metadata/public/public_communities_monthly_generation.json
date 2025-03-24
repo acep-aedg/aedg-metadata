@@ -132,7 +132,7 @@
                         "long_name": "Fuel Type",
                         "description": "Code indicating generation fuel",
                         "type": "string",
-                        "nullable": true,
+                        "nullable": false,
                         "unit": null
                     },
                     {
@@ -153,20 +153,10 @@
                     }
                 ],
                 "primaryKey": [
-                    ""
-                ],
-                "foreignKeys": [
-                    {
-                        "fields": [
-                            ""
-                        ],
-                        "reference": {
-                            "resource": "",
-                            "fields": [
-                                ""
-                            ]
-                        }
-                    }
+                    "grid_id",
+                    "fuel_type",
+                    "year",
+                    "month"
                 ]
             },
             "dialect": {
