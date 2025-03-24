@@ -17,7 +17,7 @@ resource:
     crs: OGC:CRS84
   temporal:
     referenceDate: "2025-01-01"  # equivalent to as_of_date
-    timeseries:
+    timeseries:  # is a list of possibly multiple time periods
       -
         start: "2021-01"
         end: "2021-12"
@@ -25,13 +25,6 @@ resource:
         resolutionUnit: month
         alignment: null
         aggregationType: sum
-#      -
-#        start: "2025-03"
-#        end: null
-#        resolutionValue: null
-#        resolutionUnit: null
-#        alignment: null
-#        aggregationType: null
   fields:
     - fips_code
     - grid_id

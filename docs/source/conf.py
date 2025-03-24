@@ -20,9 +20,10 @@ author = 'Alaska Center for Energy and Power'
 sys.path.insert(0, Path.resolve(Path('../..')))
 
 extensions = [
-    "sphinx.ext.napoleon",
+    "autoapi.extension",
     "myst_parser",
-    "autoapi.extension"
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
 ]
 
 source_suffix = ['.rst', '.md']
@@ -69,9 +70,10 @@ html_theme_options = {
 }
 
 # -- Options for autoapi -------------------------------------------------------
-autoapi_type = "python"
 autoapi_dirs = ["../../src/aedg_metadata"]
-autoapi_keep_files = True
-autoapi_root = "api"
-autoapi_member_order = "groupwise"
 autoapi_ignore = ["*/.venv/*"]
+autoapi_keep_files = True
+autoapi_member_order = "groupwise"
+autoapi_root = "api"
+autoapi_type = "python"
+autodoc_typehints = 'description'

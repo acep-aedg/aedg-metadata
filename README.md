@@ -1,4 +1,4 @@
-# AEDG Metadata Generation
+# Metadata Generator for the Alaska Energy Data Gateway (AEDG)
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -6,6 +6,10 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pre-commit/pre-commit.com/main.svg)](https://results.pre-commit.ci/latest/github/pre-commit/pre-commit.com/main)
 
 A fundamental feature of the newly revised Alaska Energy Data Gateway (AEDG) is the documentation of data sources and products. To maximally make these data Findable, Accessible, Interoperable, and Reusable (FAIR), each data file ingested and produced will be accompanied by a metadata file in a standard format.
+
+To standardize production of this multitude of files, we have implemented a command line
+tool written in Python. This tool utilizes the [OEMetadata standard](#oemetadata-target),
+an extension of [Frictionless Data Packages](#datapackage-target).
 
 ## Installation
 
@@ -53,3 +57,13 @@ To render the documentation:
 % cd docs
 % make html
 ```
+
+## Project Information
+
+### Funding
+
+This project was built with support from State of Alaska capital appropriations for the Alaska Energy Data Gateway.
+
+### Additional Information
+
+Learn more about the [Alaska Center for Energy and Power](https://www.uaf.edu/acep/about/index.php).
