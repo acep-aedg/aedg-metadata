@@ -22,7 +22,7 @@
                 "foo",
                 "bar"
             ],
-            "publicationDate": "2025-03-20",
+            "publicationDate": "2025-03-24",
             "context": {
                 "title": "Alaska Energy Data Gateway",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -42,15 +42,14 @@
                 }
             },
             "temporal": {
-                "referenceDate": "",
+                "referenceDate": "2025-01-01",
                 "timeseries": [
                     {
-                        "start": "",
-                        "end": "",
-                        "resolutionValue": "",
-                        "resolutionUnit": "",
-                        "alignment": "",
-                        "aggregationType": ""
+                        "start": "2021-01",
+                        "end": "2021-12",
+                        "resolutionValue": "1",
+                        "resolutionUnit": "month",
+                        "aggregationType": "sum"
                     }
                 ]
             },
@@ -86,7 +85,7 @@
                 {
                     "path": "https://github.com/acep-aedg/aedg-etl-2024",
                     "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
-                    "date": "2025-03-20",
+                    "date": "2025-03-24",
                     "object": "[Fill in object of the change]",
                     "comment": "[Fill in how it was changed]"
                 }

@@ -11,12 +11,13 @@ from .gen_meta import run_generate
 app = typer.Typer()
 
 
-class BoundingBoxTypes(str, Enum):
-    """Different ways to make bounding boxes. (Annotations failed syntax checks)
-    infer: Annotated[str, "Infer the bounding box from the file suffix."] = "infer"
-    calc: Annotated[str, "Calculate the bounding box from the GeoJSON."] = "calc"
-    specify: Annotated[str, "Specify the bounding box in the config file."] = "specify"
-    none: Annotated[str, "Do not include a bounding box."] = "none"
+class ExtentTypes(str, Enum):
+    """Different ways to make spatial and temporal extents.
+    Annotations failed syntax checks, or they would look like:
+    infer: Annotated[str, "Infer the extent from the file qualities."] = "infer"
+    calc: Annotated[str, "Calculate the extent from values in the file."] = "calc"
+    specify: Annotated[str, "Read the extent from values in the config file."] = "specify"
+    none: Annotated[str, "Do not include extent."] = "none"
     """
     infer = 'infer'
     calc = 'calc'
@@ -50,12 +51,19 @@ def generate(
         ),
     ] = "public",
     bbox: Annotated[
-        BoundingBoxTypes,
+        ExtentTypes,
         typer.Option(
             "--bbox", "-b",
             help="How the spatial bounding box should be determined."
         ),
-    ] = BoundingBoxTypes.infer,
+    ] = ExtentTypes.specify,
+    temporal: Annotated[
+        ExtentTypes,
+        typer.Option(
+            "--time", "-t",
+            help="How the temporal description should be determined."
+        ),
+    ] = ExtentTypes.specify,
     save: Annotated[
         bool,
         typer.Option(
@@ -65,4 +73,4 @@ def generate(
 ) -> None:
     """To call gen_meta.py."""
     print(f"Hello {config} in {subdirectory}!")  # noqa: T201
-    run_generate(config, subdirectory, bbox, save)
+    run_generate(config, subdirectory, bbox, temporal, save)

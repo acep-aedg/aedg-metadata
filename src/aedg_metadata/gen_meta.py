@@ -18,11 +18,12 @@ def run_generate(
     file_stem: str,
     flavor: str,
     bbox_type: str,
+    temporal_type: str,
     write_file: bool
 ) -> None:
     """Use the class to make and write a new package."""
 
-    new_pkg = AedgOemetadata(file_stem, flavor, bbox_type)
+    new_pkg = AedgOemetadata(file_stem, flavor, bbox_type, temporal_type)
     new_pkg.generate()
     check_schema(new_pkg.data_package)
 
@@ -54,7 +55,8 @@ class AedgOemetadata:
         self,
         file_stem: str,
         flavor: str,
-        bbox_type: str
+        bbox_type: str,
+        temporal_type: str
     ) -> None:
         """Kick off the process by importing the template and config files"""
 
@@ -78,8 +80,9 @@ class AedgOemetadata:
         output_dir = Path(__file__).parents[2] / "metadata" / flavor
         self.output_file = output_dir / f"{file_stem}.json"
 
-        # How shall the bounding box be set?
+        # How shall the extents be set?
         self.bbox = bbox_type
+        self.time = temporal_type
 
         self.data_package = OEMETADATA_LATEST_TEMPLATE.copy()
 
@@ -136,22 +139,22 @@ class AedgOemetadata:
     def apply_config(self) -> None:
         """Copy in configs specific to this file"""
 
-        self.data_package["name"] = self.config["metadata"]["name"]
-        self.data_package["title"] = self.config["metadata"]["title"]
-        self.data_package["description"] = self.config["metadata"]["description"]
+        self.data_package["name"] = self.config["resource"]["name"]
+        self.data_package["title"] = self.config["resource"]["title"]
+        self.data_package["description"] = self.config["resource"]["description"]
 
         # there is only 1 resource and it is same as the package
         resource = self.data_package["resources"][0]
-        resource["name"] = self.config["metadata"]["name"]
-        resource["title"] = self.config["metadata"]["title"]
-        resource["description"] = self.config["metadata"]["description"]
+        resource["name"] = self.config["resource"]["name"]
+        resource["title"] = self.config["resource"]["title"]
+        resource["description"] = self.config["resource"]["description"]
 
         # add keywords
-        resource["keywords"] = self.config["metadata"]["resources"][0]["keywords"]
-        resource["topics"] = self.config["metadata"]["resources"][0]["topics"]
+        resource["keywords"] = self.config["resource"]["keywords"]
+        resource["topics"] = self.config["resource"]["topics"]
 
         # add info about the file being described
-        file_path = self.config["metadata"]["resources"][0]["path"]
+        file_path = self.config["resource"]["path"]
         resource["path"] = file_path
         if file_path.endswith(".csv"):
             resource["type"] = "table"
@@ -166,7 +169,7 @@ class AedgOemetadata:
         """Add the license"""
 
         all_licenses = []
-        for license_tag in self.config["metadata"]["resources"][0]["licenses"]:
+        for license_tag in self.config["resource"]["licenses"]:
             license = {"name": license_tag}
             license.update(self.licenses["licenses"][license_tag])
             all_licenses.append(license)
@@ -186,7 +189,7 @@ class AedgOemetadata:
         all_fields.update(self.fields["fields"]["cols"])
 
         all_schemas = []
-        field_names = self.config["metadata"]["resources"][0]["fields"]
+        field_names = self.config["resource"]["fields"]
         for field_name in field_names:
             assert field_name in all_fields
             schema = {"name": field_name}
@@ -208,29 +211,62 @@ class AedgOemetadata:
 
         # prep
         resource = self.data_package["resources"][0]
+        fields = {'name', 'boundingBox', 'crs'}
 
         if self.bbox == 'none':
             resource.pop('spatial', None)
-        else:
-            if self.bbox == 'calc':
-                # TODO: can pull crs and bounds from file
-                bounding_box = []
-                crs = "null"
-                name = "none"
-            elif self.bbox == 'specify':
-                bounding_box = self.config["metadata"]["resources"][0]['spatial']["boundingBox"]
-                crs = self.config["metadata"]["resources"][0]['spatial']["crs"]
-                name = self.config["metadata"]["resources"][0]['spatial']["name"]
-            else:  # self.bbox == 'infer'
-                # set the geographic bounding box to all of Alaska.
-                # The format is [minLon, minLat, maxLon, maxLat] or [W,S,E,N]
-                bounding_box = [-187.55, 51.21, -130.0, 71.35]
-                crs = "OGC:CRS84"
-                name = "Alaska"
+        elif self.bbox == 'calc':
+            # TODO: can pull crs and bounds from file
+            pass
+        elif self.bbox == 'specify':
+            spatial = self.config["resource"]["spatial"]
+            # check that all the keys are present
+            assert set(spatial.keys()) == fields
+            resource["spatial"]["extent"] = spatial
+        else:  # self.bbox == 'infer'
+            # set the geographic bounding box to all of Alaska.
+            # The format is [minLon, minLat, maxLon, maxLat] or [W,S,E,N]
+            resource["spatial"]["extent"]["name"] = "Alaska"
+            resource["spatial"]["extent"]["bounding_box"] = [-187.55, 51.21, -130.0, 71.35]
+            resource["spatial"]["extent"]["crs"] = "OGC:CRS84"
 
-            resource["spatial"]["extent"]["boundingBox"] = bounding_box
-            resource["spatial"]["extent"]["crs"] = crs
-            resource["spatial"]["extent"]["name"] = name
+        self.data_package["resources"][0] = resource
+
+    def add_temporal(self) -> None:
+        """Add the temporal characteristics.
+        infer: Annotated[str, "Set a default temporal description."] = "infer"
+        calc: Annotated[str, "Calculate the temporal bounds from the file."] = "calc"
+        specify: Annotated[str, "Specify the temporal description in the config file."] = "specify"
+        none: Annotated[str, "Do not include temporal information."] = "none"
+        """
+
+        # prep
+        resource = self.data_package["resources"][0]
+        fields = {'start', 'end', 'resolutionValue', 'resolutionUnit', 'alignment', 'aggregationType'}
+
+        if self.time == 'none':
+            resource.pop('temporal', None)
+        elif self.time == 'calc':
+            # TODO: can pull timeseries info from file
+            pass
+        elif self.time == 'specify':
+            resource["temporal"]["referenceDate"] = self.config["resource"]["temporal"]["referenceDate"]
+            # OEMetadata standard includes possibility of multiple time periods
+            # i.e. it is a list
+            resource["temporal"]["timeseries"] = []
+            for timeseries in self.config["resource"]["temporal"]["timeseries"]:
+                period = {}
+                # check that all the keys are present
+                assert set(timeseries.keys()) == fields
+                # but some of them might be null, so pop them off
+                for key in timeseries:
+                    if timeseries[key]:
+                        period[key] = timeseries[key]
+                resource["temporal"]["timeseries"].append(period)
+        else:  # self.time == 'infer'
+            # assume it is not a timeseries, but it has an as_of_date (set arbitrarily for now)
+            resource["temporal"]["referenceDate"] = "2025-01-01"
+            resource["temporal"].pop("timeseries")
 
         self.data_package["resources"][0] = resource
 
@@ -241,6 +277,7 @@ class AedgOemetadata:
         self.add_license()
         self.add_fields()
         self.add_bbox()
+        self.add_temporal()
 
 
 if __name__ == "__main__":
