@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 from datetime import date
 from pathlib import Path
 
@@ -38,7 +39,9 @@ class AedgOemetadata:
     ) -> None:
         """Kick off the process by importing the template and config files"""
 
-        file_stem = "public_communities_monthly_generation"
+        # the template is nested dictionaries so requires deepcopy
+        # see https://docs.python.org/3/library/copy.html for a clear explanation
+        self.data_package = deepcopy(OEMETADATA_LATEST_TEMPLATE)
 
         # Read YAML configuration file
         input_dir = Path(__file__).parents[1] / "config" / flavor
@@ -57,9 +60,6 @@ class AedgOemetadata:
         # define the output file
         output_dir = Path(__file__).parents[2] / "metadata" / flavor
         self.output_file = output_dir / f"{file_stem}.json"
-
-        self.data_package = OEMETADATA_LATEST_TEMPLATE.copy()
-
 
     def prep_aedg(self) -> None:
         """Make some basic changes that will be true of all AEDG metadata"""
@@ -204,7 +204,7 @@ class AedgOemetadata:
             # set the geographic bounding box to all of Alaska.
             # The format is [minLon, minLat, maxLon, maxLat] or [W,S,E,N]
             resource["spatial"]["extent"]["name"] = "Alaska"
-            resource["spatial"]["extent"]["bounding_box"] = [-187.55, 51.21, -130.0, 71.35]
+            resource["spatial"]["extent"]["boundingBox"] = [-187.55, 51.21, -130.0, 71.35]
             resource["spatial"]["extent"]["crs"] = "OGC:CRS84"
 
         self.data_package["resources"][0] = resource
