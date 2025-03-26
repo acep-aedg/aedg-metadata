@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import json
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
 
+import pandas as pd
 import yaml
 from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
@@ -50,8 +52,10 @@ class AedgOemetadata:
 
         # Read YAML registry files
         registry_dir = Path(__file__).parents[1] / "registry"
-        with (registry_dir / "fields.yml").open() as stream:
-            self.fields = yaml.safe_load(stream)
+        self.fields = pd.read_csv(registry_dir / "fields.csv")
+
+        #with (registry_dir / "fields.yml").open() as stream:
+        #    self.fields = yaml.safe_load(stream)
         with (registry_dir / "licenses.yml").open() as stream:
             self.licenses = yaml.safe_load(stream)
         with (registry_dir / "agents.yml").open() as stream:
@@ -160,15 +164,15 @@ class AedgOemetadata:
     def add_fields(self) -> None:
         """Add the fields and designate the primary keys."""
 
-        # the registry fields is a dictionary of dictionaries
-        reg_fields = self.fields["fields"]
+        # the registry fields csv with each fields a row
         con_fields = self.config["resource"]["fields"]
+        attributes = ['name', 'long_name', 'description', 'type', 'nullable', 'unit']
+        assert list(self.fields.columns) == attributes
+
         fields = []
-        for field_name in con_fields:
-            assert field_name in reg_fields
-            field = {"name": field_name}
-            field.update(reg_fields[field_name])
-            fields.append(field)
+        for target in con_fields:
+            row = self.fields.loc[self.fields['name'] == target, :].squeeze(axis=0)
+            fields.append(json.loads(row.to_json(None)))
 
         assert len(fields) > 0
         self.data_package["resources"][0]["schema"]["fields"] = fields

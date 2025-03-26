@@ -19,7 +19,11 @@ def ref_pkg() -> dict[Any, Any]:
     ref_dir = Path(__file__).parents[0]
     ref_file = ref_dir / "resources" / "public_communities_monthly_generation_reference.json"
     with ref_file.open(mode="r") as file:
-        return json.load(file)  # type: ignore[no-any-return]
+        pkg = json.load(file)
+    # remove dates because those won't match
+    pkg["resources"][0].pop("publicationDate", None)
+    pkg["resources"][0]["contributors"][0].pop("date", None)
+    return pkg  # type: ignore[no-any-return]
 
 
 @pytest.fixture  # type: ignore[misc]
@@ -29,6 +33,8 @@ def pkg_specified() -> dict[Any, Any]:
     bbox = ExtentTypes.specify
     temporal = ExtentTypes.specify
     pkg = run_generate(config, subdirectory, bbox, temporal)
+    pkg.data_package["resources"][0].pop("publicationDate", None)
+    pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
 
 
@@ -39,6 +45,8 @@ def pkg_no_bounds() -> dict[Any, Any]:
     bbox = ExtentTypes.none
     temporal = ExtentTypes.none
     pkg = run_generate(config, subdirectory, bbox, temporal)
+    pkg.data_package["resources"][0].pop("publicationDate", None)
+    pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
 
 
@@ -49,6 +57,8 @@ def pkg_inferred() -> dict[Any, Any]:
     bbox = ExtentTypes.infer
     temporal = ExtentTypes.infer
     pkg = run_generate(config, subdirectory, bbox, temporal)
+    pkg.data_package["resources"][0].pop("publicationDate", None)
+    pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
 
 

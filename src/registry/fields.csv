@@ -1,0 +1,8 @@
+name,long_name,description,type,nullable,unit
+fips_code,FIPS Code,"Federal Information Processing Standard, identifying geographic locations",string,false,null
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,string,false,null
+name,Name,Name,string,false,null
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,true,Megawatt Hour
+fuel_type,Fuel Type,Code indicating generation fuel,string,false,null
+year,Year,Year,integer,false,null
+month,Month,Month,integer,false,null

@@ -5,6 +5,7 @@ fields:
 #  long_name (string)**: non-standard field for text labels to use within AEDG
 #  description (string)**: text describing the field
 #  type(string)*: data type of the field (example: geometry(Point, 4326))
+#     from JSON: array, boolean, integer, number, null, object, regular expressions, or string
 #  nullable (boolean): specify that a column can be nullable. Defaults to True
 #  unit (string)**: unit of a field. If it does not apply, use 'null'
 #
