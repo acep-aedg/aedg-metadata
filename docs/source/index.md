@@ -3,7 +3,7 @@ myst:
   html_meta:
     "description lang=en": |
       Metadata generation for the Alaska Energy Data Gateway.
-html_theme.sidebar_secondary.remove: true
+html_theme.sidebar_secondary.remove: false
 ---
 
 #
