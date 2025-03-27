@@ -19,6 +19,7 @@ html_theme.sidebar_secondary.remove: true
 :maxdepth: 2
 
 getting_started
+registries
 oemetadata
 ```
 
