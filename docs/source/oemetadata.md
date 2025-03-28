@@ -4,6 +4,14 @@
 (oemetadata-target)=
 ## OEMetadata
 
+### Links
+
+#### [OEMetadata Schema](https://github.com/OpenEnergyPlatform/oemetadata/blob/develop/oemetadata/latest/schema.json)
+
+#### [OEMetadata Template](https://github.com/OpenEnergyPlatform/oemetadata/blob/develop/oemetadata/latest/template.json)
+
+### Description
+
 [Open Energy Platform](https://openenergyplatform.org/), based in Germany, has a catalog of data that can be used for energy modeling. To ensure reusability of these data, they defined a metadata standard. We chose to use this standard because:
 
 1. It is an extension of a well-defined, simple metadata standard called Data Packages (see below).
@@ -21,6 +29,7 @@ Other available tools include:
 - a conversion tool: [omi](https://omi.readthedocs.io/en/latest/)
 - [tutorials](https://openenergyplatform.github.io/academy/tutorials) on its use
 - another tool on the OEP website called [wizard](https://openenergyplatform.org/dataedit/wizard/) which could be the template for a similar feature in AEDG
+- OEMetadata includes [an example test](https://github.com/OpenEnergyPlatform/oemetadata/blob/develop/test/oemetadata/latest/test_example.py) of validating against their schema; this procedure has been integrated into this `aedg_metadata generate`.
 
 ### Compliance
 
@@ -77,5 +86,3 @@ There is also a command line interface which you would invoke with:
 ``` shell
 % frictionless validate capital-invalid.csv
 ```
-
-Note: OEMetadata includes an example test of validating against their schema, which has been integrated into this package.
