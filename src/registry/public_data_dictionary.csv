@@ -1,0 +1,14 @@
+name,long_name,description,type,nullable,unit,file
+fips_code,FIPS Code,"Federal Information Processing Standard, identifying geographic locations",string,FALSE,null,public_communities_monthly_generation.csv
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,string,FALSE,null,public_communities_monthly_generation.csv
+name,Name,Name,string,FALSE,null,public_communities_monthly_generation.csv
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_communities_monthly_generation.csv
+fuel_type,Fuel Type,Code indicating generation fuel,string,FALSE,null,public_communities_monthly_generation.csv
+year,Year,Year,integer,FALSE,null,public_communities_monthly_generation.csv
+month,Month,Month,integer,FALSE,null,public_communities_monthly_generation.csv
+fips_code,FIPS Code,"Federal Information Processing Standard, identifying geographic locations",string,FALSE,null,public_communities_yearly_generation.csv
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,string,FALSE,null,public_communities_yearly_generation.csv
+name,Name,Name,string,FALSE,null,public_communities_yearly_generation.csv
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_communities_yearly_generation.csv
+fuel_type,Fuel Type,Code indicating generation fuel,string,FALSE,null,public_communities_yearly_generation.csv
+year,Year,Year,integer,FALSE,null,public_communities_yearly_generation.csv

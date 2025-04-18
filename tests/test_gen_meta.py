@@ -30,9 +30,10 @@ def ref_pkg() -> dict[Any, Any]:
 def pkg_specified() -> dict[Any, Any]:
     config = 'public_communities_monthly_generation'
     subdirectory = '../../tests/resources'
+    data_dictionary = ""
     bbox = ExtentTypes.specify
     temporal = ExtentTypes.specify
-    pkg = run_generate(config, subdirectory, bbox, temporal)
+    pkg = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg.data_package["resources"][0].pop("publicationDate", None)
     pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
@@ -42,9 +43,10 @@ def pkg_specified() -> dict[Any, Any]:
 def pkg_no_bounds() -> dict[Any, Any]:
     config = 'public_communities_monthly_generation'
     subdirectory = '../../tests/resources'
+    data_dictionary = ""
     bbox = ExtentTypes.none
     temporal = ExtentTypes.none
-    pkg = run_generate(config, subdirectory, bbox, temporal)
+    pkg = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg.data_package["resources"][0].pop("publicationDate", None)
     pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
@@ -54,9 +56,10 @@ def pkg_no_bounds() -> dict[Any, Any]:
 def pkg_inferred() -> dict[Any, Any]:
     config = 'public_communities_monthly_generation'
     subdirectory = '../../tests/resources'
+    data_dictionary = ""
     bbox = ExtentTypes.infer
     temporal = ExtentTypes.infer
-    pkg = run_generate(config, subdirectory, bbox, temporal)
+    pkg = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg.data_package["resources"][0].pop("publicationDate", None)
     pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]

@@ -39,6 +39,14 @@ def generate(
             help="Subdirectory of data/ where target file lives in the AEDG pond."
         ),
     ] = "public",
+    data_dictionary: Annotated[
+        str,
+        typer.Option(
+            "--data-dictionary", "-dd",
+            help="Filename of the data dictionary stashed with the data file. " \
+            "If not specified, use the default fields registry file."
+        ),
+    ] = "",
     bbox: Annotated[
         ExtentTypes,
         typer.Option(
@@ -62,7 +70,7 @@ def generate(
 ) -> None:
     """To call gen_meta.py."""
 
-    package = run_generate(config, subdirectory, bbox, temporal)
+    package = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
 
     if save:
         with package.output_file.open(mode="w") as file:

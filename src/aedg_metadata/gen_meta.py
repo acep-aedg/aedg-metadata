@@ -19,12 +19,13 @@ from .helpers import check_schema
 def run_generate(
     file_stem: str,
     flavor: str,
+    data_dictionary: str,
     bbox_opt: ExtentTypes,
     temporal_opt: ExtentTypes,
 ) -> AedgOemetadata:
     """Use the class to make a new package."""
 
-    new_pkg = AedgOemetadata(file_stem, flavor)
+    new_pkg = AedgOemetadata(file_stem, flavor, data_dictionary)
     new_pkg.generate(bbox_opt, temporal_opt)
     check_schema(new_pkg.data_package)
 
@@ -38,6 +39,7 @@ class AedgOemetadata:
         self,
         file_stem: str,
         flavor: str,
+        ddict: str,
     ) -> None:
         """Kick off the process by importing the template and config files"""
 
@@ -50,12 +52,13 @@ class AedgOemetadata:
         with (input_dir / f"{file_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
 
-        # Read YAML registry files
         registry_dir = Path(__file__).parents[1] / "registry"
-        self.fields = pd.read_csv(registry_dir / "fields.csv")
-
-        #with (registry_dir / "fields.yml").open() as stream:
-        #    self.fields = yaml.safe_load(stream)
+        # Read CSV registry files
+        if not ddict:
+            self.fields = pd.read_csv(registry_dir / "fields.csv")
+        else:
+            self.fields = pd.read_csv(registry_dir / ddict)
+        # Read YAML registry files
         with (registry_dir / "licenses.yml").open() as stream:
             self.licenses = yaml.safe_load(stream)
         with (registry_dir / "agents.yml").open() as stream:

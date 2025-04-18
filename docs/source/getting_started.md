@@ -21,7 +21,7 @@ The CLI is set-up according to `typer's` [Building a Package](https://typer.tian
 so the usage conforms to `aedg_metadata [OPTIONS] COMMAND [ARGS]...`
 
 ``` shell
-% aedg_metadata generate public_communities_monthly_generation -d public --bbox infer --sav
+% aedg_metadata generate public_communities_monthly_generation -d public --bbox infer --save
 % aedg_metadata generate --help
 
  Usage: aedg_metadata generate [OPTIONS] CONFIG
