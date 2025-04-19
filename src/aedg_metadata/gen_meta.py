@@ -58,6 +58,11 @@ class AedgOemetadata:
             self.fields = pd.read_csv(registry_dir / "fields.csv")
         else:
             self.fields = pd.read_csv(registry_dir / ddict)
+        # fields might be duplicated between filenames
+        if 'file' in self.fields.columns:
+            filename = self.config["resource"]["path"].split('/')[-1]
+            self.fields = self.fields.loc[filename == self.fields['file'], :]
+
         # Read YAML registry files
         with (registry_dir / "licenses.yml").open() as stream:
             self.licenses = yaml.safe_load(stream)
@@ -170,11 +175,11 @@ class AedgOemetadata:
         # the registry fields csv with each fields a row
         con_fields = self.config["resource"]["fields"]
         attributes = ['name', 'long_name', 'description', 'type', 'nullable', 'unit']
-        assert list(self.fields.columns) == attributes
+        assert set(attributes).issubset(set(self.fields.columns))
 
         fields = []
         for target in con_fields:
-            row = self.fields.loc[self.fields['name'] == target, :].squeeze(axis=0)
+            row = self.fields.loc[self.fields['name'] == target, attributes].squeeze(axis=0)
             fields.append(json.loads(row.to_json(None)))
 
         assert len(fields) > 0

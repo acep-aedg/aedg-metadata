@@ -30,13 +30,13 @@ so the usage conforms to `aedg_metadata [OPTIONS] COMMAND [ARGS]...`
 
 ╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ *    config      TEXT  File stem of config file (req). [default: None] [required]                                                                                                                           │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --directory  -d               TEXT                       Subdirectory of data/ where target file lives in the AEDG pond. [default: public]                                                                  │
-│ --bbox       -b               [infer|calc|specify|none]  How the spatial bounding box should be determined. [default: specify]                                                                              │
-│ --time       -t               [infer|calc|specify|none]  How the temporal description should be determined. [default: specify]                                                                              │
-│ --save           --no-save                               Write generated metadata to the file or else to the screen. [default: no-save]                                                                     │
-│ --help                                                   Show this message and exit.                                                                                                                        │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --directory        -d                TEXT                       Subdirectory of data/ where target file lives in the AEDG pond. [default: public]                                                           │
+│ --data-dictionary  -dd               TEXT                       Filename of the data dictionary stashed with the data file. If not specified, use the default fields registry file.                         │
+│ --bbox             -b                [infer|calc|specify|none]  How the spatial bounding box should be determined. [default: specify]                                                                       │
+│ --time             -t                [infer|calc|specify|none]  How the temporal description should be determined. [default: specify]                                                                       │
+│ --save                  --no-save                               Write generated metadata to the file or else to the screen. [default: no-save]                                                              │
+│ --help                                                          Show this message and exit.                                                                                                                 │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 

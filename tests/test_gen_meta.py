@@ -27,19 +27,6 @@ def ref_pkg() -> dict[Any, Any]:
 
 
 @pytest.fixture  # type: ignore[misc]
-def pkg_specified() -> dict[Any, Any]:
-    config = 'public_communities_monthly_generation'
-    subdirectory = '../../tests/resources'
-    data_dictionary = ""
-    bbox = ExtentTypes.specify
-    temporal = ExtentTypes.specify
-    pkg = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
-    pkg.data_package["resources"][0].pop("publicationDate", None)
-    pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
-    return pkg.data_package  # type: ignore[no-any-return]
-
-
-@pytest.fixture  # type: ignore[misc]
 def pkg_no_bounds() -> dict[Any, Any]:
     config = 'public_communities_monthly_generation'
     subdirectory = '../../tests/resources'
@@ -65,10 +52,30 @@ def pkg_inferred() -> dict[Any, Any]:
     return pkg.data_package  # type: ignore[no-any-return]
 
 
-def test_stability(ref_pkg: dict[Any, Any], pkg_specified: dict[Any, Any]) -> None:
+def test_stability(ref_pkg: dict[Any, Any]) -> None:
     """To make sure refactoring doesn't inadvertently change the output"""
+    config = 'public_communities_monthly_generation'
+    subdirectory = '../../tests/resources'
+    data_dictionary = ""
+    bbox = ExtentTypes.specify
+    temporal = ExtentTypes.specify
+    pkg_specified = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
+    pkg_specified.data_package["resources"][0].pop("publicationDate", None)
+    pkg_specified.data_package["resources"][0]["contributors"][0].pop("date", None)
+    assert pkg_specified.data_package == ref_pkg
 
-    assert pkg_specified == ref_pkg
+
+def test_data_dictionary(ref_pkg: dict[Any, Any]) -> None:
+    """To make sure refactoring doesn't inadvertently change the output"""
+    config = 'public_communities_monthly_generation'
+    subdirectory = '../../tests/resources'
+    data_dictionary = "public_data_dictionary.csv"
+    bbox = ExtentTypes.specify
+    temporal = ExtentTypes.specify
+    pkg_ddict = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
+    pkg_ddict.data_package["resources"][0].pop("publicationDate", None)
+    pkg_ddict.data_package["resources"][0]["contributors"][0].pop("date", None)
+    assert pkg_ddict.data_package == ref_pkg
 
 
 def test_no_spatial_temporal(ref_pkg: dict[Any, Any], pkg_no_bounds: dict[Any, Any]) -> None:
