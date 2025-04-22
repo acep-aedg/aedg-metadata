@@ -10,3 +10,12 @@ licenses:
     instruction: "You are free to share and change, but you must attribute, and share derivations under the same license. See https://tldrlegal.com/license/odc-open-database-license-(odbl) for further information."
     attribution: "ACEP"
     copyrightStatement: "https://github.com/OpenEnergyPlatform/oemetadata/blob/production/LICENSE.txt"
+  CC-SA-4.0:
+    title: "Creative Commons Attribution-ShareAlike 4.0 International"
+    path: "https://creativecommons.org/licenses/by-sa/4.0/"
+    instruction: |
+      You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+      You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you
+      or your use. If you remix, transform, or build upon the material, you must distribute your contributions
+      under the same license as the original.
+    attribution: "Alaska Center for Energy and Power, University of Alaska Fairbanks"

@@ -12,17 +12,22 @@
                 "Electricity"
             ],
             "title": "Monthly electrical generation by community",
-            "path": "https://github.com/acep-aedg/aedg-data-pond/blob/main/data/public/public_communities_monthly_generation.csv",
+            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_monthly_generation.csv",
             "description": "Monthly electrical generation is aggregated by grid and associated with every community connected to the grid.\n",
             "languages": [
                 "en-US"
             ],
             "keywords": [
                 "generation",
-                "foo",
-                "bar"
+                "electricity",
+                "fuel type",
+                "grid",
+                "intertie",
+                "reports",
+                "PCE",
+                "EIA Form 923"
             ],
-            "publicationDate": "2025-03-24",
+            "publicationDate": "2025-04-22",
             "context": {
                 "title": "Alaska Energy Data Gateway",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -76,16 +81,18 @@
             ],
             "licenses": [
                 {
-                    "name": "CC0-1.0",
-                    "path": "https://creativecommons.org/publicdomain/zero/1.0/",
-                    "title": "CC0 1.0 Universal"
+                    "name": "CC-SA-4.0",
+                    "title": "Creative Commons Attribution-ShareAlike 4.0 International",
+                    "path": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made. \nYou may do so in any reasonable manner, but not in any way that suggests the licensor endorses you \nor your use. If you remix, transform, or build upon the material, you must distribute your contributions \nunder the same license as the original.\n",
+                    "attribution": "Alaska Center for Energy and Power, University of Alaska Fairbanks"
                 }
             ],
             "contributors": [
                 {
                     "path": "https://github.com/acep-aedg/aedg-etl-2024",
                     "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
-                    "date": "2025-03-24",
+                    "date": "2025-04-22",
                     "object": "[Fill in object of the change]",
                     "comment": "[Fill in how it was changed]"
                 }

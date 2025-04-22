@@ -4,15 +4,22 @@ resource:
   description: >
       Monthly electrical generation is aggregated by grid
       and associated with every community connected to the grid.
-  path: "https://github.com/acep-aedg/aedg-data-pond/blob/main/data/public/public_communities_monthly_generation.csv"
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_monthly_generation.csv"
   keywords:
     - generation
-    - foo
-    - bar
+    - electricity
+    - fuel type
+    - grid
+    - intertie
+    - reports
+    - PCE
+    - EIA Form 923
   topics:
     - Electricity
+  sourceLicenses:
+    - CC-SA-4.0
   licenses:
-    - CC0-1.0
+    - CC-SA-4.0
   spatial:
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]
