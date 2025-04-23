@@ -97,16 +97,6 @@ class AedgOemetadata:
         resource["dialect"]["delimiter"] = ","
         # We use "." in our floating point numbers
         resource["dialect"]["decimalSeparator"] = "."
-        # ACEP is a contributor to all (fill in details later)
-        resource["contributors"] = [
-            {
-                "path": "https://github.com/acep-aedg/aedg-etl-2024",
-                "organization": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
-                "date": f"{date.today()}",
-                "object": "[Fill in object of the change]",
-                "comment": "[Fill in how it was changed]",
-            }
-        ]
         # Context is AEDG
         resource["context"] = {
             "title": "Alaska Energy Data Gateway",
@@ -259,6 +249,24 @@ class AedgOemetadata:
 
         self.data_package["resources"][0] = resource
 
+    def add_agents(self) -> None:
+        """Fill in various fields based on the values in the agents registry."""
+
+        resource = self.data_package["resources"][0]
+
+        # ACEP is a contributor to all (fill in details later)
+        resource["contributors"] = [
+            {
+                "path": "https://github.com/acep-aedg/aedg-etl-2024",
+                "organization": self.agents['acep']['name'],
+                "date": f"{date.today()}",
+                "object": "[Fill in object of the change]",
+                "comment": "[Fill in how it was changed]",
+            }
+        ]
+
+        self.data_package["resources"][0] = resource
+
     def generate(self, bbopt: ExtentTypes, topt: ExtentTypes) -> None:
         """Run all the steps"""
         self.prep_aedg()
@@ -267,6 +275,7 @@ class AedgOemetadata:
         self.add_fields()
         self.add_bbox(bbopt)
         self.add_temporal(topt)
+        self.add_agents()
 
 
 if __name__ == "__main__":
