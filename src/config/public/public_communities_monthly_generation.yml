@@ -12,12 +12,14 @@ resource:
     - grid
     - intertie
     - reports
-    - PCE
+    - Power Cost Equalization (PCE)
     - EIA Form 923
   topics:
     - Electricity
-  sourceLicenses:
-    - CC-SA-4.0
+  source:
+    - dcra.communities
+    - dol.places
+    - acep.es_generation
   licenses:
     - CC-SA-4.0
   spatial:

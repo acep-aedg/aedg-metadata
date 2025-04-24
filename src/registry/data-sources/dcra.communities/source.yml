@@ -1,0 +1,44 @@
+
+name: dcra.communities
+fetch:
+  source:
+    name: Alaska Division of Community and Regional Affairs
+    url: https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0
+  files:
+    dcra.communities:
+      file_type: geojson
+      url: https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0/query?outFields=*&where=1%3D1&f=geojson
+      sha256: 241f72c362a2184d55463b0a87c5add891aa95bfefa3547f8d01eb636052b44f
+      save_as: 'source/dcra.communities/data/dcra.communities.geojson'
+preprocess:
+  archive: # path to archive when data is zipped put .zip
+  inputs:
+    dcra.communities: 'source/dcra.communities/data/dcra.communities.geojson'
+  outputs:
+    dcra.communities: 'preprocess/communities/data/communities.geojson'
+  corrections:
+    - dcra.communities
+
+database:
+  ddl-info:
+    dcra.communities:
+      location: load2/communities/ddl.sql
+      table-name: l1_communities
+metadata:
+  title: Alaska Communities
+  authors:
+  - Alaska Division of Community and Regional Affairs (DCRA)
+  description: | # <idPurp> + <idAbs>
+    Core master GISS place locations represented as points tracked by DCRA. Named Community Locations for
+    historical reasons - but is a mix of Communities, Places of Interest, Borough/Census Area as well as
+    Alaska centroid. CommunityID is key GUID used elsewhere.
+    Technically master for all field attributes is the DCRA Admin Website/Database - but this is the master for
+    actual geometry of place. Changes to this FC need to be made with care as it is intrinsic to many spatial views.
+    8/18/2022 - MWO added RODistrictNumber, RODistrictName, AltRODistrictNumber, AltRODistrictName columns after
+    spatially intersecting points representing communities with GISP.GIS_OWNER_MLT.Recording_Districts FC.
+    These values could be stored in related table as are other Community Attributes found in
+    GISP.GIS_OWNER_CDO.Community_Regions_Layer
+  publicationYear: 2023
+  path: https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0
+  sourceLicenses: # has a disclaimer where the license should be
+  - none

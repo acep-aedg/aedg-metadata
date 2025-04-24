@@ -1,0 +1,36 @@
+name: census.gazetteer
+fetch:
+  source:
+    name: US Census
+    url: https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/
+  files:
+    census.gazetteer:
+      file_type: csv
+      url: https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_place_02.txt
+      sha256: 29de08af78f918d08cf679db96cb8a92ef2168460d9c0e5e805b7e95e43c2572
+      metadata: https://www.census.gov/programs-surveys/geography/technical-documentation/records-layout/gaz-record-layouts.2024.html#list-tab-1913338080
+      save_as: source/census.gazetteer/data/census.gazetteer.csv
+preprocess:
+  archive: ''
+  inputs:
+    census.gazetteer: source/census.gazetteer/data/census.gazetteer.csv
+  outputs:
+    census.gazetteer: preprocess/gazetteer/data/gazetteer.csv
+  corrections: []
+database:
+  ddl-info:
+    location: ''
+    table-name: ''
+    census.gazetteer:
+      location: load/gazetteer/ddl.sql
+      table-name: l1_gazetteer
+metadata:
+  title: 2024 US Census Place Gazetteer File, Alaska
+  authors:
+  - United States Census Bureau
+  description: |
+    If we use this, add a description.
+  publicationYear: 2024
+  path: https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_place_02.txt
+  sourceLicenses: # https://ask.census.gov/prweb/PRServletCustom?pyActivity=pyMobileSnapStart&ArticleID=KCP-4928
+  - public-domain

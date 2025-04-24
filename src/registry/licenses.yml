@@ -19,3 +19,14 @@ licenses:
       or your use. If you remix, transform, or build upon the material, you must distribute your contributions
       under the same license as the original.
     attribution: "Alaska Center for Energy and Power, University of Alaska Fairbanks"
+  public-domain:
+    title: U.S. Public Domain
+    path: http://www.usa.gov/publicdomain/label/1.0/
+    instruction: |
+      Data and content created by government employees within the scope of their employment are not subject
+      to domestic copyright protection under 17 U.S.C. § 105. Government works are by default in the U.S.
+      Public Domain.
+      You cannot use government materials in a way that implies endorsement by a government agency, official,
+      or employee. You also cannot use federal government trademarks or federal government agency logos without
+      permission.
+      https://resources.data.gov/open-licenses/
