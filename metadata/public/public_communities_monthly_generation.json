@@ -65,7 +65,7 @@
                     "authors": [
                         "Alaska Division of Community and Regional Affairs (DCRA)"
                     ],
-                    "description": "The Alaska Communities dataset is the master list of place locations, represented as points, used by \nthe Alaska Division of Community and Regional Affairs (DCRA). In includes community locations but \nfor historical reasons, it is a mix of Communities, Places of Interest, Borough/Census Area as well as \nAlaska centroid. DCRA uses it to link communities to their internal key GUID used elsewhere in their \nsystems. \nAEDG uses this list to define canonical community names since, as free text, these can vary \nin different contexts, and to establish locations to use in spatial joins and relations.\n",
+                    "description": "The Alaska Communities dataset is the master list of place locations, represented as points, used by the Alaska Division of Community and Regional Affairs (DCRA). In includes community locations but for historical reasons, it is a mix of Communities, Places of Interest, Borough/Census Area as well as Alaska centroid. DCRA uses it to link communities to their internal key GUID used elsewhere in their systems.\nAEDG uses this list to define canonical community names since, as free text, these can vary in different contexts, and to establish locations to use in spatial joins and relations.\n",
                     "publicationYear": "2023",
                     "path": "https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0",
                     "sourceLicenses": []
@@ -75,7 +75,7 @@
                     "authors": [
                         "Alaska Department of Labor and Workforce Development (DOLWD)"
                     ],
-                    "description": "This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for \nAlaska. The definition of places includes all incorporated cities as well as Census Designated\nPlaces (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS)\nnumbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census,\nPL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names:\nhttps://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf.\nAEDG uses this list to define canonical community locations to use in spatial joins and relations, and \nto associate places with FIPS codes.\n",
+                    "description": "This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for Alaska. The definition of places includes all incorporated cities as well as Census Designated Places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS) numbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census, PL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names: https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf.\nAEDG uses this list to define canonical community locations to use in spatial joins and relations, and to associate places with FIPS codes.\n",
                     "publicationYear": "2020",
                     "path": "https://live.laborstats.alaska.gov/article/maps-gis-data",
                     "sourceLicenses": []
@@ -88,7 +88,7 @@
                         "Alaska Energy Authority (AEA)",
                         "Institute of Social and Economic Research (ISER), University of Alaska Anchorage (UAA)"
                     ],
-                    "description": "The Alaska Energy Statistics is a long-running collection of data and reports about energy production,\nconsumption, and related topics specific to the state of Alaska. The workbooks were developed to provide\ncommunity and utility level datasets that support regional and statewide aggregations for use in the\n2024 Alaska Electricity Trends Report. This is a continuation of a 40+ year effort to create and maintain\nhigh level views of the state\u2019s energy profile that are useful for policy makers, businesses, researchers,\nand others interested in Alaska\u2019s energy sector.\nData are derived from community Power Cost Equalization reports collated by the Alaska Energy Authority and\nreporting to the U.S. Energy Information Administration (EIA), supplemented by annual filings to the\nRegulatory Commission of Alaska (RCA), village and powerhouse assessments, and direct communications with\nutilities, hydro/wind program managers.\nAdditional funding was contributed by Office of Naval Research (ONR) funded Alaska Regional Collaboration\nfor Technology Innovation and Commercialization (ARCTIC) program, the Denali Commission, and the State of\nAlaska.\nAEDG uses this dataset as the best available compilation of electrical generation, incorporating data from \nmultiple sources into a single source.\n",
+                    "description": "The Alaska Energy Statistics is a long-running collection of data and reports about energy production, consumption, and related topics specific to the state of Alaska. The workbooks were developed to provide community and utility level datasets that support regional and statewide aggregations for use in the 2024 Alaska Electricity Trends Report. This is a continuation of a 40+ year effort to create and maintain high level views of the state\u2019s energy profile that are useful for policy makers, businesses, researchers, and others interested in Alaska\u2019s energy sector. Data are derived from community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA), supplemented by annual filings to the Regulatory Commission of Alaska (RCA), village and powerhouse assessments, and direct communications with utilities, hydro/wind program managers.\nAdditional funding was contributed by Office of Naval Research (ONR) funded Alaska Regional Collaboration for Technology Innovation and Commercialization (ARCTIC) program, the Denali Commission, and the State of Alaska.\nAEDG uses this dataset as the best available compilation of electrical generation, incorporating data from multiple sources into a single source.\n",
                     "publicationYear": "2021",
                     "path": "https://acep-uaf.github.io/ak-energy-statistics-2011_2021/",
                     "sourceLicenses": [
@@ -96,7 +96,7 @@
                             "name": "CC-SA-4.0",
                             "title": "Creative Commons Attribution-ShareAlike 4.0 International",
                             "path": "https://creativecommons.org/licenses/by-sa/4.0/",
-                            "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made.\nYou may do so in any reasonable manner, but not in any way that suggests the licensor endorses you\nor your use. If you remix, transform, or build upon the material, you must distribute your contributions\nunder the same license as the original.\n",
+                            "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\n",
                             "attribution": "Alaska Center for Energy and Power, University of Alaska Fairbanks"
                         }
                     ]
@@ -107,7 +107,7 @@
                     "name": "CC-SA-4.0",
                     "title": "Creative Commons Attribution-ShareAlike 4.0 International",
                     "path": "https://creativecommons.org/licenses/by-sa/4.0/",
-                    "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made.\nYou may do so in any reasonable manner, but not in any way that suggests the licensor endorses you\nor your use. If you remix, transform, or build upon the material, you must distribute your contributions\nunder the same license as the original.\n",
+                    "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\n",
                     "attribution": "Alaska Center for Energy and Power, University of Alaska Fairbanks"
                 }
             ],
