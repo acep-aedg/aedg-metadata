@@ -14,9 +14,10 @@ resource:
     - reports
     - Power Cost Equalization (PCE)
     - EIA Form 923
+    - place
   topics:
     - Electricity
-  source:
+  sources:
     - dcra.communities
     - dol.places
     - acep.es_generation

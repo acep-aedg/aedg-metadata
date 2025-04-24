@@ -26,13 +26,15 @@ metadata:
   authors:
   - Alaska Department of Labor and Workforce Development (DOLWD)
   description: |
-    An ESRI Shapefile for use in GIS software that contains data from the 2020 US Census for Alaska at
-    the place level. The definition of places includes all incorporated cities as well as census designated
-    places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS)
+    This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for
+    Alaska. The definition of places includes all incorporated cities as well as Census Designated
+    Places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS)
     numbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census,
     PL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names:
-    https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf
-  publicationYear: 2020
+    https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf.
+    AEDG uses this list to define canonical community locations to use in spatial joins and relations, and
+    to associate places with FIPS codes.
+  publicationYear: "2020"
   path: https://live.laborstats.alaska.gov/article/maps-gis-data
   sourceLicenses: # none found
-  - none
+  - null

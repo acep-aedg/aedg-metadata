@@ -29,16 +29,14 @@ metadata:
   authors:
   - Alaska Division of Community and Regional Affairs (DCRA)
   description: | # <idPurp> + <idAbs>
-    Core master GISS place locations represented as points tracked by DCRA. Named Community Locations for
-    historical reasons - but is a mix of Communities, Places of Interest, Borough/Census Area as well as
-    Alaska centroid. CommunityID is key GUID used elsewhere.
-    Technically master for all field attributes is the DCRA Admin Website/Database - but this is the master for
-    actual geometry of place. Changes to this FC need to be made with care as it is intrinsic to many spatial views.
-    8/18/2022 - MWO added RODistrictNumber, RODistrictName, AltRODistrictNumber, AltRODistrictName columns after
-    spatially intersecting points representing communities with GISP.GIS_OWNER_MLT.Recording_Districts FC.
-    These values could be stored in related table as are other Community Attributes found in
-    GISP.GIS_OWNER_CDO.Community_Regions_Layer
-  publicationYear: 2023
+    The Alaska Communities dataset is the master list of place locations, represented as points, used by
+    the Alaska Division of Community and Regional Affairs (DCRA). In includes community locations but
+    for historical reasons, it is a mix of Communities, Places of Interest, Borough/Census Area as well as
+    Alaska centroid. DCRA uses it to link communities to their internal key GUID used elsewhere in their
+    systems.
+    AEDG uses this list to define canonical community names since, as free text, these can vary
+    in different contexts, and to establish locations to use in spatial joins and relations.
+  publicationYear: "2023"
   path: https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0
   sourceLicenses: # has a disclaimer where the license should be
-  - none
+  - null

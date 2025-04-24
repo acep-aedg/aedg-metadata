@@ -69,6 +69,11 @@ class AedgOemetadata:
         with (registry_dir / "agents.yml").open() as stream:
             self.agents = yaml.safe_load(stream)
 
+        # Define the directory root where data source YAML files are stored
+        self.data_source = registry_dir / "data-sources"  # for testing
+        # Refer to the ETL pipeline configuration files
+        # self.data_source = Path(__file__).parents[3] / "aedg-etl-2024"
+
         # define the output file
         output_dir = Path(__file__).parents[2] / "metadata" / flavor
         self.output_file = output_dir / f"{file_stem}.json"
@@ -148,9 +153,10 @@ class AedgOemetadata:
 
         all_licenses = []
         for license_tag in self.config["resource"]["licenses"]:
-            license = {"name": license_tag}
-            license.update(self.licenses["licenses"][license_tag])
-            all_licenses.append(license)
+            if license_tag:
+                license = {"name": license_tag}
+                license.update(self.licenses["licenses"][license_tag])
+                all_licenses.append(license)
 
         if len(all_licenses) > 0:
             # replace the empty template field
@@ -249,7 +255,26 @@ class AedgOemetadata:
 
         self.data_package["resources"][0] = resource
 
-    def add_agents(self) -> None:
+    def add_sources(self) -> None:
+        """Fill in documentation of the original sources either locally or in ETL pipeline."""
+
+        all_sources = []
+        for source_tag in self.config["resource"]["sources"]:
+            with (self.data_source / source_tag / "source.yml").open() as stream:
+                source = yaml.safe_load(stream)
+            all_licenses = []
+            for license_tag in source['metadata']["sourceLicenses"]:
+                if license_tag:
+                    license = {"name": license_tag}
+                    license.update(self.licenses["licenses"][license_tag])
+                    all_licenses.append(license)
+            source['metadata']["sourceLicenses"] = all_licenses
+
+            all_sources.append(source['metadata'])
+
+        self.data_package["resources"][0]["sources"] = all_sources
+
+    def add_contributors(self) -> None:
         """Fill in various fields based on the values in the agents registry."""
 
         resource = self.data_package["resources"][0]
@@ -275,7 +300,8 @@ class AedgOemetadata:
         self.add_fields()
         self.add_bbox(bbopt)
         self.add_temporal(topt)
-        self.add_agents()
+        self.add_sources()
+        self.add_contributors()
 
 
 if __name__ == "__main__":

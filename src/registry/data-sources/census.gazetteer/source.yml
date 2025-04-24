@@ -30,7 +30,7 @@ metadata:
   - United States Census Bureau
   description: |
     If we use this, add a description.
-  publicationYear: 2024
+  publicationYear: "2024"
   path: https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_place_02.txt
   sourceLicenses: # https://ask.census.gov/prweb/PRServletCustom?pyActivity=pyMobileSnapStart&ArticleID=KCP-4928
   - public-domain
