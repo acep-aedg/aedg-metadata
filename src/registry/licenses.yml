@@ -5,7 +5,7 @@ licenses:
 #   title: The official (human readable) title of the license
 #   instruction: A short description of rights and obligations
 #   attribution: A copyright owner of the source. Must be provided if attribution licenses are used.
-#   copyrightStatement: A link or path that proves that the source or data has the appropriate license. This can be a page number or website imprint. (opt for AEDG)
+#   copyrightStatement: A link or path that proves that the source or data has the appropriate license. This can be a page number or website imprint. (not used in AEDG because it depends on the dataset and cannot be set in the registry)
 #
   CC0-1.0:
     path: https://creativecommons.org/publicdomain/zero/1.0/
@@ -18,7 +18,7 @@ licenses:
     instruction: |
       You are free to share and change, but you must attribute, and share derivations under the same license. See https://tldrlegal.com/license/odc-open-database-license-(odbl) for further information.
     attribution: ACEP
-    copyrightStatement: https://github.com/OpenEnergyPlatform/oemetadata/blob/production/LICENSE.txt
+    copyrightStatement: https://github.com/OpenEnergyPlatform/oemetadata/blob/production/LICENSE.txt # example from OEMetadata not applicable to AEDG
   CC-SA-4.0:
     title: Creative Commons Attribution-ShareAlike 4.0 International
     path: https://creativecommons.org/licenses/by-sa/4.0/
@@ -31,6 +31,4 @@ licenses:
     instruction: |
       Data and content created by government employees within the scope of their employment are not subject
       to domestic copyright protection under 17 U.S.C. § 105. Government works are by default in the U.S.
-      Public Domain. You cannot use government materials in a way that implies endorsement by a government agency, official,
-      or employee. You also cannot use federal government trademarks or federal government agency logos without
-      permission - https://resources.data.gov/open-licenses/.
+      Public Domain. You cannot use government materials in a way that implies endorsement by a government agency, official, or employee. You also cannot use federal government trademarks or federal government agency logos without permission - https://resources.data.gov/open-licenses/.
