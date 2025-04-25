@@ -2,7 +2,7 @@
     "@context": "",
     "name": "public_communities_monthly_generation",
     "title": "Monthly electrical generation by community",
-    "description": "Monthly electrical generation is aggregated by grid and associated with every community connected to the grid.\n",
+    "description": "This dataset is monthly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it. Two factors complicate this simple seeming dataset. First, there is no single state or federal agency that collects data on all the generation sources in Alaska. Second, some communities have isolated microgrids where generation sources are easy to identify, but other communities are interconnected with interties into grids where generation sources are shared. In those cases, it is therefore impossible to pair communities with the individual power stations or plants or operators for which generation is recorded even if the plant is physically located within a community.\nTo address the first issue, this dataset derives from the Alaska Energy Statistics workbooks, which in turn compiles data from multiple sources including community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA). Source data was harmonized to account for differences in reporting through a combination of subject matter expertise and transformations.\nTo address the second issue, generation is summed over all the generators with different fuels - diesel and natural gas boilers, solar installations, wind turbines - that are connected to a grid. Grids were defined as an element of the Alaska Energy Statistics workbooks for PCE communities; for the Railbelt, they were determined by the service areas of the utilities that are connected to the Railbelt intertie. The same values for total generation are reported for all the communities on a grid, which creates multiple duplicate values in this dataset.\n",
     "@id": "",
     "resources": [
         {
@@ -13,7 +13,7 @@
             ],
             "title": "Monthly electrical generation by community",
             "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_monthly_generation.csv",
-            "description": "Monthly electrical generation is aggregated by grid and associated with every community connected to the grid.\n",
+            "description": "This dataset is monthly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it. Two factors complicate this simple seeming dataset. First, there is no single state or federal agency that collects data on all the generation sources in Alaska. Second, some communities have isolated microgrids where generation sources are easy to identify, but other communities are interconnected with interties into grids where generation sources are shared. In those cases, it is therefore impossible to pair communities with the individual power stations or plants or operators for which generation is recorded even if the plant is physically located within a community.\nTo address the first issue, this dataset derives from the Alaska Energy Statistics workbooks, which in turn compiles data from multiple sources including community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA). Source data was harmonized to account for differences in reporting through a combination of subject matter expertise and transformations.\nTo address the second issue, generation is summed over all the generators with different fuels - diesel and natural gas boilers, solar installations, wind turbines - that are connected to a grid. Grids were defined as an element of the Alaska Energy Statistics workbooks for PCE communities; for the Railbelt, they were determined by the service areas of the utilities that are connected to the Railbelt intertie. The same values for total generation are reported for all the communities on a grid, which creates multiple duplicate values in this dataset.\n",
             "languages": [
                 "en-US"
             ],
@@ -28,7 +28,7 @@
                 "EIA Form 923",
                 "place"
             ],
-            "publicationDate": "2025-04-24",
+            "publicationDate": "2025-04-25",
             "context": {
                 "title": "Alaska Energy Data Gateway",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -88,7 +88,7 @@
                         "Alaska Energy Authority (AEA)",
                         "Institute of Social and Economic Research (ISER), University of Alaska Anchorage (UAA)"
                     ],
-                    "description": "The Alaska Energy Statistics is a long-running collection of data and reports about energy production, consumption, and related topics specific to the state of Alaska. The workbooks were developed to provide community and utility level datasets that support regional and statewide aggregations for use in the 2024 Alaska Electricity Trends Report. This is a continuation of a 40+ year effort to create and maintain high level views of the state\u2019s energy profile that are useful for policy makers, businesses, researchers, and others interested in Alaska\u2019s energy sector. Data are derived from community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA), supplemented by annual filings to the Regulatory Commission of Alaska (RCA), village and powerhouse assessments, and direct communications with utilities, hydro/wind program managers.\nAdditional funding was contributed by Office of Naval Research (ONR) funded Alaska Regional Collaboration for Technology Innovation and Commercialization (ARCTIC) program, the Denali Commission, and the State of Alaska.\nAEDG uses this dataset as the best available compilation of electrical generation, incorporating data from multiple sources into a single source.\n",
+                    "description": "The Alaska Energy Statistics is a long-running collection of data and reports about energy production, consumption, and related topics specific to the state of Alaska. The workbooks were developed to provide community and utility level datasets that support regional and statewide aggregations for use in the 2024 Alaska Electricity Trends Report. This is a continuation of a 40+ year effort to create and maintain high level views of the state\u2019s energy profile that are useful for policy makers, businesses, researchers, and others interested in Alaska\u2019s energy sector. Data are derived from community Power Cost Equalization reports collated by the Alaska Energy Authority and power plant reporting to the U.S. Energy Information Administration (EIA). These sources are supplemented by annual filings to the Regulatory Commission of Alaska (RCA), village and powerhouse assessments, and direct communications with utilities and hydro/wind program managers.\nAdditional funding was contributed by Office of Naval Research (ONR) funded Alaska Regional Collaboration for Technology Innovation and Commercialization (ARCTIC) program, the Denali Commission, and the State of Alaska.\nAEDG uses this dataset as the best available compilation of electrical generation, incorporating data from multiple sources into a single source.\n",
                     "publicationYear": "2021",
                     "path": "https://acep-uaf.github.io/ak-energy-statistics-2011_2021/",
                     "sourceLicenses": [
@@ -115,7 +115,7 @@
                 {
                     "path": "https://github.com/acep-aedg/aedg-etl-2024",
                     "organization": "Alaska Center for Energy and Power (ACEP), University of Alaska Fairbanks (UAF)",
-                    "date": "2025-04-24",
+                    "date": "2025-04-25",
                     "object": "[Fill in object of the change]",
                     "comment": "[Fill in how it was changed]"
                 }
