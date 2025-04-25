@@ -277,20 +277,17 @@ class AedgOemetadata:
     def add_contributors(self) -> None:
         """Fill in various fields based on the values in the agents registry."""
 
-        resource = self.data_package["resources"][0]
+        all_contribs = []
+        for contributor in self.config["resource"]["contributors"]:
+            if contributor['date'] == "now":
+                contributor['date'] =  f"{date.today()}"
+            else:
+                contributor['date'] =  str(contributor['date'])
+            contributor["path"] = self.agents[contributor["organization"]]['homepage']
+            contributor["organization"] = self.agents[contributor["organization"]]['name']
+            all_contribs.append(contributor)
 
-        # ACEP is a contributor to all (fill in details later)
-        resource["contributors"] = [
-            {
-                "path": "https://github.com/acep-aedg/aedg-etl-2024",
-                "organization": self.agents['acep']['name'],
-                "date": f"{date.today()}",
-                "object": "[Fill in object of the change]",
-                "comment": "[Fill in how it was changed]",
-            }
-        ]
-
-        self.data_package["resources"][0] = resource
+        self.data_package["resources"][0]["contributors"] = all_contribs
 
     def generate(self, bbopt: ExtentTypes, topt: ExtentTypes) -> None:
         """Run all the steps"""

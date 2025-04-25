@@ -23,7 +23,7 @@ database:
       location: load2/communities/ddl.sql ## wha?
       table-name: l1_es_monthly_generation
 metadata:
-  title: Energy Statistics Electrical Generation Tables
+  title: Alaska Energy Statistics Electrical Generation Tables
   authors:
   - Alaska Center for Energy and Power (ACEP), University of Alaska Fairbanks (UAF)
   - Neil McMahon, DOWL Engineering
