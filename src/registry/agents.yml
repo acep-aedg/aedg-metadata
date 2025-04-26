@@ -7,7 +7,7 @@
 #  These fields will be used in various OEMetadata contexts
 #
   acep:
-    name: Alaska Center for Energy and Power (ACEP), University of Alaska Fairbanks
+    name: Alaska Center for Energy and Power (ACEP) at the University of Alaska Fairbanks
       (UAF)
     homepage: https://www.uaf.edu/acep/
     description: |
@@ -67,7 +67,7 @@
     name: Federal Energy Regulatory Commission (FERC)
     homepage: https://ferc.gov/
     description: |
-      The Federal Energy Regulatory Commission (FERC) is the source of energy system financial data reported to the US government. The data published in FERC Form 1 refers to the same utilities, power plants, and generators that are reported by EIA. Reported records correspond to prime mover, primary fuel source, technology type, plants, or generator units. AEDG accesses these data via Catalyst Cooperative's PUDL dataset.
+      The Federal Energy Regulatory Commission (FERC) is the source of energy system financial data reported to the United States government. The data published in FERC Form 1 refers to the same utilities, power plants, and generators that are reported by EIA. Reported records correspond to prime mover, primary fuel source, technology type, plants, or generator units. AEDG accesses these data via Catalyst Cooperative's PUDL dataset.
   iser:
     name: Institute of Social and Economic Research (ISER), University of Alaska Anchorage
       (UAA)

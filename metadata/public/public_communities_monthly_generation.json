@@ -32,7 +32,7 @@
             "context": {
                 "title": "Alaska Energy Data Gateway",
                 "homepage": "https://akenergygateway.alaska.edu/",
-                "publisher": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
+                "publisher": "Alaska Center for Energy and Power (ACEP) at the University of Alaska Fairbanks (UAF)",
                 "fundingAgency": "State of Alaska"
             },
             "spatial": {
@@ -124,7 +124,7 @@
                     "path": "https://www.dowl.com/"
                 },
                 {
-                    "organization": "Alaska Center for Energy and Power (ACEP), University of Alaska Fairbanks (UAF)",
+                    "organization": "Alaska Center for Energy and Power (ACEP) at the University of Alaska Fairbanks (UAF)",
                     "roles": [
                         "DataCurator"
                     ],
@@ -134,7 +134,7 @@
                     "path": "https://www.uaf.edu/acep/"
                 },
                 {
-                    "organization": "Alaska Center for Energy and Power (ACEP), University of Alaska Fairbanks (UAF)",
+                    "organization": "Alaska Center for Energy and Power (ACEP) at the University of Alaska Fairbanks (UAF)",
                     "roles": [
                         "DataCurator"
                     ],

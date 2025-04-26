@@ -106,7 +106,7 @@ class AedgOemetadata:
         resource["context"] = {
             "title": "Alaska Energy Data Gateway",
             "homepage": "https://akenergygateway.alaska.edu/",
-            "publisher": "Alaska Center for Energy and Power, University of Alaska Fairbanks",
+            "publisher": self.agents["acep"]['name'],
             "fundingAgency": "State of Alaska",
         }
 
