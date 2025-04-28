@@ -104,7 +104,7 @@ class AedgOemetadata:
         resource["dialect"]["decimalSeparator"] = "."
         # Context is AEDG
         resource["context"] = {
-            "title": "Alaska Energy Data Gateway",
+            "title": "Alaska Energy Data Gateway v3.0",
             "homepage": "https://akenergygateway.alaska.edu/",
             "publisher": self.agents["acep"]['name'],
             "fundingAgency": "State of Alaska",
