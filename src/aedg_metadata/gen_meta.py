@@ -124,7 +124,7 @@ class AedgOemetadata:
 
         self.data_package["name"] = self.config["resource"]["name"]
         self.data_package["title"] = self.config["resource"]["title"]
-        self.data_package["description"] = self.config["resource"]["description"]
+        self.data_package["description"] = self.config["resource"]["summary"]  # shorter
 
         # there is only 1 resource and it is same as the package
         resource = self.data_package["resources"][0]
