@@ -239,15 +239,16 @@ class AedgOemetadata:
             # OEMetadata standard includes possibility of multiple time periods
             # i.e. it is a list
             resource["temporal"]["timeseries"] = []
-            for timeseries in self.config["resource"]["temporal"]["timeseries"]:
-                period = {}
-                # check that all the keys are present
-                assert set(timeseries.keys()) == fields
-                # but some of them might be null, so pop them off
-                for key in timeseries:
-                    if timeseries[key]:
-                        period[key] = timeseries[key]
-                resource["temporal"]["timeseries"].append(period)
+            if self.config["resource"]["temporal"]["timeseries"]:
+                for timeseries in self.config["resource"]["temporal"]["timeseries"]:
+                    period = {}
+                    # check that all the keys are present
+                    assert set(timeseries.keys()) == fields
+                    # but some of them might be null, so pop them off
+                    for key in timeseries:
+                        if timeseries[key]:
+                            period[key] = timeseries[key]
+                    resource["temporal"]["timeseries"].append(period)
         else:  # topt == 'infer'
             # assume it is not a timeseries, but it has an as_of_date (set arbitrarily for now)
             resource["temporal"]["referenceDate"] = "2025-01-01"

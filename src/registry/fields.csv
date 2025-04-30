@@ -12,3 +12,13 @@ name,Community name,Name of the community,string,FALSE,null,public_communities_y
 net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_communities_yearly_generation.csv
 fuel_type,Fuel Type,Code indicating generation fuel,string,FALSE,null,public_communities_yearly_generation.csv
 year,Year,Four digit year as Common Era (CE) for which monthly reported generation was summed,integer,FALSE,null,public_communities_yearly_generation.csv
+fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_communities_transportation.csv
+name,Community name,Name of the community,string,FALSE,null,public_communities_transportation.csv
+airport,Airport,"Answers the question: Does the Community have an airport? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
+as_of_date,As of Date,When the transportation dataset last updated,string,TRUE,null,public_communities_transportation.csv
+cargo_barge,Cargo Barge,"Answers the question: Is the Community served by a cargo barge? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
+coastal,Coastal,"Answers the question: Is the Community located on the coast? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
+description,Transportation description,Narrative description of the transportation situtation for the community,string,TRUE,null,public_communities_transportation.csv
+harbor_dock,Harbor Dock,"Answers the question: Does the Community have a harbor with a dock? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
+road_connection,Road Connection,"Answers the question: Is the Community connected to a road system to other communities? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
+state_ferry,State Ferry,"Answers the question: Is the Community served by a state ferry? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
