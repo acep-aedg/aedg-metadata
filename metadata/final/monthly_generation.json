@@ -1,19 +1,19 @@
 {
     "@context": "",
-    "name": "public_communities_monthly_generation",
-    "title": "Monthly electrical generation by community",
-    "description": "This dataset is monthly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it.\n",
+    "name": "monthly_generation",
+    "title": "Monthly electrical generation by grid",
+    "description": "This dataset is monthly electrical generation aggregated by grid. It summarizes the amount of electrical power produced for a grid and the fuels that were used to generate it. This is a normalized table intended for internal use within the AEDG database.\n",
     "@id": "",
     "resources": [
         {
             "@id": "",
-            "name": "public_communities_monthly_generation",
+            "name": "monthly_generation",
             "topics": [
                 "Electricity"
             ],
-            "title": "Monthly electrical generation by community",
-            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_monthly_generation.csv",
-            "description": "This dataset is monthly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it. Two factors complicate this simple seeming dataset. First, there is no single state or federal agency that collects data on all the generation sources in Alaska. Second, some communities have isolated microgrids where generation sources are easy to identify, but other communities are interconnected with interties into grids where generation sources are shared. In those cases, it is therefore impossible to pair a community with individual power stations (called plants) or the operators/utilities for which generation is recorded even if the plant is physically located within a community.\nTo address the first issue, this dataset derives from the Alaska Energy Statistics workbooks, which in turn compiles data from multiple sources including community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA). Source data was harmonized to account for differences in reporting through a combination of subject matter expertise and transformations.\nTo address the second issue, generation is summed over all the generators with different fuels - diesel and natural gas boilers, solar installations, wind turbines - that are connected to a grid. Grids were defined as an element of the Alaska Energy Statistics workbooks and implemented with a lookup table that joins them to individual plants. The same values for total generation are reported for all the communities on a grid, which creates multiple duplicate values in this dataset.\n",
+            "title": "Monthly electrical generation by grid",
+            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/final/monthly_generation.csv",
+            "description": "This dataset is monthly electrical generation aggregated by grid. It summarizes the amount of electrical power produced for a grid and the fuels that were used to generate it. Two factors complicate this simple seeming dataset. First, there is no single state or federal agency that collects data on all the generation sources in Alaska. Second, some communities have isolated microgrids where generation sources are easy to identify, but other communities are interconnected with interties into grids where generation sources are shared. In those cases, it is therefore impossible to pair a community with individual power stations (called plants) or the operators/utilities for which generation is recorded even if the plant is physically located within a community.\nTo address the first issue, this dataset derives from the Alaska Energy Statistics workbooks, which in turn compiles data from multiple sources including community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA). Source data was harmonized to account for differences in reporting through a combination of subject matter expertise and transformations.\nTo address the second issue, generation is summed over all the generators with different fuels - diesel and natural gas boilers, solar installations, wind turbines - that are connected to a grid. Grids were defined as an element of the Alaska Energy Statistics workbooks and implemented with a lookup table that joins them to individual plants. The same values for total generation will be reported for all the communities on a grid.\n",
             "languages": [
                 "en-US"
             ],
@@ -25,8 +25,7 @@
                 "power plant",
                 "reports",
                 "Power Cost Equalization (PCE)",
-                "EIA Form 923",
-                "place"
+                "EIA Form 923"
             ],
             "publicationDate": "2025-05-02",
             "context": {
@@ -60,26 +59,6 @@
                 ]
             },
             "sources": [
-                {
-                    "title": "Alaska Communities",
-                    "authors": [
-                        "Alaska Division of Community and Regional Affairs (DCRA)"
-                    ],
-                    "description": "The Alaska Communities dataset is the master list of place locations, represented as points, used by the Alaska Division of Community and Regional Affairs (DCRA). In includes community locations but for historical reasons, it is a mix of Communities, Places of Interest, Borough/Census Area as well as Alaska centroid. DCRA uses it to link communities to their internal key GUID used elsewhere in their systems.\nAEDG uses this list to define canonical community names since, as free text, these can vary in different contexts, and to establish locations to use in spatial joins and relations.\n",
-                    "publicationYear": "2023",
-                    "path": "https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0",
-                    "sourceLicenses": []
-                },
-                {
-                    "title": "Places (Cities and CDPs) Shapefile",
-                    "authors": [
-                        "Alaska Department of Labor and Workforce Development (DOLWD)"
-                    ],
-                    "description": "This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for Alaska. The definition of places includes all incorporated cities as well as Census Designated Places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS) numbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census, PL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names: https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf.\nAEDG uses this list to define canonical community locations to use in spatial joins and relations, and to associate places with FIPS codes.\n",
-                    "publicationYear": "2020",
-                    "path": "https://live.laborstats.alaska.gov/article/maps-gis-data",
-                    "sourceLicenses": []
-                },
                 {
                     "title": "Alaska Energy Statistics Electrical Generation Tables",
                     "authors": [
@@ -130,7 +109,7 @@
                     ],
                     "date": "2025-05-02",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
-                    "comment": "1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined generation data with AEDG communities to create this dataset\n",
+                    "comment": "1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.\n2. Extracted the monthly generation timeseries for each unique grid.\n",
                     "path": "https://www.uaf.edu/acep/"
                 },
                 {
@@ -150,26 +129,10 @@
             "schema": {
                 "fields": [
                     {
-                        "name": "fips_code",
-                        "long_name": "Community FIPS Code",
-                        "description": "Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",
-                        "type": "string",
-                        "nullable": false,
-                        "unit": null
-                    },
-                    {
                         "name": "grid_id",
                         "long_name": "Grid ID",
                         "description": "A unique identifier of the grid in Alaska as determined for AEDG",
                         "type": "integer",
-                        "nullable": false,
-                        "unit": null
-                    },
-                    {
-                        "name": "name",
-                        "long_name": "Community name",
-                        "description": "Name of the community",
-                        "type": "string",
                         "nullable": false,
                         "unit": null
                     },

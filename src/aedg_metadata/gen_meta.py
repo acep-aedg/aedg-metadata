@@ -13,7 +13,7 @@ from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
 from aedg_metadata import ExtentTypes
 
-from .helpers import check_schema
+from .helpers import check_fields, check_schema
 
 
 def run_generate(
@@ -25,9 +25,13 @@ def run_generate(
 ) -> AedgOemetadata:
     """Use the class to make a new package."""
 
+    print(f"\nProcessing: {file_stem}")  # noqa: T201
     new_pkg = AedgOemetadata(file_stem, flavor, data_dictionary)
     new_pkg.generate(bbox_opt, temporal_opt)
+
+    # checking output
     check_schema(new_pkg.data_package)
+    check_fields(new_pkg.data_package)
 
     return new_pkg
 
@@ -176,7 +180,13 @@ class AedgOemetadata:
         fields = []
         for target in con_fields:
             row = self.fields.loc[self.fields['name'] == target, attributes].squeeze(axis=0)
-            fields.append(json.loads(row.to_json(None)))
+            # if the field isn't found, all attributes are empty dictionaries! Blow up as warning.
+            try:
+                assert type(row['name']) is str
+                fields.append(json.loads(row.to_json(None)))
+            except AssertionError as e:
+                msg = f'Field "{target}" is not in the field registry'
+                raise KeyError(msg) from e
 
         assert len(fields) > 0
         self.data_package["resources"][0]["schema"]["fields"] = fields

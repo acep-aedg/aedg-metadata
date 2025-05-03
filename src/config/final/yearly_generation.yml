@@ -1,13 +1,13 @@
 resource:
-  name: "public_communities_yearly_generation"
-  title: "Yearly electrical generation by community"
+  name: "yearly_generation"
+  title: "Yearly electrical generation by grid"
   summary: |
-    This dataset is yearly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it.
+    This dataset is yearly electrical generation aggregated by grid. It summarizes the amount of electrical power produced for a grid and the fuels that were used to generate it. This is a normalized table intended for internal use within the AEDG database.
   description: |
-    This dataset is yearly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it. Two factors complicate this simple seeming dataset. First, there is no single state or federal agency that collects data on all the generation sources in Alaska. Second, some communities have isolated microgrids where generation sources are easy to identify, but other communities are interconnected with interties into grids where generation sources are shared. In those cases, it is therefore impossible to pair a community with individual power stations (called plants) or the operators/utilities for which generation is recorded even if the plant is physically located within a community.
+    This dataset is yearly electrical generation aggregated by grid aggregated by grid. It summarizes the amount of electrical power produced for a grid and the fuels that were used to generate it. Two factors complicate this simple seeming dataset. First, there is no single state or federal agency that collects data on all the generation sources in Alaska. Second, some communities have isolated microgrids where generation sources are easy to identify, but other communities are interconnected with interties into grids where generation sources are shared. In those cases, it is therefore impossible to pair a community with individual power stations (called plants) or the operators/utilities for which generation is recorded even if the plant is physically located within a community.
     To address the first issue, this dataset derives from the Alaska Energy Statistics workbooks, which in turn compiles data from multiple sources including community Power Cost Equalization reports collated by the Alaska Energy Authority and reporting to the U.S. Energy Information Administration (EIA). Source data was harmonized to account for differences in reporting through a combination of subject matter expertise and transformations.
-    To address the second issue, generation is summed over all the generators with different fuels - diesel and natural gas boilers, solar installations, wind turbines - that are connected to a grid. Grids were defined as an element of the Alaska Energy Statistics workbooks and implemented with a lookup table that joins them to individual plants. The same values for total generation are reported for all the communities on a grid, which creates multiple duplicate values in this dataset.
-  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_yearly_generation.csv"
+    To address the second issue, generation is summed over all the generators with different fuels - diesel and natural gas boilers, solar installations, wind turbines - that are connected to a grid. Grids were defined as an element of the Alaska Energy Statistics workbooks and implemented with a lookup table that joins them to individual plants. The same values for total generation will be reported for all the communities on a grid.
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/final/yearly_generation.csv"
   keywords:
     - generation
     - electricity
@@ -17,12 +17,9 @@ resource:
     - reports
     - Power Cost Equalization (PCE)
     - EIA Form 923
-    - place
   topics:
     - Electricity
   sources:
-    - dcra.communities
-    - dol.places
     - acep.es_generation
   licenses:
     - CC-SA-4.0
@@ -40,9 +37,7 @@ resource:
         alignment: null
         aggregationType: sum
   fields: # column names
-    - fips_code
     - grid_id
-    - name
     - net_generation_mwh
     - fuel_type
     - year
@@ -66,8 +61,7 @@ resource:
       object: data via https://github.com/acep-aedg/aedg-etl-2024
       comment: |
         1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.
-        2. Complied community names, locations, and FIPS identifiers for AEDG
-        3. Joined generation data with AEDG communities to create this dataset
+        2. Extracted a yearly generation timeseries for each unique grid.
     - organization: acep
       roles:
         - DataCurator

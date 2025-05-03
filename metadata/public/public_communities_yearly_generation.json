@@ -2,7 +2,7 @@
     "@context": "",
     "name": "public_communities_yearly_generation",
     "title": "Yearly electrical generation by community",
-    "description": "This dataset is yearly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it.  \n",
+    "description": "This dataset is yearly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it.\n",
     "@id": "",
     "resources": [
         {
@@ -28,7 +28,7 @@
                 "EIA Form 923",
                 "place"
             ],
-            "publicationDate": "2025-04-30",
+            "publicationDate": "2025-05-02",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -120,7 +120,7 @@
                     ],
                     "date": "2024",
                     "object": "data from the Alaska Energy Statistics Electrical Generation Tables",
-                    "comment": "Pulled data from the original sources, the compiled, corrected, harmonized, transformed data into Excel Workbooks as annual datasets and as Financial and Generation timeseries.\n",
+                    "comment": "Pulled data from the original sources, the compiled, corrected, harmonized, transformed data into Excel Workbooks as annual datasets and as Financial and Generation timeseries. Additional corrections were applied to the yearly data.\n",
                     "path": "https://www.dowl.com/"
                 },
                 {
@@ -128,7 +128,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-04-30",
+                    "date": "2025-05-02",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined generation data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -138,7 +138,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-04-30",
+                    "date": "2025-05-02",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.\n",
                     "path": "https://www.uaf.edu/acep/"

@@ -29,7 +29,8 @@ metadata:
   authors:
   - United States Census Bureau
   description: |
-    If we use this, add a description.
+    Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes assigned and maintained by the Census Bureau. The U.S. Gazetteer File provide a listing of all geographic areas in Alaska. The files include geographic identifier codes, names, area measurements, and representative latitude and longitude coordinates.
+    AEDG uses the FIPS codes in this dataset as the primary key of of the communities data, matched not by string matching names, but spatially matching latitude and longitude instead.
   publicationYear: "2024"
   path: https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_place_02.txt
   sourceLicenses: # https://ask.census.gov/prweb/PRServletCustom?pyActivity=pyMobileSnapStart&ArticleID=KCP-4928

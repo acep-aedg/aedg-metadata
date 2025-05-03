@@ -22,3 +22,23 @@ description,Transportation description,Narrative description of the transportati
 harbor_dock,Harbor Dock,"Answers the question: Does the Community have a harbor with a dock? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
 road_connection,Road Connection,"Answers the question: Is the Community connected to a road system to other communities? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
 state_ferry,State Ferry,"Answers the question: Is the Community served by a state ferry? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_communities_transportation.csv
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,monthly_generation.csv
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,monthly_generation.csv
+fuel_type,Fuel Type,Code indicating generation fuel,string,FALSE,null,monthly_generation.csv
+year,Year,Four digit year as Common Era (CE),integer,FALSE,null,monthly_generation.csv
+month,Month,Month as 1-12 for which generation was reported,integer,FALSE,null,monthly_generation.csv
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,yearly_generation.csv
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,yearly_generation.csv
+fuel_type,Fuel Type,Code indicating generation fuel,string,FALSE,null,yearly_generation.csv
+year,Year,Four digit year as Common Era (CE) for which monthly reported generation was summed,integer,FALSE,null,yearly_generation.csv
+community_fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,transportation.csv
+airport,Airport,"Answers the question: Does the Community have an airport? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+harbor_dock,Harbor Dock,"Answers the question: Does the Community have a harbor with a dock? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+state_ferry,State Ferry,"Answers the question: Is the Community served by a state ferry? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+cargo_barge,Cargo Barge,"Answers the question: Is the Community served by a cargo barge? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+road_connection,Road Connection,"Answers the question: Is the Community connected to a road system to other communities? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+coastal,Coastal,"Answers the question: Is the Community located on the coast? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+road_or_ferry,Road or Ferry,"Answers the question: Is the Community served by a state ferry or a road? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+description,Transportation description,Narrative description of the transportation situtation for the community,string,TRUE,null,transportation.csv
+as_of_date,Date Updated,When the transportation dataset last updated,string,TRUE,null,transportation.csv
+,,,,,,
