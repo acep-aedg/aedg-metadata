@@ -28,7 +28,7 @@
                 "EIA Form 923",
                 "place"
             ],
-            "publicationDate": "2025-05-02",
+            "publicationDate": "2025-05-06",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -48,7 +48,7 @@
                 }
             },
             "temporal": {
-                "referenceDate": "2025-01-01",
+                "referenceDate": "2024-02-29",
                 "timeseries": [
                     {
                         "start": "2021-01",
@@ -89,7 +89,7 @@
                         "Institute of Social and Economic Research (ISER), University of Alaska Anchorage (UAA)"
                     ],
                     "description": "The Alaska Energy Statistics is a long-running collection of data and reports about energy production, consumption, and related topics specific to the state of Alaska. The workbooks were developed to provide community and utility level datasets that support regional and statewide aggregations for use in the 2024 Alaska Electricity Trends Report. This is a continuation of a 40+ year effort to create and maintain high level views of the state\u2019s energy profile that are useful for policy makers, businesses, researchers, and others interested in Alaska\u2019s energy sector. Data are derived from community Power Cost Equalization reports collated by the Alaska Energy Authority and power plant reporting to the U.S. Energy Information Administration (EIA). These sources are supplemented by annual filings to the Regulatory Commission of Alaska (RCA), village and powerhouse assessments, and direct communications with utilities and hydro/wind program managers.\nAdditional funding was contributed by Office of Naval Research (ONR) funded Alaska Regional Collaboration for Technology Innovation and Commercialization (ARCTIC) program, the Denali Commission, and the State of Alaska.\nAEDG uses this dataset as the best available compilation of electrical generation, incorporating data from multiple sources into a single source.\n",
-                    "publicationYear": "2021",
+                    "publicationYear": "2024",
                     "path": "https://acep-uaf.github.io/ak-energy-statistics-2011_2021/",
                     "sourceLicenses": [
                         {
@@ -128,7 +128,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-02",
+                    "date": "2025-05-06",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined generation data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -138,7 +138,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-02",
+                    "date": "2025-05-06",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.\n",
                     "path": "https://www.uaf.edu/acep/"

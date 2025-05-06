@@ -41,4 +41,7 @@ coastal,Coastal,"Answers the question: Is the Community located on the coast? ("
 road_or_ferry,Road or Ferry,"Answers the question: Is the Community served by a state ferry or a road? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
 description,Transportation description,Narrative description of the transportation situtation for the community,string,TRUE,null,transportation.csv
 as_of_date,Date Updated,When the transportation dataset last updated,string,TRUE,null,transportation.csv
-,,,,,,
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,capacity.csv
+capacity_mw,Electric Generation Capacity,Generation capacity represents the maximum amount of electricity that can be generated at any given time dependent on certain conditions,number,TRUE,Megawatts,capacity.csv
+fuel_type,Fuel Type,Code indicating generation fuel,string,FALSE,null,capacity.csv
+year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,capacity.csv

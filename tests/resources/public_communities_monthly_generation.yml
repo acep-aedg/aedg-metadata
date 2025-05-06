@@ -31,7 +31,7 @@ resource:
     boundingBox: [-187.55, 51.21, -130.0, 71.35]
     crs: OGC:CRS84
   temporal:
-    referenceDate: "2025-01-01"  # equivalent to as_of_date
+    referenceDate: "2024-02-29"  # equivalent to as_of_date
     timeseries:  # is a list of possibly multiple time periods
       - start: "2021-01"
         end: "2021-12"
