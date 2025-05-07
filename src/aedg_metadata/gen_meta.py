@@ -74,9 +74,9 @@ class AedgOemetadata:
             self.agents = yaml.safe_load(stream)
 
         # Define the directory root where data source YAML files are stored
-        self.data_source = registry_dir / "data-sources"  # for testing
+        # self.data_source = registry_dir / "data-sources"  # for testing
         # Refer to the ETL pipeline configuration files
-        # self.data_source = Path(__file__).parents[3] / "aedg-etl-2024"
+        self.data_source = Path(__file__).parents[3] / "aedg-etl-2024" / "data-sources"
 
         # define the output file
         output_dir = Path(__file__).parents[2] / "metadata" / flavor

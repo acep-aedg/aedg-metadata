@@ -23,7 +23,7 @@ resource:
   sources:
     - dcra.communities
     - dol.places
-    - acep.es_generation
+    - acep.es_monthly_generation
   licenses:
     - CC-SA-4.0
   spatial:
@@ -44,11 +44,12 @@ resource:
     - grid_id
     - name
     - net_generation_mwh
-    - fuel_type
+    - fuel_type_code
+    - fuel_type_name
     - year
   primaryKey: # An array of fields that uniquely identifies each row in the table
     - grid_id
-    - fuel_type
+    - fuel_type_code
     - year
   contributors: # roles from https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype
     - title: Neil McMahon
