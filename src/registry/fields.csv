@@ -50,3 +50,10 @@ capacity_mw,Electric Generation Capacity,Generation capacity represents the maxi
 fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,capacity.csv
 fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,capacity.csv
 year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,capacity.csv
+fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_communities_capacity.csv
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,public_communities_capacity.csv
+name,Community name,Name of the community,string,FALSE,null,public_communities_capacity.csv
+capacity_mw,Electric Generation Capacity,Generation capacity represents the maximum amount of electricity that can be generated at any given time dependent on certain conditions,number,TRUE,Megawatts,public_communities_capacity.csv
+fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_communities_capacity.csv
+fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_communities_capacity.csv
+year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,public_communities_capacity.csv

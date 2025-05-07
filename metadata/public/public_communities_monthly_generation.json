@@ -28,7 +28,7 @@
                 "EIA Form 923",
                 "place"
             ],
-            "publicationDate": "2025-05-06",
+            "publicationDate": "2025-05-07",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -128,7 +128,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-06",
+                    "date": "2025-05-07",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined generation data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -138,7 +138,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-06",
+                    "date": "2025-05-07",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.\n",
                     "path": "https://www.uaf.edu/acep/"

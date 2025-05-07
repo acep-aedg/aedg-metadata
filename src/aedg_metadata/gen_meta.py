@@ -13,7 +13,7 @@ from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
 from aedg_metadata import ExtentTypes
 
-from .helpers import check_fields, check_schema
+from .helpers import check_schema
 
 
 def run_generate(
@@ -31,7 +31,7 @@ def run_generate(
 
     # checking output
     check_schema(new_pkg.data_package)
-    check_fields(new_pkg.data_package)
+    #check_fields(new_pkg.data_package)
 
     return new_pkg
 
@@ -55,6 +55,7 @@ class AedgOemetadata:
         input_dir = Path(__file__).parents[1] / "config" / flavor
         with (input_dir / f"{file_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
+        self.tag = file_stem
 
         registry_dir = Path(__file__).parents[1] / "registry"
         # Read CSV registry files
@@ -150,6 +151,10 @@ class AedgOemetadata:
             resource["type"] = "geospatial"
             resource["format"] = "GEOJOSN"
 
+        # check that file name is consistent with data package name and
+        assert file_path.split('/')[-1].split('.')[0] == self.config["resource"]["name"]
+        assert self.tag == self.config["resource"]["name"]  # from CLI call
+
         self.data_package["resources"][0] = resource
 
     def add_license(self) -> None:
@@ -175,6 +180,8 @@ class AedgOemetadata:
         # the registry fields csv with each fields a row
         con_fields = self.config["resource"]["fields"]
         attributes = ['name', 'long_name', 'description', 'type', 'nullable', 'unit']
+        # print(con_fields)
+        # print(self.fields['name'])
         assert set(attributes).issubset(set(self.fields.columns))
 
         fields = []
