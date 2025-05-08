@@ -57,3 +57,7 @@ capacity_mw,Electric Generation Capacity,Generation capacity represents the maxi
 fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_communities_capacity.csv
 fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_communities_capacity.csv
 year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,public_communities_capacity.csv
+fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_communities_population.csv
+name,Community name,Name of the community,string,FALSE,null,public_communities_population.csv
+total_population,Total Population,Total population of the community,integer,TRUE,null,public_communities_population.csv
+year,Year,Four digit year as Common Era (CE) when the population was measured,integer,FALSE,null,public_communities_population.csv
