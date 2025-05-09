@@ -22,7 +22,8 @@ def ref_pkg() -> dict[Any, Any]:
         pkg = json.load(file)
     # remove dates because those won't match
     pkg["resources"][0].pop("publicationDate", None)
-    pkg["resources"][0]["contributors"][0].pop("date", None)
+    for contrib in pkg["resources"][0]["contributors"]:
+        contrib.pop("date", None)
     return pkg  # type: ignore[no-any-return]
 
 
@@ -35,7 +36,8 @@ def pkg_no_bounds() -> dict[Any, Any]:
     temporal = ExtentTypes.none
     pkg = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg.data_package["resources"][0].pop("publicationDate", None)
-    pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
+    for contrib in pkg.data_package["resources"][0]["contributors"]:
+        contrib.pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
 
 
@@ -48,7 +50,8 @@ def pkg_inferred() -> dict[Any, Any]:
     temporal = ExtentTypes.infer
     pkg = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg.data_package["resources"][0].pop("publicationDate", None)
-    pkg.data_package["resources"][0]["contributors"][0].pop("date", None)
+    for contrib in pkg.data_package["resources"][0]["contributors"]:
+        contrib.pop("date", None)
     return pkg.data_package  # type: ignore[no-any-return]
 
 
@@ -61,7 +64,8 @@ def test_stability(ref_pkg: dict[Any, Any]) -> None:
     temporal = ExtentTypes.specify
     pkg_specified = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg_specified.data_package["resources"][0].pop("publicationDate", None)
-    pkg_specified.data_package["resources"][0]["contributors"][0].pop("date", None)
+    for contrib in pkg_specified.data_package["resources"][0]["contributors"]:
+        contrib.pop("date", None)
     assert pkg_specified.data_package == ref_pkg
 
 
@@ -74,7 +78,8 @@ def test_data_dictionary(ref_pkg: dict[Any, Any]) -> None:
     temporal = ExtentTypes.specify
     pkg_ddict = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
     pkg_ddict.data_package["resources"][0].pop("publicationDate", None)
-    pkg_ddict.data_package["resources"][0]["contributors"][0].pop("date", None)
+    for contrib in pkg_ddict.data_package["resources"][0]["contributors"]:
+        contrib.pop("date", None)
     assert pkg_ddict.data_package == ref_pkg
 
 

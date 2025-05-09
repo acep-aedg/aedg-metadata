@@ -28,7 +28,7 @@
                 "dock",
                 "coastal"
             ],
-            "publicationDate": "2025-05-06",
+            "publicationDate": "2025-05-09",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -67,7 +67,7 @@
                     "authors": [
                         "United States Census Bureau"
                     ],
-                    "description": "Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes assigned and maintained by the Census Bureau. The U.S. Gazetteer File provide a listing of all geographic areas in Alaska. The files include geographic identifier codes, names, area measurements, and representative latitude and longitude coordinates.\nAEDG uses the FIPS codes in this dataset as the primary key of of the communities data, matched not by string matching names, but spatially matching latitude and longitude instead.\n",
+                    "description": "The U.S. Gazetteer File provide a listing of all geographic areas in Alaska. The files include geographic identifier codes, names, area measurements, and representative latitude and longitude coordinates.\nAEDG used to use the ANSI codes in this dataset as an identifier of communities but this was discontinued.\n",
                     "publicationYear": "2024",
                     "path": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_place_02.txt",
                     "sourceLicenses": [
@@ -95,7 +95,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-06",
+                    "date": "2025-05-09",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Identified data source and integrated it into the data pipeline.\n2. Joined transportation data with community FIPS codes to create this table\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -105,7 +105,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-06",
+                    "date": "2025-05-09",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.\n",
                     "path": "https://www.uaf.edu/acep/"

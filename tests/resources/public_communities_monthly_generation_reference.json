@@ -28,7 +28,7 @@
                 "EIA Form 923",
                 "place"
             ],
-            "publicationDate": "2025-05-06",
+            "publicationDate": "2025-05-09",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -73,9 +73,10 @@
                 {
                     "title": "Places (Cities and CDPs) Shapefile",
                     "authors": [
+                        "United States Census Bureau",
                         "Alaska Department of Labor and Workforce Development (DOLWD)"
                     ],
-                    "description": "This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for Alaska. The definition of places includes all incorporated cities as well as Census Designated Places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS) numbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census, PL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names: https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf.\nAEDG uses this list to define canonical community locations to use in spatial joins and relations, and to associate places with FIPS codes.\n",
+                    "description": "This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for Alaska. The definition of places includes all incorporated cities as well as Census Designated Places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS) numbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census, PL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names: https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf. The Alaska Department of Labor and Workforce Development has had a cooperative agreement with the U.S. Census Bureau since 1981 to assist with geographic programs and help Alaskans find Census Bureau data.\nAEDG uses this list to define canonical community locations to use in spatial joins and relations, to associate places with FIPS codes, and to establish total community population.\n",
                     "publicationYear": "2020",
                     "path": "https://live.laborstats.alaska.gov/article/maps-gis-data",
                     "sourceLicenses": []
@@ -128,7 +129,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-06",
+                    "date": "2025-05-09",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined generation data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -138,7 +139,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-06",
+                    "date": "2025-05-09",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.\n",
                     "path": "https://www.uaf.edu/acep/"

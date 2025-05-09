@@ -61,3 +61,11 @@ fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal I
 name,Community name,Name of the community,string,FALSE,null,public_communities_population.csv
 total_population,Total Population,Total population of the community,integer,TRUE,null,public_communities_population.csv
 year,Year,Four digit year as Common Era (CE) when the population was measured,integer,FALSE,null,public_communities_population.csv
+community_fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_communities_fuel_prices.csv
+name,Community name,Name of the community,string,FALSE,null,public_communities_fuel_prices.csv
+price,Fuel Price USD,"Retail price of fuel, expressed as U. S. Dollars (USD) per gallon. Prices are ""point in time"" as reported by local vendors and contacts.",number,TRUE,USD per gallon,public_communities_fuel_prices.csv
+price_type,Price Type,Type of source data for assigning price: survey of communities or regional average,string,TRUE,null,public_communities_fuel_prices.csv
+fuel_type,Fuel Type,"Name of fuel type reported, either heating fuel or gasoline",string,TRUE,null,public_communities_fuel_prices.csv
+source,Source of fuel price data,"Name of reporting entity if surveyed, or DCRA if regionally averaged",string,TRUE,null,public_communities_fuel_prices.csv
+reporting_season,Reporting Season,"Season for which the fuel data was reported, Winter or Summer",string,TRUE,null,public_communities_fuel_prices.csv
+reporting_year,Reporting Year,Four digit year as Common Era (CE) for which the fuel data was reported,integer,TRUE,null,public_communities_fuel_prices.csv
