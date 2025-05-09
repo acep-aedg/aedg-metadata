@@ -1,4 +1,4 @@
-"""Code from the Sandbox Notebook"""
+"""Code to generate metadata for AEDG starting from the OEMetadata template"""
 
 from __future__ import annotations
 
