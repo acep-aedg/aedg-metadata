@@ -23,10 +23,10 @@
                 "fuel type",
                 "grid",
                 "power plant",
-                "reports",
+                "report",
                 "Power Cost Equalization (PCE)",
                 "EIA Form 923",
-                "place"
+                "community"
             ],
             "publicationDate": "2025-05-09",
             "context": {

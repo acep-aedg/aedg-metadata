@@ -9,7 +9,7 @@ resource:
   keywords: # list of keywords and short phrases, limit 10
     - heating fuel
     - gasoline
-    - prices
+    - community
     - survey
   topics: # 1-2 broad topics for display in AEDG (which not all datasets need?)
     - Energy

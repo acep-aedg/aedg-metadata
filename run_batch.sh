@@ -41,3 +41,6 @@ aedg_metadata generate public_communities_monthly_generation -d public --bbox in
 aedg_metadata generate public_communities_population -d public --bbox infer -t specify --save
 aedg_metadata generate public_communities_transportation -d public --bbox infer -t specify --save
 aedg_metadata generate public_communities_yearly_generation -d public --bbox infer --save
+
+# Gather keywords/topics together into registry file
+python src/aedg_metadata/scripts/keywords_to_registry.py

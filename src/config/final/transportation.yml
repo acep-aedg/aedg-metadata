@@ -15,7 +15,7 @@ resource:
     - ship
     - barge
     - airport
-    - place
+    - community
     - harbor
     - dock
     - coastal
