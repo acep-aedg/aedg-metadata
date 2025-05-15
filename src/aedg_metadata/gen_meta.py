@@ -107,11 +107,12 @@ class AedgOemetadata:
         resource["dialect"]["delimiter"] = ","
         # We use "." in our floating point numbers
         resource["dialect"]["decimalSeparator"] = "."
-        # Context is AEDG
+        # Context is AEDG, but publisher is used in dataset citation and could be ISER or ACEP
+        # so set that later
         resource["context"] = {
             "title": "Alaska Energy Data Gateway v3.0",
             "homepage": "https://akenergygateway.alaska.edu/",
-            "publisher": self.agents["acep"]['name'],
+            "publisher": None,
             "fundingAgency": "State of Alaska",
         }
 
@@ -140,6 +141,10 @@ class AedgOemetadata:
         # add keywords
         resource["keywords"] = self.config["resource"]["keywords"]
         resource["topics"] = self.config["resource"]["topics"]
+
+        # Context is AEDG, but publisher is used in dataset citation and could be ISER or ACEP
+        publisher = self.config["resource"]['publisher']
+        resource["context"]["publisher"] = self.agents[publisher]['name']
 
         # add info about the file being described
         file_path = self.config["resource"]["path"]

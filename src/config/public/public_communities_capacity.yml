@@ -20,6 +20,7 @@ resource:
     - community
   topics:
     - Electricity
+  publisher: acep
   sources:
     - dcra.communities
     - dol.places

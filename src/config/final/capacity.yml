@@ -19,6 +19,7 @@ resource:
     - EIA Form 923
   topics:
     - Electricity
+  publisher: acep
   sources:
     - acep.es_infrastructure
   licenses:
