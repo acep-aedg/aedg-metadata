@@ -42,10 +42,3 @@ resource:
         1. Identified data source and integrated it into the data pipeline.
         2. Complied community names, locations, and FIPS identifiers for AEDG
         3. Joined population data with AEDG communities to create this dataset
-    - organization: acep
-      roles:
-        - DataCurator
-      date: now
-      object: metadata via https://github.com/acep-aedg/aedg-metadata
-      comment: |
-        Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.

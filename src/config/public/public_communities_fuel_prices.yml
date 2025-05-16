@@ -60,10 +60,3 @@ resource:
         2. Compiled community names, locations, and FIPS identifiers for AEDG.
         3. Integrate data from the 3 sources into a single file.
         4. Joined fuel price data with AEDG communities to create this dataset.
-    - organization: acep
-      roles:
-        - DataCurator
-      date: now
-      object: metadata via https://github.com/acep-aedg/aedg-metadata
-      comment: |
-        Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.

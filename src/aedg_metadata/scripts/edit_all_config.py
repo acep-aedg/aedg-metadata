@@ -29,14 +29,42 @@ def add_publisher(file_path: Path) -> str:
                 new_config += line
     return new_config
 
+def drop_meta_contrib(file_path: Path) -> str:
+    """ remove metadata contributor so can move to standard language in gen_meta.py """
+    # read/write lines
+    new_config = ''
+    contrib = ''
+    special_section = False
+
+    with Path.open(file_path, 'r') as file:
+        for line in file:
+            # assuming contributors are the last section, write normally till get there
+            if not special_section:
+                new_config += line
+                if line.startswith("  contributors:"):
+                    special_section = True
+            else:
+                # save sections that are not about metadata
+                if line.startswith("      object: metadata"):  # marks the section to skip
+                    contrib = ''  # forget what has been saved of this section
+                    break
+                if line.startswith("    - ") and len(contrib) > 0:
+                     # write the previous section and start a new one
+                     new_config += contrib
+                     contrib = ''
+                contrib += line
+        if len(contrib) > 0: # one last flush in case run on a file without a metadata section
+            new_config += contrib
+    return new_config
+
 
 def main() -> None:
 
     # testing with the template file
     infile = Path(__file__).parents[2] / "config" / "config_template.yml"
-    # infile = Path(__file__).parents[3] / "test.yml"
-    # outfile = "test.yml"
-    new_config = add_publisher(infile)
+    # outfile = "test.yml"  # for testing
+    #  done already: new_config = add_publisher(infile)
+    new_config = drop_meta_contrib(infile)
     if new_config != "done":
         print(f'Writing new {infile}.\n')  # noqa: T201
         with Path.open(infile, 'w') as file:
@@ -51,7 +79,8 @@ def main() -> None:
         subdir = proc_dir / type
         for file_path in subdir.iterdir():
             if file_path.is_file() and file_path.suffix == '.yml':
-                new_config = add_publisher(file_path)
+                #  done already: new_config = add_publisher(file_path)
+                new_config = drop_meta_contrib(file_path)
                 if new_config != "done":
                     print(f'Writing new {file_path}.\n')  # noqa: T201
                     with Path.open(file_path, 'w') as file:

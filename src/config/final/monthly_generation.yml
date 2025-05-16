@@ -66,10 +66,3 @@ resource:
       comment: |
         1. Contracted Neil McMahon to produce the Workbooks, and then posted them in GitHub for distribution.
         2. Extracted the monthly generation timeseries for each unique grid.
-    - organization: acep
-      roles:
-        - DataCurator
-      date: now
-      object: metadata via https://github.com/acep-aedg/aedg-metadata
-      comment: |
-        Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.

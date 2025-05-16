@@ -56,10 +56,3 @@ resource:
       comment: |
         1. Identified data source and integrated it into the data pipeline.
         2. Joined transportation data with community FIPS codes to create this table
-    - organization: acep
-      roles:
-        - DataCurator
-      date: now
-      object: metadata via https://github.com/acep-aedg/aedg-metadata
-      comment: |
-        Documented sources and created data dictionary (schema) in OEMetadata (Frictionless) format.

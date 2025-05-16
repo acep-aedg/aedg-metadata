@@ -310,6 +310,16 @@ class AedgOemetadata:
             contributor["organization"] = self.agents[contributor["organization"]]['name']
             all_contribs.append(contributor)
 
+        metadata_note = {
+            'organization': self.agents['acep']['name'],
+            'roles': ["DataCurator"],
+            'date': f"{date.today()}",
+            'object': "metadata via https://github.com/acep-aedg/aedg-metadata",
+            'comment': "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
+            'path': self.agents['acep']['homepage'],
+        }
+        all_contribs.append(metadata_note)
+
         self.data_package["resources"][0]["contributors"] = all_contribs
 
     def generate(self, bbopt: ExtentTypes, topt: ExtentTypes) -> None:
