@@ -1,9 +1,9 @@
 name,long_name,description,type,nullable,unit,file
-fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_communities_monthly_generation.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,public_communities_monthly_generation.csv
-name,Community name,Name of the community,string,FALSE,null,public_communities_monthly_generation.csv
-net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_communities_monthly_generation.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_communities_monthly_generation.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_communities_monthly_generation.csv
-year,Year,Four digit year as Common Era (CE),integer,FALSE,null,public_communities_monthly_generation.csv
-month,Month,Month as 1-12 for which generation was reported,integer,FALSE,null,public_communities_monthly_generation.csv
+fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_monthly_generation.csv
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,public_monthly_generation.csv
+name,Community name,Name of the community,string,FALSE,null,public_monthly_generation.csv
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_monthly_generation.csv
+fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_monthly_generation.csv
+fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_monthly_generation.csv
+year,Year,Four digit year as Common Era (CE),integer,FALSE,null,public_monthly_generation.csv
+month,Month,Month as 1-12 for which generation was reported,integer,FALSE,null,public_monthly_generation.csv

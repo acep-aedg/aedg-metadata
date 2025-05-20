@@ -17,7 +17,7 @@ def ref_pkg() -> dict[Any, Any]:
     """Read in the reference package"""
         # load the reference file
     ref_dir = Path(__file__).parents[0]
-    ref_file = ref_dir / "resources" / "public_communities_monthly_generation_reference.json"
+    ref_file = ref_dir / "resources" / "public_monthly_generation_reference.json"
     with ref_file.open(mode="r") as file:
         pkg = json.load(file)
     # remove dates because those won't match
@@ -29,7 +29,7 @@ def ref_pkg() -> dict[Any, Any]:
 
 @pytest.fixture  # type: ignore[misc]
 def pkg_no_bounds() -> dict[Any, Any]:
-    config = 'public_communities_monthly_generation'
+    config = 'public_monthly_generation'
     subdirectory = '../../tests/resources'
     data_dictionary = ""
     bbox = ExtentTypes.none
@@ -43,7 +43,7 @@ def pkg_no_bounds() -> dict[Any, Any]:
 
 @pytest.fixture   # type: ignore[misc]
 def pkg_inferred() -> dict[Any, Any]:
-    config = 'public_communities_monthly_generation'
+    config = 'public_monthly_generation'
     subdirectory = '../../tests/resources'
     data_dictionary = ""
     bbox = ExtentTypes.infer
@@ -57,7 +57,7 @@ def pkg_inferred() -> dict[Any, Any]:
 
 def test_stability(ref_pkg: dict[Any, Any]) -> None:
     """To make sure refactoring doesn't inadvertently change the output"""
-    config = 'public_communities_monthly_generation'
+    config = 'public_monthly_generation'
     subdirectory = '../../tests/resources'
     data_dictionary = ""
     bbox = ExtentTypes.specify
@@ -71,7 +71,7 @@ def test_stability(ref_pkg: dict[Any, Any]) -> None:
 
 def test_data_dictionary(ref_pkg: dict[Any, Any]) -> None:
     """To make sure refactoring doesn't inadvertently change the output"""
-    config = 'public_communities_monthly_generation'
+    config = 'public_monthly_generation'
     subdirectory = '../../tests/resources'
     data_dictionary = "public_data_dictionary.csv"
     bbox = ExtentTypes.specify

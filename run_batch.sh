@@ -12,7 +12,7 @@
 
 # normalized tables:
 # final	boroughs.geojson
-aedg_metadata generate capacity -d final --bbox infer --time specify --save
+#aedg_metadata generate capacity -d final --bbox infer --time specify --save
 # final	communities.geojson
 # final	communities_grids.csv
 # final	communities_legislative_districts.csv
@@ -23,24 +23,24 @@ aedg_metadata generate capacity -d final --bbox infer --time specify --save
 # final	fuel_prices.csv
 # final	grids.csv
 # final	house_districts.geojson
-aedg_metadata generate monthly_generation -d final --bbox infer --time specify --save
+#aedg_metadata generate monthly_generation -d final --bbox infer --time specify --save
 # final	populations.csv
 # final	populations_ages_sexes.csv
 # final	regional_corporations.geojson
 # final	reporting_entities.csv
 # final	senate_districts.geojson
 # final	taxes.csv
-aedg_metadata generate transportation -d final --bbox infer --time specify --save
+#aedg_metadata generate transportation -d final --bbox infer --time specify --save
 # final	village_corporations.geojson
-aedg_metadata generate yearly_generation -d final --bbox infer --time specify --save
+#aedg_metadata generate yearly_generation -d final --bbox infer --time specify --save
 
 # denormalized tables for the data explorer
-aedg_metadata generate public_communities_capacity -d public --bbox infer --time specify --save
-aedg_metadata generate public_communities_fuel_prices -d public --bbox infer -t specify --save
-aedg_metadata generate public_communities_monthly_generation -d public --bbox infer --save
-aedg_metadata generate public_communities_population -d public --bbox infer -t specify --save
-aedg_metadata generate public_communities_transportation -d public --bbox infer -t specify --save
-aedg_metadata generate public_communities_yearly_generation -d public --bbox infer --save
+aedg_metadata generate public_capacity -d public --bbox infer --time specify --save
+aedg_metadata generate public_fuel_prices -d public --bbox infer -t specify --save
+aedg_metadata generate public_monthly_generation -d public --bbox infer --save
+aedg_metadata generate public_population -d public --bbox infer -t specify --save
+aedg_metadata generate public_transportation -d public --bbox infer -t specify --save
+aedg_metadata generate public_yearly_generation -d public --bbox infer --save
 
 # Gather keywords/topics together into registry file
 python src/aedg_metadata/scripts/keywords_to_registry.py

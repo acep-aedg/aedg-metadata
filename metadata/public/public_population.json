@@ -1,18 +1,18 @@
 {
     "@context": "",
-    "name": "public_communities_population",
+    "name": "public_population",
     "title": "Community Total Population",
     "description": "Summary of the total population of each community.\n",
     "@id": "",
     "resources": [
         {
             "@id": "",
-            "name": "public_communities_population",
+            "name": "public_population",
             "topics": [
                 "Social"
             ],
             "title": "Community Total Population",
-            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_population.csv",
+            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_population.csv",
             "description": "Total populations were measured by the U. S. Census and associated with communities by the Alaska Department of Labor and Workforce Development.\n",
             "languages": [
                 "en-US"
@@ -21,7 +21,7 @@
                 "total population",
                 "census"
             ],
-            "publicationDate": "2025-05-16",
+            "publicationDate": "2025-05-20",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -82,7 +82,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-16",
+                    "date": "2025-05-20",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Identified data source and integrated it into the data pipeline.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined population data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -92,7 +92,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-16",
+                    "date": "2025-05-20",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
                     "path": "https://www.uaf.edu/acep/"

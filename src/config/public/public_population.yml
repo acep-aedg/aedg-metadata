@@ -1,11 +1,11 @@
 resource:
-  name: public_communities_population # Filename stub
+  name: public_population # Filename stub
   title: Community Total Population # Dataset title
   summary: | # Short version of the description to appear in data explorer list
     Summary of the total population of each community.
   description: | # Description of what this dataset is and what it is doing here
     Total populations were measured by the U. S. Census and associated with communities by the Alaska Department of Labor and Workforce Development.
-  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_population.csv" # link to dataset in GitHub
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_population.csv" # link to dataset in GitHub
   keywords: # list of keywords and short phrases, limit 10
     - total population
     - census
