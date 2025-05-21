@@ -73,7 +73,7 @@ def test_data_dictionary(ref_pkg: dict[Any, Any]) -> None:
     """To make sure refactoring doesn't inadvertently change the output"""
     config = 'public_monthly_generation'
     subdirectory = '../../tests/resources'
-    data_dictionary = "public_data_dictionary.csv"
+    data_dictionary = "example_data_dictionary.csv"
     bbox = ExtentTypes.specify
     temporal = ExtentTypes.specify
     pkg_ddict = run_generate(config, subdirectory, data_dictionary, bbox, temporal)

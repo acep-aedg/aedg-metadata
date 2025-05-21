@@ -1,71 +1,32 @@
 name,long_name,description,type,nullable,unit,file
-fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_monthly_generation.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,public_monthly_generation.csv
-name,Community name,Name of the community,string,FALSE,null,public_monthly_generation.csv
-net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_monthly_generation.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_monthly_generation.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_monthly_generation.csv
-year,Year,Four digit year as Common Era (CE),integer,FALSE,null,public_monthly_generation.csv
-month,Month,Month as 1-12 for which generation was reported,integer,FALSE,null,public_monthly_generation.csv
-fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_yearly_generation.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,public_yearly_generation.csv
-name,Community name,Name of the community,string,FALSE,null,public_yearly_generation.csv
-net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,public_yearly_generation.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_yearly_generation.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_yearly_generation.csv
-year,Year,Four digit year as Common Era (CE) for which monthly reported generation was summed,integer,FALSE,null,public_yearly_generation.csv
-fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_transportation.csv
-name,Community name,Name of the community,string,FALSE,null,public_transportation.csv
-airport,Airport,"Answers the question: Does the Community have an airport? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_transportation.csv
-as_of_date,As of Date,When the transportation dataset last updated,string,TRUE,null,public_transportation.csv
-cargo_barge,Cargo Barge,"Answers the question: Is the Community served by a cargo barge? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_transportation.csv
-coastal,Coastal,"Answers the question: Is the Community located on the coast? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_transportation.csv
-description,Transportation description,Narrative description of the transportation situtation for the community,string,TRUE,null,public_transportation.csv
-harbor_dock,Harbor Dock,"Answers the question: Does the Community have a harbor with a dock? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_transportation.csv
-road_connection,Road Connection,"Answers the question: Is the Community connected to a road system to other communities? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_transportation.csv
-state_ferry,State Ferry,"Answers the question: Is the Community served by a state ferry? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,public_transportation.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,monthly_generation.csv
-net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,monthly_generation.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,monthly_generation.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,monthly_generation.csv
-year,Year,Four digit year as Common Era (CE),integer,FALSE,null,monthly_generation.csv
-month,Month,Month as 1-12 for which generation was reported,integer,FALSE,null,monthly_generation.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,yearly_generation.csv
-net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,yearly_generation.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,yearly_generation.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,yearly_generation.csv
-year,Year,Four digit year as Common Era (CE) for which monthly reported generation was summed,integer,FALSE,null,yearly_generation.csv
-community_fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,transportation.csv
-airport,Airport,"Answers the question: Does the Community have an airport? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-harbor_dock,Harbor Dock,"Answers the question: Does the Community have a harbor with a dock? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-state_ferry,State Ferry,"Answers the question: Is the Community served by a state ferry? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-cargo_barge,Cargo Barge,"Answers the question: Is the Community served by a cargo barge? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-road_connection,Road Connection,"Answers the question: Is the Community connected to a road system to other communities? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-coastal,Coastal,"Answers the question: Is the Community located on the coast? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-road_or_ferry,Road or Ferry,"Answers the question: Is the Community served by a state ferry or a road? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
-description,Transportation description,Narrative description of the transportation situtation for the community,string,TRUE,null,transportation.csv
-as_of_date,Date Updated,When the transportation dataset last updated,string,TRUE,null,transportation.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,capacity.csv
-capacity_mw,Electric Generation Capacity,Generation capacity represents the maximum amount of electricity that can be generated at any given time dependent on certain conditions,number,TRUE,Megawatts,capacity.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,capacity.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,capacity.csv
-year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,capacity.csv
-fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_capacity.csv
-grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,public_capacity.csv
-name,Community name,Name of the community,string,FALSE,null,public_capacity.csv
-capacity_mw,Electric Generation Capacity,Generation capacity represents the maximum amount of electricity that can be generated at any given time dependent on certain conditions,number,TRUE,Megawatts,public_capacity.csv
-fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,public_capacity.csv
-fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,public_capacity.csv
-year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,public_capacity.csv
-fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_population.csv
-name,Community name,Name of the community,string,FALSE,null,public_population.csv
-total_population,Total Population,Total population of the community,integer,TRUE,null,public_population.csv
-year,Year,Four digit year as Common Era (CE) when the population was measured,integer,FALSE,null,public_population.csv
-community_fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,public_fuel_prices.csv
-name,Community name,Name of the community,string,FALSE,null,public_fuel_prices.csv
+airport,Airport,"Answers the question: Does the Community have an airport? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,default
+as_of_date,As of Date,When the transportation dataset last updated,string,TRUE,null,default
+capacity_mw,Electric Generation Capacity,Generation capacity represents the maximum amount of electricity that can be generated at any given time dependent on certain conditions,number,TRUE,Megawatts,default
+cargo_barge,Cargo Barge,"Answers the question: Is the Community served by a cargo barge? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,default
+coastal,Coastal,"Answers the question: Is the Community located on the coast? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,default
+community_fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,default
+description,Description,Narrative description,string,TRUE,null,default
+fips_code,Community FIPS Code,"Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",string,FALSE,null,default
+fuel_type,Fuel Type,"Name of fuel type reported, either heating fuel or gasoline",string,TRUE,null,public_fuel_prices.csv
+fuel_type_code,Fuel Type Code,Code indicating generation fuel as defined by the EIA,string,FALSE,null,default
+fuel_type_name,Fuel Type,Generation fuel,string,FALSE,null,default
+grid_id,Grid ID,A unique identifier of the grid in Alaska as determined for AEDG,integer,FALSE,null,default
+harbor_dock,Harbor Dock,"Answers the question: Does the Community have a harbor with a dock? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,default
+month,Month,Month as 1-12 for which generation was reported,integer,FALSE,null,default
+name,Community name,Name of the community,string,FALSE,null,default
+net_generation_mwh,Net Generation (MWh),Net electrical generation aggregated by grid,number,TRUE,Megawatt Hour,default
 price,Fuel Price USD,"Retail price of fuel, expressed as U. S. Dollars (USD) per gallon. Prices are ""point in time"" as reported by local vendors and contacts.",number,TRUE,USD per gallon,public_fuel_prices.csv
 price_type,Price Type,Type of source data for assigning price: survey of communities or regional average,string,TRUE,null,public_fuel_prices.csv
-fuel_type,Fuel Type,"Name of fuel type reported, either heating fuel or gasoline",string,TRUE,null,public_fuel_prices.csv
-source,Source of fuel price data,"Name of reporting entity if surveyed, or DCRA if regionally averaged",string,TRUE,null,public_fuel_prices.csv
 reporting_season,Reporting Season,"Season for which the fuel data was reported, Winter or Summer",string,TRUE,null,public_fuel_prices.csv
 reporting_year,Reporting Year,Four digit year as Common Era (CE) for which the fuel data was reported,integer,TRUE,null,public_fuel_prices.csv
+road_connection,Road Connection,"Answers the question: Is the Community connected to a road system to other communities? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,default
+road_or_ferry,Road or Ferry,"Answers the question: Is the Community served by a state ferry or a road? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,transportation.csv
+source,Source of fuel price data,"Name of reporting entity if surveyed, or DCRA if regionally averaged",string,TRUE,null,public_fuel_prices.csv
+state_ferry,State Ferry,"Answers the question: Is the Community served by a state ferry? (""t"" for yes, and ""f"" for no)",boolean,TRUE,null,default
+total_population,Total Population,Total population of the community,integer,TRUE,null,default
+year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,capacity.csv
+year,Year,Four digit year as Common Era (CE),integer,FALSE,null,default
+year,Year,Four digit year as Common Era (CE) for which generation capacity was summarized,integer,FALSE,null,public_capacity.csv
+year,Year,Four digit year as Common Era (CE) when the population was measured,integer,FALSE,null,public_population.csv
+year,Year,Four digit year as Common Era (CE) for which monthly reported generation was summed,integer,FALSE,null,public_yearly_generation.csv
+year,Year,Four digit year as Common Era (CE) for which monthly reported generation was summed,integer,FALSE,null,yearly_generation.csv

@@ -50,23 +50,28 @@ class AedgOemetadata:
         # the template is nested dictionaries so requires deepcopy
         # see https://docs.python.org/3/library/copy.html for a clear explanation
         self.data_package = deepcopy(OEMETADATA_LATEST_TEMPLATE)
+        registry_dir = Path(__file__).parents[1] / "registry"
 
         # Read YAML configuration file
         input_dir = Path(__file__).parents[1] / "config" / flavor
         with (input_dir / f"{file_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
         self.tag = file_stem
+        filename = self.config["resource"]["path"].split('/')[-1]
 
-        registry_dir = Path(__file__).parents[1] / "registry"
-        # Read CSV registry files
+        # Read CSV registry of fields - which might have unique definitions for this file
         if not ddict:
             self.fields = pd.read_csv(registry_dir / "fields.csv")
         else:
             self.fields = pd.read_csv(registry_dir / ddict)
-        # fields might be duplicated between filenames
-        if 'file' in self.fields.columns:
-            filename = self.config["resource"]["path"].split('/')[-1]
-            self.fields = self.fields.loc[filename == self.fields['file'], :]
+        # start with fields unique to this file
+        fields = self.fields.loc[self.fields['file'] == filename]
+        # append all the default definitions
+        fields = pd.concat(
+            [fields, self.fields.loc[self.fields['file'] == 'default']],
+            ignore_index=True)
+        # drop the default fields if they are overridden
+        self.fields = fields.drop_duplicates(subset=['name'], keep='first', ignore_index=True)
 
         # Read YAML registry files
         with (registry_dir / "licenses.yml").open() as stream:
