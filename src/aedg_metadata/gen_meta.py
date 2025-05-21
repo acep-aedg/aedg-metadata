@@ -13,7 +13,7 @@ from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
 from aedg_metadata import ExtentTypes
 
-from .helpers import check_schema
+from .helpers import check_fields, check_schema
 
 
 def run_generate(
@@ -31,7 +31,7 @@ def run_generate(
 
     # checking output
     check_schema(new_pkg.data_package)
-    #check_fields(new_pkg.data_package)
+    check_fields(new_pkg.data_package)
 
     return new_pkg
 

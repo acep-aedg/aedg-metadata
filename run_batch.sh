@@ -38,7 +38,7 @@
 aedg_metadata generate public_capacity -d public --bbox infer --time specify --save
 aedg_metadata generate public_fuel_prices -d public --bbox infer -t specify --save
 aedg_metadata generate public_monthly_generation -d public --bbox infer --save
-aedg_metadata generate public_population -d public --bbox infer -t specify --save
+#aedg_metadata generate public_population -d public --bbox infer -t specify --save
 aedg_metadata generate public_transportation -d public --bbox infer -t specify --save
 aedg_metadata generate public_yearly_generation -d public --bbox infer --save
 

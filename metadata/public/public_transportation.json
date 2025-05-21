@@ -101,8 +101,8 @@
                 "fields": [
                     {
                         "name": "fips_code",
-                        "long_name": "Community FIPS Code",
-                        "description": "Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",
+                        "long_name": "FIPS Code",
+                        "description": "5-digit Federal Information Processing Series (FIPS) code identifier for places and boroughs (counties), assigned and maintained by the Census Bureau",
                         "type": "string",
                         "nullable": false,
                         "unit": null
@@ -124,33 +124,25 @@
                         "unit": null
                     },
                     {
-                        "name": "cargo_barge",
-                        "long_name": "Cargo Barge",
-                        "description": "Answers the question: Is the Community served by a cargo barge? (\"t\" for yes, and \"f\" for no)",
-                        "type": "boolean",
-                        "nullable": true,
-                        "unit": null
-                    },
-                    {
-                        "name": "coastal",
-                        "long_name": "Coastal",
-                        "description": "Answers the question: Is the Community located on the coast? (\"t\" for yes, and \"f\" for no)",
-                        "type": "boolean",
-                        "nullable": true,
-                        "unit": null
-                    },
-                    {
-                        "name": "description",
-                        "long_name": "Description",
-                        "description": "Narrative description",
-                        "type": "string",
-                        "nullable": true,
-                        "unit": null
-                    },
-                    {
                         "name": "harbor_dock",
                         "long_name": "Harbor Dock",
                         "description": "Answers the question: Does the Community have a harbor with a dock? (\"t\" for yes, and \"f\" for no)",
+                        "type": "boolean",
+                        "nullable": true,
+                        "unit": null
+                    },
+                    {
+                        "name": "state_ferry",
+                        "long_name": "State Ferry",
+                        "description": "Answers the question: Is the Community served by a state ferry? (\"t\" for yes, and \"f\" for no)",
+                        "type": "boolean",
+                        "nullable": true,
+                        "unit": null
+                    },
+                    {
+                        "name": "cargo_barge",
+                        "long_name": "Cargo Barge",
+                        "description": "Answers the question: Is the Community served by a cargo barge? (\"t\" for yes, and \"f\" for no)",
                         "type": "boolean",
                         "nullable": true,
                         "unit": null
@@ -164,10 +156,26 @@
                         "unit": null
                     },
                     {
-                        "name": "state_ferry",
-                        "long_name": "State Ferry",
-                        "description": "Answers the question: Is the Community served by a state ferry? (\"t\" for yes, and \"f\" for no)",
+                        "name": "coastal",
+                        "long_name": "Coastal",
+                        "description": "Answers the question: Is the Community located on the coast? (\"t\" for yes, and \"f\" for no)",
                         "type": "boolean",
+                        "nullable": true,
+                        "unit": null
+                    },
+                    {
+                        "name": "road_or_ferry",
+                        "long_name": "Road or Ferry",
+                        "description": "Answers the question: Is the Community served by a state ferry or a road? (\"t\" for yes, and \"f\" for no)",
+                        "type": "boolean",
+                        "nullable": true,
+                        "unit": null
+                    },
+                    {
+                        "name": "description",
+                        "long_name": "Description",
+                        "description": "Narrative description",
+                        "type": "string",
                         "nullable": true,
                         "unit": null
                     }

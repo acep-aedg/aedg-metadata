@@ -152,17 +152,9 @@
                 "fields": [
                     {
                         "name": "fips_code",
-                        "long_name": "Community FIPS Code",
-                        "description": "Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",
+                        "long_name": "FIPS Code",
+                        "description": "5-digit Federal Information Processing Series (FIPS) code identifier for places and boroughs (counties), assigned and maintained by the Census Bureau",
                         "type": "string",
-                        "nullable": false,
-                        "unit": null
-                    },
-                    {
-                        "name": "grid_id",
-                        "long_name": "Grid ID",
-                        "description": "A unique identifier of the grid in Alaska as determined for AEDG",
-                        "type": "integer",
                         "nullable": false,
                         "unit": null
                     },
@@ -170,6 +162,14 @@
                         "name": "name",
                         "long_name": "Community name",
                         "description": "Name of the community",
+                        "type": "string",
+                        "nullable": false,
+                        "unit": null
+                    },
+                    {
+                        "name": "grid",
+                        "long_name": "Grid Name",
+                        "description": "The unique grid name, which is based on the primary Alaskan community in the grid",
                         "type": "string",
                         "nullable": false,
                         "unit": null
@@ -183,19 +183,11 @@
                         "unit": "Megawatt Hour"
                     },
                     {
-                        "name": "fuel_type_code",
-                        "long_name": "Fuel Type Code",
-                        "description": "Code indicating generation fuel as defined by the EIA",
-                        "type": "string",
-                        "nullable": false,
-                        "unit": null
-                    },
-                    {
-                        "name": "fuel_type_name",
+                        "name": "fuel_type",
                         "long_name": "Fuel Type",
-                        "description": "Generation fuel",
+                        "description": "Generation fuel as defined by the EIA",
                         "type": "string",
-                        "nullable": false,
+                        "nullable": true,
                         "unit": null
                     },
                     {
@@ -208,8 +200,8 @@
                     }
                 ],
                 "primaryKey": [
-                    "grid_id",
-                    "fuel_type_code",
+                    "grid",
+                    "fuel_type",
                     "year"
                 ]
             },

@@ -42,16 +42,15 @@ resource:
         aggregationType: sum
   fields: # column names
     - fips_code
-    - grid_id
     - name
+    - grid
     - net_generation_mwh
-    - fuel_type_code
-    - fuel_type_name
-    - year
+    - fuel_type
     - month
+    - year
   primaryKey: # An array of fields that uniquely identifies each row in the table
-    - grid_id
-    - fuel_type_code
+    - grid
+    - fuel_type
     - year
     - month
   contributors: # roles from https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype

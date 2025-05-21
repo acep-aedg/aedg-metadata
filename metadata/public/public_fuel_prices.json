@@ -161,9 +161,9 @@
             "schema": {
                 "fields": [
                     {
-                        "name": "community_fips_code",
-                        "long_name": "Community FIPS Code",
-                        "description": "Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",
+                        "name": "fips_code",
+                        "long_name": "FIPS Code",
+                        "description": "5-digit Federal Information Processing Series (FIPS) code identifier for places and boroughs (counties), assigned and maintained by the Census Bureau",
                         "type": "string",
                         "nullable": false,
                         "unit": null
@@ -226,7 +226,7 @@
                     }
                 ],
                 "primaryKey": [
-                    "community_fips_code",
+                    "fips_code",
                     "reporting_season",
                     "reporting_year"
                 ]
