@@ -1,7 +1,7 @@
 {
     "@context": "",
     "name": "public_transportation",
-    "title": "Transportation",
+    "title": "Community Transportation Summary",
     "description": "Summary of the types of transportation available to each community.\n",
     "@id": "",
     "resources": [
@@ -11,7 +11,7 @@
             "topics": [
                 "Infrastructure"
             ],
-            "title": "Transportation",
+            "title": "Community Transportation Summary",
             "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_transportation.csv",
             "description": "Summary of the types of transportation available to each community. Includes information on airports, roads, the state ferry, harbors and docks, coastal status, and cargo barge. The price a community pays for energy depends significantly on the transportation options available for fuel and construction materials.\n",
             "languages": [
@@ -28,7 +28,7 @@
                 "dock",
                 "coastal"
             ],
-            "publicationDate": "2025-05-21",
+            "publicationDate": "2025-05-22",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -52,6 +52,27 @@
                 "timeseries": []
             },
             "sources": [
+                {
+                    "title": "Places (Cities and CDPs) Shapefile",
+                    "authors": [
+                        "United States Census Bureau",
+                        "Alaska Department of Labor and Workforce Development (DOLWD)"
+                    ],
+                    "description": "This is an ESRI Shapefile for use in GIS software that contains place data from the 2020 US Census for Alaska. The definition of places includes all incorporated cities as well as Census Designated Places (CDPs). Each geographic unit is identified using Federal Information Processing Standards (FIPS) numbers. Coordinate System: North American Datum 1983 Alaska Albers. Source: 2020 US Census, PL94-171 Redistricting File; 2020 US Census Tiger Shapefiles. Documentation of field names: https://live.laborstats.alaska.gov/cen/maps/gis/Places2020.pdf. The Alaska Department of Labor and Workforce Development has had a cooperative agreement with the U.S. Census Bureau since 1981 to assist with geographic programs and help Alaskans find Census Bureau data.\nAEDG uses this list to define canonical community locations to use in spatial joins and relations, to associate places with FIPS codes, and to establish total community population.\n",
+                    "publicationYear": "2020",
+                    "path": "https://live.laborstats.alaska.gov/article/maps-gis-data",
+                    "sourceLicenses": []
+                },
+                {
+                    "title": "Alaska Communities",
+                    "authors": [
+                        "Alaska Division of Community and Regional Affairs (DCRA)"
+                    ],
+                    "description": "The Alaska Communities dataset is the reference list of place locations, represented as points, used by the Alaska Division of Community and Regional Affairs (DCRA). In includes community locations but for historical reasons, it is a mix of Communities, Places of Interest, Borough/Census Area as well as Alaska centroid. DCRA uses it to link communities to their internal key GUID used elsewhere in their systems.\nAEDG uses this list to define canonical community names since, as free text, these can vary in different contexts, and to establish locations to use in spatial joins and relations.\n",
+                    "publicationYear": "2023",
+                    "path": "https://maps.commerce.alaska.gov/server/rest/services/Community_Related/Community_Locations_and_Boundaries/MapServer/0",
+                    "sourceLicenses": []
+                },
                 {
                     "title": "Community Transportation Overview",
                     "authors": [
@@ -78,7 +99,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-21",
+                    "date": "2025-05-22",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Identified data source and integrated it into the data pipeline.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined transportation data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -88,7 +109,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-21",
+                    "date": "2025-05-22",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
                     "path": "https://www.uaf.edu/acep/"

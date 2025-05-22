@@ -3,7 +3,7 @@
 # 2. boolean values are "t" and "f", which is weird. Which is how dump from database encodes it
 resource:
   name: transportation # Filename stub
-  title: Transportation # Dataset title
+  title: Community Transportation Summary  # Dataset title
   summary: | # Short version of the description to appear in data explorer list
     Summary of the types of transportation available to each community. This is a normalized table intended for internal use within the AEDG database.
   description: | # Description of what this dataset is and what it is doing here

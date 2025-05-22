@@ -1,6 +1,6 @@
 resource:
   name: "yearly_generation"
-  title: "Yearly electrical generation by grid"
+  title: "Yearly Electrical Generation by Grid"
   summary: |
     This dataset is yearly electrical generation aggregated by grid. It summarizes the amount of electrical power produced for a grid and the fuels that were used to generate it. This is a normalized table intended for internal use within the AEDG database.
   description: |

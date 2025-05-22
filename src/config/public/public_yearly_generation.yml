@@ -1,6 +1,6 @@
 resource:
   name: "public_yearly_generation"
-  title: "Yearly electrical generation by community"
+  title: "Yearly Electrical Generation by Community"
   summary: |
     This dataset is yearly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it.
   description: |

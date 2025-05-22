@@ -278,8 +278,8 @@
                     },
                     {
                         "name": "borough",
-                        "long_name": "Borough of Census Area Name",
-                        "description": "Boroughs are analagous to a county in other places",
+                        "long_name": "Borough or Census Area Name",
+                        "description": "Boroughs are analagous to a county in other places. Census areas are statistical subdivisions of the ",
                         "type": "string",
                         "nullable": true,
                         "unit": null

@@ -1,25 +1,28 @@
 {
     "@context": "",
-    "name": "public_employment",
-    "title": "Community Employment",
-    "description": "The number of employed residents and the number of unemployment insurance claimants for each community.\n",
+    "name": "public_taxes",
+    "title": "Taxes for Communities and Boroughs",
+    "description": "Sales, property, and special tax revenue for communities and boroughs.\n",
     "@id": "",
     "resources": [
         {
             "@id": "",
-            "name": "public_employment",
+            "name": "public_taxes",
             "topics": [
                 "Social"
             ],
-            "title": "Community Employment",
-            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_employment.csv",
-            "description": "The number of employed residents and the number of unemployment insurance claimants for each community. Data are available for 2001 to 2016.\n",
+            "title": "Taxes for Communities and Boroughs",
+            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_taxes.csv",
+            "description": "Sales, property, and special tax revenue for communities and boroughs, 2017-2024.\n",
             "languages": [
                 "en-US"
             ],
             "keywords": [
-                "employment",
-                "community"
+                "revenue",
+                "taxes",
+                "sales",
+                "property",
+                "economy"
             ],
             "publicationDate": "2025-05-22",
             "context": {
@@ -44,12 +47,12 @@
                 "referenceDate": "2016",
                 "timeseries": [
                     {
-                        "start": "2001",
-                        "end": "2016",
+                        "start": "2017",
+                        "end": "2024",
                         "resolutionValue": "1",
                         "resolutionUnit": "year",
                         "alignment": "centre",
-                        "aggregationType": "current"
+                        "aggregationType": "sum"
                     }
                 ]
             },
@@ -76,14 +79,14 @@
                     "sourceLicenses": []
                 },
                 {
-                    "title": "Employment and Wages, All Locations",
+                    "title": "Taxes, All Locations",
                     "authors": [
-                        "Alaska Department of Labor and Workforce Development (DOLWD)",
+                        "State of Alaska Department of Commerce Community and Economic Development, Office of the State Assessor",
                         "Alaska Division of Community and Regional Affairs (DCRA)"
                     ],
-                    "description": "Current monthly employment data for Alaska is available at https://live.laborstats.alaska.gov/labforce/000000/01/ces.html, but only at the regional level. This data is at the community level and has been visualized in a Geographic Information Systems (GIS) format and is provided as a service in the DCRA Information Portal by the Alaska Department of Commerce, Community, and Economic Development Division of Community and Regional Affairs (SOA DCCED DCRA), Research and Analysis section. SOA DCCED DCRA Research and Analysis is not the authoritative source for this data.\nAEDG uses this dataset to provide employment figures for communities. However, these data have not been updated since 2016, and there is very little metadata. Previous versions of AEDG used the publicly accessible ALARI database, but that is no longer available.\n",
-                    "publicationYear": "2016",
-                    "path": "https://maps.commerce.alaska.gov/server/rest/services/Economics_Related/Economics_Employment_Wages/MapServer/0",
+                    "description": "This dataset is a summary of property and sales taxes assessed at both the community and borough levels from 2015 to present. Note from DCRA on use for analysis: This data set mixes scale. It includes rows for boroughs, which contain multiple census designated places (CDP's) and cities from this same data set in many cases. This data has been visualized in a Geographic Information Systems (GIS) format and is provided as a service in the DCRA Information Portal by the Alaska Department of Commerce, Community, and Economic Development Division of Community and Regional Affairs (SOA DCCED DCRA), Research and Analysis section. SOA DCCED DCRA Research and Analysis is not the authoritative source for this data.\nAEDG includes tax data as a measure of economic activity. From our analysis, this tax data for \"All Locations\" includes records/rows for both individual cities and boroughs. The tax revenue values for a city are not included in the borough the city is geographically part of. For example, in 2023 the city of Fairbanks reported $4,279,586.00 in bed tax revenue but the Fairbanks North Star borough only reported $2,933,702.00 in bed tax revenue. When providing tax data for a borough as a geographic whole using this dataset, both the borough and any individual city listed separate from the borough but within the physical bounds of the borough will need to be aggregated.\n",
+                    "publicationYear": "2025",
+                    "path": "https://maps.commerce.alaska.gov/server/rest/services/Economics_Related/Economics_Taxes/MapServer/0",
                     "sourceLicenses": []
                 }
             ],
@@ -104,7 +107,7 @@
                     ],
                     "date": "2025-05-22",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
-                    "comment": "1. Identified data source and integrated it into the data pipeline.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined employment data with AEDG communities to create this dataset\n",
+                    "comment": "1. Identified data source and integrated it into the data pipeline.\n2. Complied community names, locations, and FIPS identifiers for AEDG\n3. Joined tax data with AEDG communities to create this dataset\n",
                     "path": "https://www.uaf.edu/acep/"
                 },
                 {
@@ -140,28 +143,60 @@
                         "unit": null
                     },
                     {
-                        "name": "residents_employed",
-                        "long_name": "Residents Employed",
-                        "description": "Number of residents ",
+                        "name": "tax_year",
+                        "long_name": "Tax Year",
+                        "description": "Four digit tax year as Common Era (CE)",
                         "type": "integer",
                         "nullable": true,
                         "unit": null
                     },
                     {
-                        "name": "unemployment_insurance_claimants",
-                        "long_name": "Unemployment Insurance Claimants",
-                        "description": "Number of people who claimed unimployment insurance",
+                        "name": "total_tax_rev_usd",
+                        "long_name": "Total Tax Revenue",
+                        "description": "Total tax revenue in U.S. Dollars (USD) for either the community or the borough",
                         "type": "integer",
                         "nullable": true,
-                        "unit": null
+                        "unit": "USD"
                     },
                     {
-                        "name": "measurement_year",
-                        "long_name": "Year",
-                        "description": "Four digit year as Common Era (CE)",
+                        "name": "total_sales_tax_rev_usd",
+                        "long_name": "Total Sales Tax Revenue",
+                        "description": "Total sales tax revenue in U.S. Dollars (USD) for either the community or the borough",
                         "type": "integer",
-                        "nullable": false,
-                        "unit": null
+                        "nullable": true,
+                        "unit": "USD"
+                    },
+                    {
+                        "name": "property_tax_rev_usd",
+                        "long_name": "Property Tax Revenue",
+                        "description": "Propery tax revenue in U.S. Dollars (USD) for either the community or the borough",
+                        "type": "integer",
+                        "nullable": true,
+                        "unit": "USD"
+                    },
+                    {
+                        "name": "total_rev_for_special_taxes_usd",
+                        "long_name": "Total Special Tax Revenue",
+                        "description": "Total special tax revenue in U.S. Dollars (USD) for either the community or the borough",
+                        "type": "integer",
+                        "nullable": true,
+                        "unit": "USD"
+                    },
+                    {
+                        "name": "did_community_report",
+                        "long_name": "Community Report",
+                        "description": "Answers the question: Did the community report these taxes?  (\"t\" for yes, and \"f\" for no)",
+                        "type": "boolean",
+                        "nullable": true,
+                        "unit": "USD"
+                    },
+                    {
+                        "name": "is_most_recent",
+                        "long_name": "Most Recent Taxes",
+                        "description": "Answers the question: Are these the most recent values for these taxes?  (\"t\" for yes, and \"f\" for no)",
+                        "type": "boolean",
+                        "nullable": true,
+                        "unit": "USD"
                     }
                 ],
                 "primaryKey": [

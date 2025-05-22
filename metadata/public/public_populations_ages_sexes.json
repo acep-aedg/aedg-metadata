@@ -13,7 +13,7 @@
             ],
             "title": "American Community Survey Populations",
             "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_populations_ages_sexes.csv",
-            "description": "Total populations were measured by the U. S. Census and associated with communities by the Alaska Division of Community and Regional Affairs (DCRA). This dataset includes population size by sex in Alaskan communities for the most recent 5-year American Community Survey (ACS) intervals. It also includes population by age in Alaskan communities for the most recent 5-year American Community Survey (ACS) interval. The 5-year interval data sets are published approximately 1/2 a period later than the End Year listed.\n",
+            "description": "Total populations were measured by the U. S. Census and associated with communities by the Alaska Division of Community and Regional Affairs (DCRA). This dataset includes population size by sex in Alaskan communities for the most recent 5-year American Community Survey (ACS) intervals. It also includes population by age. The 5-year interval data sets are published approximately 1/2 a period later than the End Year listed.\n",
             "languages": [
                 "en-US"
             ],

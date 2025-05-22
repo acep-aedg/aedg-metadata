@@ -35,14 +35,16 @@
 #aedg_metadata generate yearly_generation -d final --bbox infer --time specify --save
 
 # denormalized tables for the data explorer
-#aedg_metadata generate public_capacity -d public --bbox infer --time specify --save
+aedg_metadata generate public_capacity -d public --bbox infer --time specify --save
 aedg_metadata generate public_communities -d public --bbox infer -t none --save
 aedg_metadata generate public_employment -d public --bbox infer -t specify --save
-#aedg_metadata generate public_fuel_prices -d public --bbox infer -t specify --save
-#aedg_metadata generate public_monthly_generation -d public --bbox infer --save
+aedg_metadata generate public_fuel_prices -d public --bbox infer -t specify --save
+aedg_metadata generate public_monthly_generation -d public --bbox infer --save
+aedg_metadata generate public_rates -d public --bbox infer -t none --save  # change this!!
 aedg_metadata generate public_populations_ages_sexes -d public --bbox infer -t specify --save
-#aedg_metadata generate public_transportation -d public --bbox infer -t specify --save
-#aedg_metadata generate public_yearly_generation -d public --bbox infer --save
+aedg_metadata generate public_taxes -d public --bbox infer -t specify --save
+aedg_metadata generate public_transportation -d public --bbox infer -t specify --save
+aedg_metadata generate public_yearly_generation -d public --bbox infer --save
 
 # Gather keywords/topics together into registry file
 python src/aedg_metadata/scripts/keywords_to_registry.py
