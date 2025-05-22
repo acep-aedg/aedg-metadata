@@ -152,7 +152,7 @@
                     },
                     {
                         "name": "name",
-                        "long_name": "Community name",
+                        "long_name": "Community Name",
                         "description": "Name of the community",
                         "type": "string",
                         "nullable": false,
@@ -172,7 +172,7 @@
                         "description": "Generation capacity represents the maximum amount of electricity that can be generated at any given time dependent on certain conditions",
                         "type": "number",
                         "nullable": true,
-                        "unit": "Megawatts"
+                        "unit": "MW"
                     },
                     {
                         "name": "fuel_type",

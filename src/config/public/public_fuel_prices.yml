@@ -36,15 +36,6 @@ resource:
         resolutionUnit: month
         alignment: null
         aggregationType: null
-  fields: # list of column names in the dataset linking to fields.csv registry
-    - fips_code
-    - name
-    - price
-    - fuel_type
-    - price_type
-    - source
-    - reporting_season
-    - reporting_year
   primaryKey: # list of the fields that uniquely identifies each row in the table
     - fips_code
     - reporting_season

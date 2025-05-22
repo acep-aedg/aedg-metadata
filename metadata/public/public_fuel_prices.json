@@ -170,7 +170,7 @@
                     },
                     {
                         "name": "name",
-                        "long_name": "Community name",
+                        "long_name": "Community Name",
                         "description": "Name of the community",
                         "type": "string",
                         "nullable": false,
@@ -182,7 +182,7 @@
                         "description": "Retail price of fuel, expressed as U. S. Dollars (USD) per gallon. Prices are \"point in time\" as reported by local vendors and contacts.",
                         "type": "number",
                         "nullable": true,
-                        "unit": "USD per gallon"
+                        "unit": "USD/gal"
                     },
                     {
                         "name": "fuel_type",
@@ -202,7 +202,7 @@
                     },
                     {
                         "name": "source",
-                        "long_name": "Source of fuel price data",
+                        "long_name": "Source of Fuel Price Data",
                         "description": "Name of reporting entity if surveyed, or DCRA if regionally averaged",
                         "type": "string",
                         "nullable": true,

@@ -29,10 +29,7 @@ resource:
         resolutionUnit: month
         alignment: null
         aggregationType: sum
-  fields: # list of column names in the dataset linking to fields.csv registry
-    - one
-    - two
-  primaryKey: # list of the fields that uniquely identifies each row in the table
+  primaryKey: # list of the fields that uniquely identifies each row in the table. Fields harvested from posted file.
     - one
   contributors: # who helped make the dataset
     - title: # name of a person (optional)

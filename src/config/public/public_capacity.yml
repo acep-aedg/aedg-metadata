@@ -34,13 +34,6 @@ resource:
   temporal:
     referenceDate: "2023-11-13"  # equivalent to as_of_date
     timeseries: null # is a list of possibly multiple time periods
-  fields: # column names
-    - fips_code
-    - name
-    - grid
-    - capacity_mw
-    - fuel_type
-    - year
   primaryKey: # An array of fields that uniquely identifies each row in the table
     - grid
     - fuel_type

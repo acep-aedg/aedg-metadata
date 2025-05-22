@@ -109,7 +109,7 @@
                     },
                     {
                         "name": "name",
-                        "long_name": "Community name",
+                        "long_name": "Community Name",
                         "description": "Name of the community",
                         "type": "string",
                         "nullable": false,

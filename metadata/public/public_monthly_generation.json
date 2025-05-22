@@ -160,7 +160,7 @@
                     },
                     {
                         "name": "name",
-                        "long_name": "Community name",
+                        "long_name": "Community Name",
                         "description": "Name of the community",
                         "type": "string",
                         "nullable": false,
@@ -177,10 +177,10 @@
                     {
                         "name": "net_generation_mwh",
                         "long_name": "Net Generation (MWh)",
-                        "description": "Net electrical generation aggregated by grid",
+                        "description": "Net electrical generation as Megawatt Hour aggregated by grid",
                         "type": "number",
                         "nullable": true,
-                        "unit": "Megawatt Hour"
+                        "unit": "MWh"
                     },
                     {
                         "name": "fuel_type",

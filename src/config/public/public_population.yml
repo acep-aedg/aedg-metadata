@@ -24,11 +24,6 @@ resource:
   temporal:
     referenceDate: "2020-01-01"  # equivalent to as_of_date
     timeseries: null # is a list of possibly multiple time periods
-  fields: # list of column names in the dataset linking to fields.csv registry
-    - fips_code
-    - name
-    - total_population
-    - year
   primaryKey: # list of the fields that uniquely identifies each row in the table
     - fips_code
     - year
