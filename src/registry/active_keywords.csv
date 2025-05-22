@@ -1,6 +1,7 @@
 attribute,word_or_phrase
 keyword,EIA Form 923
 keyword,Power Cost Equalization (PCE)
+keyword,age
 keyword,airport
 keyword,barge
 keyword,census
@@ -8,6 +9,7 @@ keyword,coastal
 keyword,community
 keyword,dock
 keyword,electricity
+keyword,employment
 keyword,ferry
 keyword,fuel type
 keyword,gasoline
@@ -15,9 +17,11 @@ keyword,generation
 keyword,grid
 keyword,harbor
 keyword,heating fuel
+keyword,population conditions
 keyword,power plant
 keyword,report
 keyword,road
+keyword,sex
 keyword,ship
 keyword,survey
 keyword,total population

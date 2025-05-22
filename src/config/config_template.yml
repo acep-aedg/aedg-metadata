@@ -6,7 +6,7 @@ resource:
   description: | # Description of what this dataset is and what it is doing here
     .
   path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities_monthly_generation.csv" # link to dataset in GitHub
-  keywords: # list of keywords and short phrases, limit 10
+  keywords: # list of keywords and short phrases
     - one
     - two
   topics: # 1-2 broad topics for display in AEDG (which not all datasets need?)

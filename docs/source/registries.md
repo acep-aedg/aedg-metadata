@@ -6,26 +6,24 @@ AEDG Metadata generation borrows the concept of registries from Friendly Data an
 
 ## Fields
 
-Within Frictionless metadata, fields are equivalent to a data dictionary and are nestled within the resource's schema. OEMetadata added a few attributes to the basic Frictionless field. `Fields` was originally implemented as a YAML file (like in Friendly Data) but there are so darn many of them, that it because easier to manage in a CSV file. An alternative data dictionary could also be used to restrict the number of definitions in a file to make it easier to manage; that is triggered with `--data-dictionary` or `-dd` followed by the dictionary file name.
+Within Frictionless metadata, fields are equivalent to a data dictionary and are nestled within the resource's schema. OEMetadata added a few attributes to the basic Frictionless field. The `Fields` registry is implemented as a CSV file because of its length. Alternatively, a data dictionary specific to the data can be specified to restrict the number of definitions, making it easier to manage; that is triggered with `--data-dictionary` or `-dd` followed by the dictionary file name.
 
-Field names can be duplicated between files with different definitions depending on the file context. For instance, `fips_code` can mean the Community or the Borough FIPS code depending. To disambiguate between these, `fields.csv` or the data dictionary file can have a column to designate which definition should be associated with which file.
+The definition of a `field` is usually constant but sometimes can depend on the context of the file. For instance, the primary meaning of `fips_code` is for a place (Community) but it could also be a Borough (county) FIPS code depending on the file. To disambiguate between these, the `file` column in `fields.csv` or the data dictionary file is marked "default" to indicate the primary meaning, or marked with the filename to indicate the secondary meaning. The code identifies the correct definition and inserts it into the metadata.
 
 Several of the field attributes in OEMetadata refer to the Open Energy Ontology to link the field to a specific definition. We are not using those fields.
 
 Field attributes are:
 
 - name (string)*: name of the field, lowercase alphanumeric characters or underscores
-- long_name (string)**: non-standard field for text labels to use within AEDG
-- description (string)**: text describing the field
+- long_name (string): non-standard field for text labels to use within AEDG
+- description (string): text describing the field
 - type(string)*: data type of the field (example: geometry(Point, 4326))
   - from [JSON](https://json-schema.org/understanding-json-schema/reference/type): array, boolean, integer, number, null, object, regular expressions, or string
 - nullable (boolean): specify that a column can be nullable. Defaults to True
-- unit (string)**: unit of a field. If it does not apply, use 'null'
+- unit (string): unit of a field. If it does not apply, use 'null'
 - file (string): name of the file in which the field appears as defined (not used in metadata)
 
 \* mandatory for OEMetadata
-
-** mandatory for AEDG
 
 ## Licenses
 

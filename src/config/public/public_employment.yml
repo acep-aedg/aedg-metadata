@@ -6,13 +6,15 @@ resource:
   description: | # Description of what this dataset is and what it is doing here
     The number of employed residents and the number of unemployment insurance claimants for each community. Data are available for 2001 to 2016.
   path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_employment.csv" # link to dataset in GitHub
-  keywords: # list of keywords and short phrases, limit 10
+  keywords:
     - employment
     - community
-  topics: # 1-2 broad topics for display in AEDG (which not all datasets need?)
+  topics:
     - Social
   publisher: acep
   sources: # list of directory names in https://github.com/acep-aedg/aedg-etl-2024/tree/main/data-sources to get source.yml
+    - dcra.communities
+    - dol.places
     - dol.employment
   licenses: # list of keys in the license.yml registry
     - CC-SA-4.0
@@ -22,7 +24,13 @@ resource:
     crs: OGC:CRS84
   temporal:
     referenceDate: "2016"  # equivalent to as_of_date
-    timeseries: null # is a list of possibly multiple time periods
+    timeseries:
+      - start: "2001"
+        end: "2016"
+        resolutionValue: "1"
+        resolutionUnit: year
+        alignment: centre
+        aggregationType: current
   primaryKey: # list of the fields that uniquely identifies each row in the table
     - fips_code
   contributors: # who helped make the dataset
