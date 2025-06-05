@@ -10,6 +10,10 @@
 
 #### [OEMetadata Template](https://github.com/OpenEnergyPlatform/oemetadata/blob/develop/oemetadata/latest/template.json)
 
+Hülk, Ludwig, Jonas Huber, Christian Hofmann, and Christoph Muschner. “Open Energy Family - Open Energy Metadata (OEMetadata).” Python, January 2025. https://github.com/OpenEnergyPlatform/oemetadata.
+
+Hülk, Ludwig, Jonas Huber, Christian Hofmann, and Christoph Muschner. “Open Energy Metadata (OEMetadata),” March 13, 2025. https://doi.org/10.5281/zenodo.15019562.
+
 ### Description
 
 [Open Energy Platform](https://openenergyplatform.org/), based in Germany, has a catalog of data that can be used for energy modeling. To ensure reusability of these data, they defined a metadata standard. We chose to use this standard because:

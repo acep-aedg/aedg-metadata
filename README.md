@@ -9,7 +9,11 @@ A fundamental feature of the newly revised Alaska Energy Data Gateway (AEDG) is 
 
 To standardize production of this multitude of files, we have implemented a command line
 tool written in Python. This tool utilizes the [OEMetadata standard](#oemetadata-target),
-an extension of [Frictionless Data Packages](#datapackage-target).
+an extension of [Frictionless Data Packages](#datapackage-target):
+
+Hülk, Ludwig, Jonas Huber, Christian Hofmann, and Christoph Muschner. “Open Energy Family - Open Energy Metadata (OEMetadata).” Python, January 2025. https://github.com/OpenEnergyPlatform/oemetadata.
+
+Hülk, Ludwig, Jonas Huber, Christian Hofmann, and Christoph Muschner. “Open Energy Metadata (OEMetadata),” March 13, 2025. https://doi.org/10.5281/zenodo.15019562.
 
 ## Installation
 
