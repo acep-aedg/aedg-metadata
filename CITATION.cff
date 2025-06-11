@@ -36,7 +36,7 @@ abstract: >-
   To standardize production of this multitude of files, we
   have implemented a command line tool written in Python.
   This tool utilizes the OEMetadata standard, an extension
-  of Frictionless Data Packages.   This project was built with
+  of Frictionless Data Packages. This project was built with
   support from State of Alaska capital appropriations for the
   Alaska Energy Data Gateway.
 license: MIT
