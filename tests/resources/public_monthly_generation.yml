@@ -1,6 +1,6 @@
 resource:
   name: "public_monthly_generation"
-  title: "Monthly electrical generation by community"
+  title: "Monthly Electrical Generation by Community"
   summary: |
      This dataset is monthly electrical generation aggregated by grid and associated with every community connected to the grid. It summarizes the amount of electrical power produced for a community and the fuels that were used to generate it.
   description: |
@@ -26,7 +26,7 @@ resource:
     - dol.places
     - acep.es_monthly_generation
   licenses:
-    - CC-SA-4.0
+    - CC-BY-4.0
   spatial:
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]

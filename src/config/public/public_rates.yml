@@ -23,7 +23,7 @@ resource:
     - dol.places
     - acep.es_annual_sales
   licenses:
-    - CC-SA-4.0
+    - CC-BY-4.0
   spatial:
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]

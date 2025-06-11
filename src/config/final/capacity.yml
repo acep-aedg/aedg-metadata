@@ -1,6 +1,6 @@
 resource:
   name: "capacity"
-  title: "Yearly electrical generation capacity by grid"
+  title: "Yearly Electrical Generation Capacity by Grid"
   summary: |
     This dataset is the electrical generation capacity, or nameplate capacity, of power plants summed over the grid for the most recent year available. It summarizes the maximum amount of electrical power that could be generated at any given time classified by fuels that would be used to generate it. This is a normalized table intended for internal use within the AEDG database.
   description: |
@@ -23,7 +23,7 @@ resource:
   sources:
     - acep.es_infrastructure
   licenses:
-    - CC-SA-4.0
+    - CC-BY-4.0
   spatial:
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]

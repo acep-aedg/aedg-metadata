@@ -156,10 +156,10 @@ class AedgOemetadata:
         resource["path"] = file_path
         if file_path.endswith(".csv"):
             resource["type"] = "table"
-            resource["format"] = "CSV"
+            resource["format"] = "csv"
         if file_path.endswith(".geojson"):  # I don't know if OEMetadata does this
             resource["type"] = "geospatial"
-            resource["format"] = "GEOJOSN"
+            resource["format"] = "geojson"
 
         # check that file name is consistent with data package name and
         assert file_path.split('/')[-1].split('.')[0] == self.config["resource"]["name"]

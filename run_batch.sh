@@ -12,7 +12,7 @@
 
 # normalized tables:
 # final	boroughs.geojson
-#aedg_metadata generate capacity -d final --bbox infer --time specify --save
+aedg_metadata generate capacity -d final --bbox infer --time specify --save
 # final	communities.geojson
 # final	communities_grids.csv
 # final	communities_legislative_districts.csv
@@ -23,16 +23,16 @@
 # final	fuel_prices.csv
 # final	grids.csv
 # final	house_districts.geojson
-#aedg_metadata generate monthly_generation -d final --bbox infer --time specify --save
+aedg_metadata generate monthly_generation -d final --bbox infer --time specify --save
 # final	populations.csv
 # final	populations_ages_sexes.csv
 # final	regional_corporations.geojson
 # final	reporting_entities.csv
 # final	senate_districts.geojson
 # final	taxes.csv
-#aedg_metadata generate transportation -d final --bbox infer --time specify --save
+aedg_metadata generate transportation -d final --bbox infer --time specify --save
 # final	village_corporations.geojson
-#aedg_metadata generate yearly_generation -d final --bbox infer --time specify --save
+aedg_metadata generate yearly_generation -d final --bbox infer --time specify --save
 
 # denormalized tables for the data explorer
 aedg_metadata generate public_capacity -d public --bbox infer --time specify --save

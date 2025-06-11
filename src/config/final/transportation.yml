@@ -1,6 +1,3 @@
-# Two notes on transportation
-# 1. data model includes a column for "as of date", which is currently encoded in the metadata also
-# 2. boolean values are "t" and "f", which is weird. Which is how dump from database encodes it
 resource:
   name: transportation # Filename stub
   title: Community Transportation Summary  # Dataset title
@@ -26,7 +23,7 @@ resource:
     - dcra.transportation
     - census.gazetteer
   licenses: # list of keys in the license.yml registry
-    - CC-SA-4.0
+    - CC-BY-4.0
   spatial:
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]

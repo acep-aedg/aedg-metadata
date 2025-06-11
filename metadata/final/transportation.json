@@ -1,7 +1,7 @@
 {
     "@context": "",
     "name": "transportation",
-    "title": "Transportation",
+    "title": "Community Transportation Summary",
     "description": "Summary of the types of transportation available to each community. This is a normalized table intended for internal use within the AEDG database.\n",
     "@id": "",
     "resources": [
@@ -11,7 +11,7 @@
             "topics": [
                 "Infrastructure"
             ],
-            "title": "Transportation",
+            "title": "Community Transportation Summary",
             "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/final/transportation.csv",
             "description": "Summary of the types of transportation available to each community. Includes information on airports, roads, the state ferry, harbors and docks, coastal status, and cargo barge. The price a community pays for energy depends significantly on the transportation options available for fuel and construction materials.\n",
             "languages": [
@@ -28,7 +28,7 @@
                 "dock",
                 "coastal"
             ],
-            "publicationDate": "2025-05-16",
+            "publicationDate": "2025-06-11",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -82,10 +82,10 @@
             ],
             "licenses": [
                 {
-                    "name": "CC-SA-4.0",
-                    "title": "Creative Commons Attribution-ShareAlike 4.0 International",
-                    "path": "https://creativecommons.org/licenses/by-sa/4.0/",
-                    "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\n",
+                    "name": "CC-BY-4.0",
+                    "title": "Creative Commons Attribution 4.0 International",
+                    "path": "https://creativecommons.org/licenses/by/4.0/",
+                    "instruction": "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.\n",
                     "attribution": "Alaska Center for Energy and Power, University of Alaska Fairbanks"
                 }
             ],
@@ -95,7 +95,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-16",
+                    "date": "2025-06-11",
                     "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
                     "comment": "1. Identified data source and integrated it into the data pipeline.\n2. Joined transportation data with community FIPS codes to create this table\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -105,21 +105,21 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-05-16",
+                    "date": "2025-06-11",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
                     "path": "https://www.uaf.edu/acep/"
                 }
             ],
             "type": "table",
-            "format": "CSV",
+            "format": "csv",
             "encoding": "",
             "schema": {
                 "fields": [
                     {
                         "name": "community_fips_code",
                         "long_name": "Community FIPS Code",
-                        "description": "Communities are identified by a 5-digit Federal Information Processing Series (FIPS) codes, formerly referred to as FIPS55, assigned and maintained by the Census Bureau",
+                        "description": "5-digit Federal Information Processing Series (FIPS) code identifier for places, assigned and maintained by the Census Bureau",
                         "type": "string",
                         "nullable": false,
                         "unit": null
@@ -182,15 +182,15 @@
                     },
                     {
                         "name": "description",
-                        "long_name": "Transportation description",
-                        "description": "Narrative description of the transportation situtation for the community",
+                        "long_name": "Description",
+                        "description": "Narrative description",
                         "type": "string",
                         "nullable": true,
                         "unit": null
                     },
                     {
                         "name": "as_of_date",
-                        "long_name": "Date Updated",
+                        "long_name": "As of Date",
                         "description": "When the transportation dataset last updated",
                         "type": "string",
                         "nullable": true,
