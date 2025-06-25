@@ -282,12 +282,27 @@ class AedgOemetadata:
         self.data_package["resources"][0] = resource
 
     def add_sources(self) -> None:
-        """Fill in documentation of the original sources either locally or in ETL pipeline."""
+        """Fill in documentation of the original sources define either locally or in the ETL pipeline."""
 
+        # First test to see if any sources are defined. There might not be any.
+        try:
+            source_tags = self.config["resource"]["sources"]
+        except KeyError:
+            # there are no sources
+            self.data_package["resources"][0].pop('sources', None)
+            return
+
+        # Then go through each source and transfer info in data package.
         all_sources = []
-        for source_tag in self.config["resource"]["sources"]:
-            with (self.data_source / source_tag / "source.yml").open() as stream:
-                source = yaml.safe_load(stream)
+        for source_tag in source_tags:
+            if type(source_tag) is dict:
+                # a locally defined source, but it must be configured like the ones in the ETL pipeline
+                # meaning that the key of the dictionary must be "metadata"
+                assert "metadata" in source_tag
+                source = source_tag
+            else:
+                with (self.data_source / source_tag / "source.yml").open() as stream:
+                    source = yaml.safe_load(stream)
             all_licenses = []
             for license_tag in source['metadata']["sourceLicenses"]:
                 if license_tag:

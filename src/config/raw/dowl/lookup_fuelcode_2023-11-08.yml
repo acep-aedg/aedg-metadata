@@ -1,0 +1,51 @@
+resource:
+  name: lookup_fuelcode_2023-11-08
+  title: Lookup Table of Fuel Codes
+  summary: | # Short version of the description to appear in data explorer list
+    A lookup table of translations of fuel type codes to labels.
+  description: | # Description of what this dataset is and what it is doing here
+    This lookup table provides descriptive labels for the two or three letter alphanumeric energy source (fuel) codes that are reported to the Energy Information Agency (EIA). For instance 'SUN' is 'Solar' and 'DFO' is 'Distillate Fuel Oil'.
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_fuelcode_2023-11-08.csv" # link to dataset in GitHub
+  keywords: # list of keywords and short phrases
+    - lookup
+    - definition
+    - code
+    - fuel
+    - electrical generation
+  topics: # 1-2 broad topics for display in AEDG
+    - Electricity
+  publisher: acep
+  sources:
+    - metadata:
+        title: Energy Sources
+        authors:
+          - U.S. Energy Information Administration (EIA)
+        description: |
+          Form EIA 860 sometimes represents the energy sources associated with generators
+          by using the abbreviations and/or groupings in Energy Sources table so they are listed on
+          page 10 of Appendix C, which describes the data collection methods.
+        path: https://www.eia.gov/electricity/monthly/pdf/AppendixC.pdf
+        sourceLicenses:
+          - public-domain
+  licenses: # list of keys in the license.yml registry
+    - CC-BY-4.0
+  primaryKey: # list of the fields that uniquely identifies each row in the table. Fields harvested from posted file.
+    - fuel_type_code
+  contributors:
+    - title: Neil McMahon
+      organization: dowl
+      roles:
+        - DataCollector
+      date: 2023-11-08
+      object: Alaska Energy Statistics Tables
+      comment: |
+        First pulled data from the original sources, and compiled, corrected, harmonized, transformed it into Excel Workbooks as annual datasets 2015-2021. This process required a collection of lookup tables for elements such as power plants, power plant operators, sales reporting entities, and grids. These lookup tables were updated in the spring of 2025.
+    - organization: acep
+      roles:
+        - DataCurator
+      date: now
+      object:
+      comment: |
+        1. Contracted Neil McMahon to produce the 2015-2021 Workbooks, and then posted them in GitHub for distribution.
+        2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP.
+        3. Translated tabs in the Excel workbook of lookup tables into CSV files.
