@@ -1,0 +1,50 @@
+resource:
+  name: lookup_grids_2025-04-17
+  title: Lookup Table of Electrical Grids
+  summary: | # Short version of the description to appear in data explorer list
+    A lookup table of interties to track the development of electrical grids over time, organized by community.
+  description: | # Description of what this dataset is and what it is doing here
+    This lookup table describes how communities are connected to electricity generation by grids in order to aggregate data from the U.S. Energy Information Administration (EIA) and the State of Alaska's Power Cost Equalization (PCE) program. Each unique identifier of interties defines a geographic area and is time bound. In some cases, grids have expanded to provide service to nearby communities; in this case, the original intertie in this table has an end date, and a new intertie is created. When communities are connected, sometimes the powerhouse of one community is moved to standby mode or entirely new generation is added onto the grid. It also means that generation and sales reporting may change with the expansion. Some areas have particularly complicated reporting even though there is a single utility. For instance, Prince of Wales Island has multiple communities. Over the years, the grid that began in Craig has grown to intertie the other communities. Each of these communities reports to the PCE program separately despite the fact that generation sources are now shared. Additionally, there are multiple types and sources of generation, such as hydro and diesel, that are spread across the island. These generating units report differently to PCE versus EIA. This table was manually created and extended with publicly available information.
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_grids_2025-04-17.csv" # link to dataset in GitHub
+  keywords: # list of keywords and short phrases
+    - lookup
+    - electrical grid
+    - intertie
+    - electrical generation
+  topics: # 1-2 broad topics for display in AEDG
+    - Electricity
+  publisher: acep
+  licenses: # list of keys in the license.yml registry
+    - CC-BY-4.0
+  temporal:
+    referenceDate: "2025-04-17"  # equivalent to as_of_date
+    timeseries:  # is a list of possibly multiple time periods
+      - start: "1985"
+        end: "2024"
+        resolutionValue: "1"
+        resolutionUnit: year
+        alignment: null
+        aggregationType: null
+  primaryKey: # list of the fields that uniquely identifies each row in the table. Fields harvested from posted file.
+    - community
+    - grid_id
+  contributors:
+    - title: Neil McMahon
+      organization: dowl
+      roles:
+        - DataCollector
+      date: 2024-02-23
+      object: Alaska Energy Statistics Tables
+      comment: |
+        First pulled data from the original sources, and compiled, corrected, harmonized, transformed it into Excel Workbooks as annual datasets 2011-2021. This process required a collection of lookup tables for elements such as power plants, power plant operators, sales reporting entities, and grids. These lookup tables were updated in the spring of 2025.
+    - organization: acep
+      roles:
+        - DataCurator
+      date: now
+      object:
+      comment: |
+        1. Contracted Neil McMahon to produce the 2011-2021 Workbooks, and then posted them in GitHub for distribution.
+        2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP.
+        3. Translated tabs in the Excel workbook of lookup tables into CSV files.
+        4. Reorganized `lookup_interties_2024-02-23` to indicate when each community is connected to each grid.
+      path: https://acep-uaf.github.io/ak-energy-statistics-2011_2021/

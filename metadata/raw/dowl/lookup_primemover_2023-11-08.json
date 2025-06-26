@@ -1,19 +1,19 @@
 {
     "@context": "",
-    "name": "lookup_fuelcode_2023-11-08",
-    "title": "Lookup Table of Fuel Codes",
-    "description": "A lookup table of translations of fuel type codes to labels.\n",
+    "name": "lookup_primemover_2023-11-08",
+    "title": "Lookup Table of Prime Movers",
+    "description": "A lookup table of translations of prime mover codes to labels.\n",
     "@id": "",
     "resources": [
         {
             "@id": "",
-            "name": "lookup_fuelcode_2023-11-08",
+            "name": "lookup_primemover_2023-11-08",
             "topics": [
                 "Electricity"
             ],
-            "title": "Lookup Table of Fuel Codes",
-            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_fuelcode_2023-11-08.csv",
-            "description": "This lookup table provides descriptive labels for the two or three letter alphanumeric energy source (fuel) codes that are reported to the Energy Information Agency (EIA). For instance 'SUN' is 'Solar' and 'DFO' is 'Distillate Fuel Oil'.\n",
+            "title": "Lookup Table of Prime Movers",
+            "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_primemover_2023-11-08.csv",
+            "description": "This lookup table provides descriptive labels for the two letter prime mover codes that are reported to the Energy Information Agency (EIA). A prime mover converts energy from fuel into mechanical energy to drive an electric generator. For instance 'PV' is 'Photovoltaic'.\n",
             "languages": [
                 "en-US"
             ],
@@ -21,7 +21,7 @@
                 "lookup",
                 "definition",
                 "code",
-                "fuel",
+                "prime mover",
                 "electrical generation"
             ],
             "publicationDate": "2025-06-26",
@@ -37,7 +37,7 @@
                     "authors": [
                         "U.S. Energy Information Administration (EIA)"
                     ],
-                    "description": "Form EIA 860 sometimes represents the energy sources associated with generators\nusing the abbreviations and/or groupings as they are listed in the Energy Sources table on\npage 10 of Appendix C, which describes the data collection methods.\n",
+                    "description": "Form EIA 860 sometimes represents a generator\u2019s prime mover by using the abbreviations as they are listed in the Prime Movers table on on page 9 of Appendix C, which describes the data collection methods.\n",
                     "path": "https://www.eia.gov/electricity/monthly/pdf/AppendixC.pdf",
                     "sourceLicenses": [
                         {
@@ -97,24 +97,24 @@
             "schema": {
                 "fields": [
                     {
-                        "name": "fuel_type_code",
-                        "long_name": "Fuel Type Code",
-                        "description": "2 or 3 letter alphanumeric code used by the Energy Information Administration to identify energy sources for electricity generation",
+                        "name": "prime_mover_code",
+                        "long_name": "Prime Mover Code",
+                        "description": "2  letter alphanumeric code used by the Energy Information Administration to identify the prime mover of electricity generation",
                         "type": "string",
                         "nullable": false,
                         "unit": null
                     },
                     {
-                        "name": "fuel_type_definition",
-                        "long_name": "Fuel Type Definition",
-                        "description": "Label for the 2 or 3 letter alphanumeric code used by the Energy Information Administration to identify energy sources for electricity generation",
+                        "name": "prime_mover_definition",
+                        "long_name": "Prime Mover Definition",
+                        "description": "Label for the 2 letter alphanumeric code used by the Energy Information Administration to identify prime movers of electricity generation",
                         "type": "string",
                         "nullable": true,
                         "unit": null
                     }
                 ],
                 "primaryKey": [
-                    "fuel_type_code"
+                    "prime_mover_code"
                 ]
             },
             "dialect": {

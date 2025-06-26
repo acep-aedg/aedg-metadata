@@ -27,11 +27,11 @@ resource:
         - public-domain
   licenses: # list of keys in the license.yml registry
     - CC-BY-4.0
-  spatial:  # optional if -bbox none
+  spatial:  # optional if `-bbox none`
     name: Alaska
     boundingBox: [-187.55, 51.21, -130.0, 71.35]
     crs: OGC:CRS84
-  temporal:  # optional if --
+  temporal:  # optional if `-time none`
     referenceDate: "2025-01-01"  # equivalent to as_of_date
     timeseries:  # is a list of possibly multiple time periods
       - start: "2021-01"

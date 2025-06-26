@@ -4,12 +4,13 @@
 
 # raw tables
 aedg_metadata generate lookup_fuelcode_2023-11-08 -d raw/dowl --bbox none --time none --data-dictionary raw_dowl_data_dictionary.csv --save
-# raw/dowl	lookup_communities_2024-02-23.csv
-# raw/dowl	lookup_grids_2025-04-17.csv
-# raw/dowl	lookup_interties_2024-02-23.csv
-# raw/dowl	lookup_operator_2025-03-07.csv
-# raw/dowl	lookup_plants_2025-03-10.csv
-# raw/dowl	lookup_salesreport_2025-03-03.csv
+aedg_metadata generate lookup_primemover_2023-11-08 -d raw/dowl --bbox none --time none --data-dictionary raw_dowl_data_dictionary.csv --save
+aedg_metadata generate lookup_plants_2025-03-10 -d raw/dowl --bbox infer --time none --data-dictionary raw_dowl_data_dictionary.csv --save
+aedg_metadata generate lookup_salesreport_2025-03-03 -d raw/dowl --bbox infer --time none --data-dictionary raw_dowl_data_dictionary.csv --save
+aedg_metadata generate lookup_interties_2024-02-23 -d raw/dowl --bbox none --time specify --data-dictionary raw_dowl_data_dictionary.csv --save
+aedg_metadata generate lookup_grids_2025-04-17 -d raw/dowl --bbox none --time specify --data-dictionary raw_dowl_data_dictionary.csv --save
+aedg_metadata generate lookup_operator_2025-03-07 -d raw/dowl --bbox none --time none --data-dictionary raw_dowl_data_dictionary.csv --save
+aedg_metadata generate lookup_communities_2024-02-23 -d raw/dowl --bbox infer --time none --data-dictionary raw_dowl_data_dictionary.csv --save
 
 # normalized tables:
 # final	boroughs.geojson

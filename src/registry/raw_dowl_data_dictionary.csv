@@ -17,7 +17,7 @@ longitude,Community longitude,Longitude of the community,number,,degrees E,looku
 name,Community name,Name of the community,string,,null,lookup_communities_2024-02-23.csv
 pce_reporting_id,PCE accounting code,Six Digit Accounting code used by AEA for PCE reporters,integer,,null,lookup_communities_2024-02-23.csv
 aea_energy_region,AEA energy region,One of 11 regions defined by the Alaska Energy Authority for statistical and analysis purposes,string,,null,lookup_interties_2024-02-23.csv
-communities_intertied,Intertied communities,A comma or semicolon list of the communities connected by the intertie,string,,null,lookup_interties_2024-02-23.csv
+communities_intertied,Intertied communities,A comma or semicolon separated list of the communities connected by the intertie,string,,null,lookup_interties_2024-02-23.csv
 current_id,Intertie id,The id of the intertie in its most recent form,,,,lookup_interties_2024-02-23.csv
 intertie_id,Intertie id,"The Intertie id consists of a three digit intertie number followed by the four digit year when the intertie was expanded. If the last four digits are 0000, then the intertie has not been expanded.",string,,null,lookup_interties_2024-02-23.csv
 intertie_unique_id_name,Intertie name,Name of the intertie derived from a the first community (i.e. the index community) or the name of the geographic area,string,,null,lookup_interties_2024-02-23.csv
@@ -71,3 +71,11 @@ reporting_name,Reporting name,Name of the entity reporting the sales,string,,nul
 sales_reporting_id,Reporting id,Unique identifier generated for this table to represent the entity reporting the sales,string,,null,lookup_salesreport_2025-03-03.csv
 fuel_type_code,Fuel Type Code,2 or 3 letter alphanumeric code used by the Energy Information Administration to identify energy sources for electricity generation,string,FALSE,null,lookup_fuelcode_2023-11-08.csv
 fuel_type_definition,Fuel Type Definition,Label for the 2 or 3 letter alphanumeric code used by the Energy Information Administration to identify energy sources for electricity generation,string,TRUE,null,lookup_fuelcode_2023-11-08.csv
+prime_mover_code,Prime Mover Code,2  letter alphanumeric code used by the Energy Information Administration to identify the prime mover of electricity generation,string,FALSE,null,lookup_primemover_2023-11-08.csv
+prime_mover_definition,Prime Mover Definition,Label for the 2 letter alphanumeric code used by the Energy Information Administration to identify prime movers of electricity generation,string,TRUE,null,lookup_primemover_2023-11-08.csv
+community,Community name,Name of the community,string,FALSE,null,lookup_grids_2025-04-17.csv
+grid_id,Grid Id,Three digit intertie number from the intertie table.,integer,FALSE,null,lookup_grids_2025-04-17.csv
+ak_grid_id,Intertie id,"The Intertie id consists of a three digit intertie number followed by the four digit year when the intertie was expanded. If the last four digits are 0000, then the intertie has not been expanded. From the intertie table.",string,TRUE,null,lookup_grids_2025-04-17.csv
+grid_name,Intertie name,Name of the intertie derived from a the first community (i.e. the index community) or the name of the geographic area.  From the intertie table.,string,TRUE,null,lookup_grids_2025-04-17.csv
+connection_year,Connection Year,The year when the community is connected to the grid. 0 indicates it was connected when record keeping began in 1985.,integer,TRUE,null,lookup_grids_2025-04-17.csv
+termination_year,Disconnection Year,The year when a community was disconnected from a grid in order to connect to a different grid. 9999 indicates the community was still connected when this table was created.,integer,TRUE,null,lookup_grids_2025-04-17.csv

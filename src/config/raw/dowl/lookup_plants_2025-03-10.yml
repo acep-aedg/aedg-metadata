@@ -1,42 +1,30 @@
 resource:
-  name: lookup_fuelcode_2023-11-08
-  title: Lookup Table of Fuel Codes
+  name: lookup_plants_2025-03-10
+  title: Lookup Table of Power Plants
   summary: | # Short version of the description to appear in data explorer list
-    A lookup table of translations of fuel type codes to labels.
+    A lookup table to cross reference power plant ids from EIA and PCE data sources.
   description: | # Description of what this dataset is and what it is doing here
-    This lookup table provides descriptive labels for the two or three letter alphanumeric energy source (fuel) codes that are reported to the Energy Information Agency (EIA). For instance 'SUN' is 'Solar' and 'DFO' is 'Distillate Fuel Oil'.
-  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_fuelcode_2023-11-08.csv" # link to dataset in GitHub
+    This lookup table cross references power plant ids between common sources of generation data: the U.S. Energy Information Administration (EIA) and the State of Alaska's Power Cost Equalization (PCE) program. Unless a utility/operator reports to the EIA, plants are not strictly identified. This makes it difficult to aggregate generation across a grid and/or the state. In this table, each Plant is uniquely identified by where the operator reports (PCE or EIA) and the intertie to which it provides power. This table was manually created by comparing the plant names, and extended with publicly available information.
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_plants_2025-03-10.csv" # link to dataset in GitHub
   keywords: # list of keywords and short phrases
     - lookup
-    - definition
-    - code
-    - fuel
+    - PCE
+    - EIA
+    - plants
     - electrical generation
   topics: # 1-2 broad topics for display in AEDG
     - Electricity
   publisher: acep
-  sources:
-    - metadata:
-        title: Energy Sources
-        authors:
-          - U.S. Energy Information Administration (EIA)
-        description: |
-          Form EIA 860 sometimes represents the energy sources associated with generators
-          using the abbreviations and/or groupings as they are listed in the Energy Sources table on
-          page 10 of Appendix C, which describes the data collection methods.
-        path: https://www.eia.gov/electricity/monthly/pdf/AppendixC.pdf
-        sourceLicenses:
-          - public-domain
   licenses: # list of keys in the license.yml registry
     - CC-BY-4.0
   primaryKey: # list of the fields that uniquely identifies each row in the table. Fields harvested from posted file.
-    - fuel_type_code
+    - ak_plant_id
   contributors:
     - title: Neil McMahon
       organization: dowl
       roles:
         - DataCollector
-      date: 2023-11-08
+      date: 2025-03-10
       object: Alaska Energy Statistics Tables
       comment: |
         First pulled data from the original sources, and compiled, corrected, harmonized, transformed it into Excel Workbooks as annual datasets 2011-2021. This process required a collection of lookup tables for elements such as power plants, power plant operators, sales reporting entities, and grids. These lookup tables were updated in the spring of 2025.
@@ -48,5 +36,5 @@ resource:
       comment: |
         1. Contracted Neil McMahon to produce the 2011-2021 Workbooks, and then posted them in GitHub for distribution.
         2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP.
-        3. Translated tabs in the Excel workbook of lookup tables into CSV files.
+        3. Translated tabs in the Excel workbook of lookup tables into CSV files. There are some problems with the variable types of codes because of the treatment of missing values by the Python script that did the extraction.
       path: https://acep-uaf.github.io/ak-energy-statistics-2011_2021/

@@ -1,16 +1,16 @@
 resource:
-  name: lookup_fuelcode_2023-11-08
-  title: Lookup Table of Fuel Codes
+  name: lookup_primemover_2023-11-08
+  title: Lookup Table of Prime Movers
   summary: | # Short version of the description to appear in data explorer list
-    A lookup table of translations of fuel type codes to labels.
+    A lookup table of translations of prime mover codes to labels.
   description: | # Description of what this dataset is and what it is doing here
-    This lookup table provides descriptive labels for the two or three letter alphanumeric energy source (fuel) codes that are reported to the Energy Information Agency (EIA). For instance 'SUN' is 'Solar' and 'DFO' is 'Distillate Fuel Oil'.
-  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_fuelcode_2023-11-08.csv" # link to dataset in GitHub
+    This lookup table provides descriptive labels for the two letter prime mover codes that are reported to the Energy Information Agency (EIA). A prime mover converts energy from fuel into mechanical energy to drive an electric generator. For instance 'PV' is 'Photovoltaic'.
+  path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_primemover_2023-11-08.csv" # link to dataset in GitHub
   keywords: # list of keywords and short phrases
     - lookup
     - definition
     - code
-    - fuel
+    - prime mover
     - electrical generation
   topics: # 1-2 broad topics for display in AEDG
     - Electricity
@@ -21,16 +21,14 @@ resource:
         authors:
           - U.S. Energy Information Administration (EIA)
         description: |
-          Form EIA 860 sometimes represents the energy sources associated with generators
-          using the abbreviations and/or groupings as they are listed in the Energy Sources table on
-          page 10 of Appendix C, which describes the data collection methods.
+          Form EIA 860 sometimes represents a generator’s prime mover by using the abbreviations as they are listed in the Prime Movers table on on page 9 of Appendix C, which describes the data collection methods.
         path: https://www.eia.gov/electricity/monthly/pdf/AppendixC.pdf
         sourceLicenses:
           - public-domain
   licenses: # list of keys in the license.yml registry
     - CC-BY-4.0
   primaryKey: # list of the fields that uniquely identifies each row in the table. Fields harvested from posted file.
-    - fuel_type_code
+    - prime_mover_code
   contributors:
     - title: Neil McMahon
       organization: dowl
