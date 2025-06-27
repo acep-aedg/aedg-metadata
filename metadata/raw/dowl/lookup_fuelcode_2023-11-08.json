@@ -77,7 +77,7 @@
                     ],
                     "date": "2025-06-27",
                     "object": null,
-                    "comment": "1. Contracted Neil McMahon to produce the 2011-2021 Workbooks, and then posted them in GitHub for distribution.\n2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP.\n3. Translated tabs in the Excel workbook of lookup tables into CSV files.\n",
+                    "comment": "1. Contracted Neil McMahon to produce the 2011-2021 Workbooks, and then posted them in GitHub for distribution.\n2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP. EIA codes did not change.\n3. Translated `LOOKUP Code tables` tab in the Excel workbook `Energy_Stats_Generation_Tables.xlsx` into CSV files split between fuel codes and prime movers.\n",
                     "path": "https://www.uaf.edu/acep/"
                 },
                 {
