@@ -24,7 +24,7 @@
                 "prime mover",
                 "electrical generation"
             ],
-            "publicationDate": "2025-06-26",
+            "publicationDate": "2025-06-27",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -75,7 +75,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-06-26",
+                    "date": "2025-06-27",
                     "object": null,
                     "comment": "1. Contracted Neil McMahon to produce the 2011-2021 Workbooks, and then posted them in GitHub for distribution.\n2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP.\n3. Translated tabs in the Excel workbook of lookup tables into CSV files.\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -85,7 +85,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-06-26",
+                    "date": "2025-06-27",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
                     "path": "https://www.uaf.edu/acep/"

@@ -4,7 +4,7 @@ resource:
   summary: | # Short version of the description to appear in data explorer list
     A lookup table to cross references all the identifiers of communities.
   description: | # Description of what this dataset is and what it is doing here
-    This lookup table cross references ids of communities from various sources. In the Energy Statistics Workbooks, community name is the primary identifier but string matching can be cumbersome, so geographic positions, census codes, PCE reporting ids, and GNIS identifiers are also included. For context, there is also Alaska Energy Authority (AEA) Energy Regions and Alaska Native Regional Corporations. Note: This table was not used as the basis for the set of communities used in the Alaska Energy Data Gateway v3.0 (AEDG).
+    This lookup table cross references ID of communities from various sources. In the Energy Statistics Workbooks, community name is the primary identifier but string matching can be cumbersome, so geographic positions, census codes, PCE reporting IDs, and GNIS identifiers are also included. For context, there is also Alaska Energy Authority (AEA) Energy Regions and Alaska Native Regional Corporations. Note: This table was not used as the basis for the set of communities used in the Alaska Energy Data Gateway v3.0 (AEDG).
   path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_communities_2024-02-23.csv" # link to dataset in GitHub
   keywords: # list of keywords and short phrases
     - lookup

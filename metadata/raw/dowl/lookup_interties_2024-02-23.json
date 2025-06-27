@@ -13,7 +13,7 @@
             ],
             "title": "Lookup Table of Interties",
             "path": "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/raw/dowl/lookup_interties_2024-02-23.csv",
-            "description": "This lookup table describes interties that connect electricity generation into grids to aggregate data from the U.S. Energy Information Administration (EIA) and the State of Alaska's Power Cost Equalization (PCE) program. Each unique identifier of interties defines a geographic area and is time bound. In some cases, grids have expanded to provide service to nearby communities; in this case, the original intertie in this table has an end date, and a new intertie is created. When communities are connected, sometimes the powerhouse of one community is moved to standby mode or entirely new generation is added onto the grid. It also means that generation and sales reporting may change with the expansion. Some areas have particularly complicated reporting even though there is a single utility. For instance, Prince of Wales Island has multiple communities. Over the years, the grid that began in Craig has grown to intertie the other communities. Each of these communities reports to the PCE program separately despite the fact that generation sources are now shared. Additionally, there are multiple types and sources of generation, such as hydro and diesel, that are spread across the island. These generating units report differently to PCE versus EIA. This table was manually created and extended with publicly available information.\n",
+            "description": "This lookup table describes interties that connect electricity generation into grids to aggregate data from the U.S. Energy Information Administration (EIA) and the State of Alaska's Power Cost Equalization (PCE) program. Each unique identifier of interties defines a geographic area and is time bound. In some cases, grids have expanded to provide service to nearby communities; in this case, the original intertie in this table has an end date, and a new intertie is created. When communities are connected, sometimes the powerhouse of one community is moved to standby mode or entirely new generation is added onto the grid. It also means that generation and sales reporting may change with the expansion. Some areas have particularly complicated reporting even though there is a single utility. For instance, Prince of Wales Island has multiple communities. Over the years, the grid that began in Craig has grown to intertie the other communities. Each of these communities reports to the PCE program separately despite the fact that generation sources are now shared. Additionally, there are multiple types and sources of generation, such as hydro and diesel, that are spread across the island. These generating units report differently to PCE versus EIA. This table was manually created and extended with publicly available information and used to derive the new table called `grids`.\n",
             "languages": [
                 "en-US"
             ],
@@ -23,7 +23,7 @@
                 "intertie",
                 "electrical generation"
             ],
-            "publicationDate": "2025-06-26",
+            "publicationDate": "2025-06-27",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -67,7 +67,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-06-26",
+                    "date": "2025-06-27",
                     "object": null,
                     "comment": "1. Contracted Neil McMahon to produce the 2011-2021 Workbooks, and then posted them in GitHub for distribution.\n2. Contracted Neil McMahon in the spring of 2025 to update the lookup tables so that future production of the Alaska Energy Statistics Tables could be performed internally at ACEP.\n3. Translated tabs in the Excel workbook of lookup tables into CSV files. There are some problems with the variable types of codes because of the treatment of missing values by the Python script that did the extraction.\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -77,7 +77,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-06-26",
+                    "date": "2025-06-27",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
                     "path": "https://www.uaf.edu/acep/"
@@ -90,15 +90,15 @@
                 "fields": [
                     {
                         "name": "intertie_id",
-                        "long_name": "Intertie id",
+                        "long_name": "Intertie ID",
                         "description": "The Intertie id consists of a three digit intertie number followed by the four digit year when the intertie was expanded. If the last four digits are 0000, then the intertie has not been expanded.",
                         "type": "string",
-                        "nullable": null,
+                        "nullable": false,
                         "unit": null
                     },
                     {
                         "name": "intertie_unique_id_name",
-                        "long_name": "Intertie name",
+                        "long_name": "Intertie Name",
                         "description": "Name of the intertie derived from a the first community (i.e. the index community) or the name of the geographic area",
                         "type": "string",
                         "nullable": null,
@@ -106,15 +106,15 @@
                     },
                     {
                         "name": "current_id",
-                        "long_name": "Intertie id",
+                        "long_name": "Current Intertie ID",
                         "description": "The id of the intertie in its most recent form",
-                        "type": null,
+                        "type": "string",
                         "nullable": null,
                         "unit": null
                     },
                     {
                         "name": "communities_intertied",
-                        "long_name": "Intertied communities",
+                        "long_name": "Intertied Communities",
                         "description": "A comma or semicolon separated list of the communities connected by the intertie",
                         "type": "string",
                         "nullable": null,
@@ -138,7 +138,7 @@
                     },
                     {
                         "name": "aea_energy_region",
-                        "long_name": "AEA energy region",
+                        "long_name": "AEA Energy Region",
                         "description": "One of 11 regions defined by the Alaska Energy Authority for statistical and analysis purposes",
                         "type": "string",
                         "nullable": null,
@@ -146,7 +146,7 @@
                     },
                     {
                         "name": "source",
-                        "long_name": "Information source",
+                        "long_name": "Information Source",
                         "description": "Source of the information about the intertie or the new connection",
                         "type": "string",
                         "nullable": null,
