@@ -8,11 +8,11 @@ resource:
   path: "https://raw.githubusercontent.com/acep-aedg/aedg-data-pond/refs/heads/main/data/public/public_communities.csv" # link to dataset in GitHub
   keywords:
     - community
-    - native corporation
+    - Alaska Native corporation
     - borough
     - census area
     - grid
-    - puma
+    - Public Use Microdata Areas (PUMAs)
   topics:
     - Social
     - Electricity
