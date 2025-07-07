@@ -80,3 +80,4 @@ property_tax_rev_usd,Property Tax Revenue,Propery tax revenue in U.S. Dollars (U
 total_rev_for_special_taxes_usd,Total Special Tax Revenue,Total special tax revenue in U.S. Dollars (USD) for either the community or the borough,integer,TRUE,USD,default
 did_community_report,Community Report,"Answers the question: Did the community report these taxes?  (""t"" for yes, and ""f"" for no)",boolean,TRUE,USD,default
 is_most_recent,Most Recent Taxes,"Answers the question: Are these the most recent values for these taxes?  (""t"" for yes, and ""f"" for no)",boolean,TRUE,USD,public_taxes.csv
+heating_degree_days,Heating Degree Days,"Heating degree days (HDD), defined in the U.S. as degrees F below 65 multiplied by duration in days, quanitifies energy needed to heat a building over a year's time",integer,TRUE,HDD,public_communities.csv
