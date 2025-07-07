@@ -28,6 +28,7 @@ resource:
     - census.pumas
     - dcra.economic_regions
     - dcra.pce_eligibility
+    - snap.heating_degree_days
   licenses: # list of keys in the license.yml registry
     - CC-BY-4.0
   spatial:
