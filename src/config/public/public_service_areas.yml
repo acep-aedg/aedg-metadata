@@ -1,0 +1,47 @@
+resource:
+  name: public_service_areas
+  title: Active Electric Utilities 
+  summary: | # Short version of the description to appear in data explorer list
+    List of active electric utilities regulated by the Regulatory Commission of Alaska. On each community summary page, the Alaska Energy Data Gateway displays the utility serving that community and a map of its service area.
+  description: | # Description of what this dataset is and what it is doing here
+    List of active electric utilities regulated by the Regulatory Commission of Alaska. On each community summary page, the Alaska Energy Data Gateway displays the utility serving that community and a map of its service area.
+  path: "https://github.com/acep-aedg/aedg-data-pond/raw/59fd2f01ebf9a8da68b26961716b2b124aa209fb/data/public/public_service_areas.csv" # link to dataset in GitHub
+  keywords:
+    - utility
+    - grid
+  topics:
+    - Electricity
+  publisher: acep
+  sources: # list of directory names in https://github.com/acep-aedg/aedg-etl-2024/tree/main/data-sources to get source.yml
+    - acep.electric_service_areas
+  licenses: # list of keys in the license.yml registry
+    - CC-BY-4.0
+  spatial:
+    name: Alaska
+    boundingBox: [-187.55, 51.21, -130.0, 71.35]
+    crs: OGC:CRS84
+  temporal:
+    referenceDate: "2025"  # equivalent to as_of_date
+    timeseries:
+      - start: "1965" # What should go here?
+        end: "2024"
+        resolutionValue: "1"
+        resolutionUnit: year
+        alignment: centre
+        aggregationType: sum
+  primaryKey: # list of the fields that uniquely identifies each row in the table
+    - cpcn_id
+  contributors: # who helped make the dataset
+    - organization: rca
+      roles:
+        - other
+      date: now
+      object: TODO
+      comment: TODO
+    - organization: acep
+      roles:
+        - DataCollector
+        - DataCurator
+      date: now
+      object: data via https://github.com/acep-aedg/aedg-etl-2024
+      comment: TODO
