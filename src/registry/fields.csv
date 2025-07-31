@@ -81,3 +81,6 @@ total_rev_for_special_taxes_usd,Total Special Tax Revenue,Total special tax reve
 did_community_report,Community Report,"Answers the question: Did the community report these taxes?  (""t"" for yes, and ""f"" for no)",boolean,TRUE,USD,default
 is_most_recent,Most Recent Taxes,"Answers the question: Are these the most recent values for these taxes?  (""t"" for yes, and ""f"" for no)",boolean,TRUE,USD,public_taxes.csv
 heating_degree_days,Heating Degree Days,"Heating degree days (HDD), defined in the U.S. as degrees F below 65 multiplied by duration in days, quanitifies energy needed to heat a building over a year's time",integer,TRUE,HDD,public_communities.csv
+cpcn_id,Certificate Number,"A CPCN (Certificate of Public Convenience & Necessity) number, also called a certificate number, denotes a unique CPCN/certificate assigned by the Regulatory Commission of Alaska.",integer,FALSE,null,public_service_areas.csv
+name,Certificate Name,"Name of the entity holding this certificate",string,FALSE,null,public_service_areas.csv
+url,Certificate URL,"Webpage on the Regulatory Commission of Alaska website with more information about the certificate",string,FALSE,null,public_service_areas.csv

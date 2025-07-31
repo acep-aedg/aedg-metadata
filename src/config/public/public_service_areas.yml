@@ -1,0 +1,52 @@
+resource:
+  name: public_service_areas
+  title: Active Electric Utilities 
+  summary: | # Short version of the description to appear in data explorer list
+    List of active electric utilities regulated by the Regulatory Commission of Alaska. On each community summary page, the Alaska Energy Data Gateway displays the utility serving that community and a map of its service area.
+  description: | # Description of what this dataset is and what it is doing here
+    List of active electric utilities regulated by the Regulatory Commission of Alaska. On each community summary page, the Alaska Energy Data Gateway displays the utility serving that community and a map of its service area.
+  path: "https://github.com/acep-aedg/aedg-data-pond/raw/refs/heads/main/data/public/public_service_areas.csv" # link to dataset in GitHub
+  keywords:
+    - utility
+    - electricity
+    - grid
+    - microgrids
+  topics:
+    - Electricity
+  publisher: acep
+  sources: # list of directory names in https://github.com/acep-aedg/aedg-etl-2024/tree/main/data-sources to get source.yml
+    - acep.electric_service_areas
+  licenses: # list of keys in the license.yml registry
+    - CC-BY-4.0
+  spatial:
+    name: Alaska
+    boundingBox: [-187.55, 51.21, -130.0, 71.35]
+    crs: OGC:CRS84
+  temporal:
+    # There is no date key in the csv. It doesn't really have a temporal resolution
+    referenceDate: "2025-07-30"  # equivalent to as_of_date
+    timeseries: null
+    #timeseries:
+     # - start: "1964" # What should go here?
+     #   end: "2025" # "As of" 2025 (can this be same as referenceDate?). Doesn't mean every service area was updated this year, or that all the data is up-to-date.
+        # Required by gen_meta.py
+     #   resolutionValue: null
+     #   resolutionUnit: null
+     #   alignment: null
+     #   aggregationType: null
+  primaryKey: # list of the fields that uniquely identifies each row in the table
+    - cpcn_id
+  contributors: # who helped make the dataset
+    - organization: rca
+      roles:
+        - other
+      date: now
+      object: data
+      comment: RCA publishes the service area for each utility on their website. RCA has the legal responsbility to set and approve utilities' service areas.
+    - organization: acep
+      roles:
+        - DataCollector
+        - DataCurator
+      date: now
+      object: data and metadata via https://acep-uaf.github.io/utility-service-areas/
+      comment: See https://acep-uaf.github.io/utility-service-areas/about.html
