@@ -12,16 +12,18 @@
                 "Electricity"
             ],
             "title": "Active Electric Utilities",
-            "path": "https://github.com/acep-aedg/aedg-data-pond/raw/59fd2f01ebf9a8da68b26961716b2b124aa209fb/data/public/public_service_areas.csv",
+            "path": "https://github.com/acep-aedg/aedg-data-pond/raw/refs/heads/main/data/public/public_service_areas.csv",
             "description": "List of active electric utilities regulated by the Regulatory Commission of Alaska. On each community summary page, the Alaska Energy Data Gateway displays the utility serving that community and a map of its service area.\n",
             "languages": [
                 "en-US"
             ],
             "keywords": [
                 "utility",
-                "grid"
+                "electricity",
+                "grid",
+                "microgrids"
             ],
-            "publicationDate": "2025-07-17",
+            "publicationDate": "2025-07-30",
             "context": {
                 "title": "Alaska Energy Data Gateway v3.0",
                 "homepage": "https://akenergygateway.alaska.edu/",
@@ -44,12 +46,8 @@
                 "referenceDate": "2025",
                 "timeseries": [
                     {
-                        "start": "1965",
-                        "end": "2024",
-                        "resolutionValue": "1",
-                        "resolutionUnit": "year",
-                        "alignment": "centre",
-                        "aggregationType": "sum"
+                        "start": "1964",
+                        "end": "2025"
                     }
                 ]
             },
@@ -81,9 +79,9 @@
                     "roles": [
                         "other"
                     ],
-                    "date": "2025-07-17",
-                    "object": "TODO",
-                    "comment": "TODO",
+                    "date": "2025-07-30",
+                    "object": "data",
+                    "comment": "RCA publishes the service area for each utility on their website. RCA has the legal responsbility to set and approve utilities' service areas.",
                     "path": "https://rca.alaska.gov/RCAWeb/Home.aspx"
                 },
                 {
@@ -92,9 +90,9 @@
                         "DataCollector",
                         "DataCurator"
                     ],
-                    "date": "2025-07-17",
-                    "object": "data via https://github.com/acep-aedg/aedg-etl-2024",
-                    "comment": "TODO",
+                    "date": "2025-07-30",
+                    "object": "data and metadata via https://acep-uaf.github.io/utility-service-areas/",
+                    "comment": "See https://acep-uaf.github.io/utility-service-areas/about.html",
                     "path": "https://www.uaf.edu/acep/"
                 },
                 {
@@ -102,7 +100,7 @@
                     "roles": [
                         "DataCurator"
                     ],
-                    "date": "2025-07-17",
+                    "date": "2025-07-30",
                     "object": "metadata via https://github.com/acep-aedg/aedg-metadata",
                     "comment": "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
                     "path": "https://www.uaf.edu/acep/"

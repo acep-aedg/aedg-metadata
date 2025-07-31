@@ -23,14 +23,16 @@ resource:
     boundingBox: [-187.55, 51.21, -130.0, 71.35]
     crs: OGC:CRS84
   temporal:
+    # There is no date key in the csv. It doesn't really have a temporal resolution
     referenceDate: "2025"  # equivalent to as_of_date
     timeseries:
       - start: "1964" # What should go here?
         end: "2025" # "As of" 2025 (can this be same as referenceDate?). Doesn't mean every service area was updated this year, or that all the data is up-to-date.
-        resolutionValue: "1"
-        resolutionUnit: year
-        alignment: centre
-        aggregationType: null # Not sure what this field means. Have seen values sum and current
+        # Required by gen_meta.py
+        resolutionValue: null
+        resolutionUnit: null
+        alignment: null
+        aggregationType: null
   primaryKey: # list of the fields that uniquely identifies each row in the table
     - cpcn_id
   contributors: # who helped make the dataset
@@ -38,11 +40,12 @@ resource:
       roles:
         - other
       date: now
-      object: RCA publishes the service area for each utility on their website. RCA has the legal responsbility to set and approve utilities' service areas.
+      object: data
+      comment: RCA publishes the service area for each utility on their website. RCA has the legal responsbility to set and approve utilities' service areas.
     - organization: acep
       roles:
         - DataCollector
         - DataCurator
       date: now
-      object: data via https://acep-uaf.github.io/utility-service-areas/
+      object: data and metadata via https://acep-uaf.github.io/utility-service-areas/
       comment: See https://acep-uaf.github.io/utility-service-areas/about.html
