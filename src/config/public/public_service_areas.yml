@@ -24,15 +24,16 @@ resource:
     crs: OGC:CRS84
   temporal:
     # There is no date key in the csv. It doesn't really have a temporal resolution
-    referenceDate: "2025"  # equivalent to as_of_date
-    timeseries:
-      - start: "1964" # What should go here?
-        end: "2025" # "As of" 2025 (can this be same as referenceDate?). Doesn't mean every service area was updated this year, or that all the data is up-to-date.
+    referenceDate: "2025-08-01"  # equivalent to as_of_date
+    timeseries: null
+    #timeseries:
+     # - start: "1964" # What should go here?
+     #   end: "2025" # "As of" 2025 (can this be same as referenceDate?). Doesn't mean every service area was updated this year, or that all the data is up-to-date.
         # Required by gen_meta.py
-        resolutionValue: null
-        resolutionUnit: null
-        alignment: null
-        aggregationType: null
+     #   resolutionValue: null
+     #   resolutionUnit: null
+     #   alignment: null
+     #   aggregationType: null
   primaryKey: # list of the fields that uniquely identifies each row in the table
     - cpcn_id
   contributors: # who helped make the dataset

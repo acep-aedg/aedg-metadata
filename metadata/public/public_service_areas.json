@@ -43,13 +43,8 @@
                 }
             },
             "temporal": {
-                "referenceDate": "2025",
-                "timeseries": [
-                    {
-                        "start": "1964",
-                        "end": "2025"
-                    }
-                ]
+                "referenceDate": "2025-08-01",
+                "timeseries": []
             },
             "sources": [
                 {
