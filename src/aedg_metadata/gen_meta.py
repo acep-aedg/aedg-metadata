@@ -17,16 +17,15 @@ from .helpers import check_fields, check_schema, parse_csv_header
 
 
 def run_generate(
-    file_stem: str,
-    flavor: str,
+    data_path: str | Path,
     data_dictionary: str,
     bbox_opt: ExtentTypes,
     temporal_opt: ExtentTypes,
 ) -> AedgOemetadata:
     """Use the class to make a new package."""
 
-    print(f"\nProcessing: {file_stem}")  # noqa: T201
-    new_pkg = AedgOemetadata(file_stem, flavor, data_dictionary)
+    print(f"\nProcessing: {Path(data_path).stem}")  # noqa: T201
+    new_pkg = AedgOemetadata(data_path, data_dictionary)
     new_pkg.generate(bbox_opt, temporal_opt)
 
     # checking output
@@ -41,8 +40,7 @@ class AedgOemetadata:
 
     def __init__(
         self,
-        file_stem: str,
-        flavor: str,
+        data_path: str | Path,
         ddict: str,
     ) -> None:
         """Kick off the process by importing the template and config files"""
@@ -52,11 +50,14 @@ class AedgOemetadata:
         self.data_package = deepcopy(OEMETADATA_LATEST_TEMPLATE)
         registry_dir = Path.cwd() / "registry"
 
-        # Read YAML configuration file
-        input_dir = Path(__file__).parents[1] / "config" / flavor
-        with (input_dir / f"{file_stem}.yml").open() as stream:
+        # Read YAML config file
+        # Assumed to be located right next to data and share the same name
+        data_stem = Path(data_path).stem
+        data_dir = Path(data_path).parents[0]
+
+        with (data_dir / f"{data_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
-        self.tag = file_stem
+        self.tag = data_stem
         filename = self.config["resource"]["path"].split('/')[-1]
 
         # Read CSV registry of fields - which might have unique definitions for this file
@@ -84,9 +85,10 @@ class AedgOemetadata:
         # Refer to the ETL pipeline configuration files
         self.data_source = Path(__file__).parents[3] / "aedg-etl-2024" / "data-sources"
 
-        # define the output file
-        output_dir = Path(__file__).parents[2] / "metadata" / flavor
-        self.output_file = output_dir / f"{file_stem}.json"
+
+        self.output_file = data_dir / f"{data_stem}.json"
+
+
 
     def prep_aedg(self) -> None:
         """Make some basic changes that will be true of all AEDG metadata"""

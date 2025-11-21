@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from pprint import pprint
 from typing import Annotated
 
@@ -26,19 +27,12 @@ def greet(
 
 @app.command()  # type: ignore[misc]
 def generate(
-    config: Annotated[
-        str,
+    data_path: Annotated[
+        Path,
         typer.Argument(
-            help="File stem of config file (req)."
-        ),
+            help="Path to the data file to generate metadata for."
+            ),
     ],
-    subdirectory: Annotated[
-        str,
-        typer.Option(
-            "--directory", "-d",
-            help="Subdirectory of data/ where target file lives in the AEDG pond."
-        ),
-    ] = "public",
     data_dictionary: Annotated[
         str,
         typer.Option(
@@ -70,7 +64,7 @@ def generate(
 ) -> None:
     """To call gen_meta.py."""
 
-    package = run_generate(config, subdirectory, data_dictionary, bbox, temporal)
+    package = run_generate(data_path, data_dictionary, bbox, temporal)
 
     if save:
         with package.output_file.open(mode="w") as file:
