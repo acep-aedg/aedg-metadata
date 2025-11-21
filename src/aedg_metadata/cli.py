@@ -33,6 +33,12 @@ def generate(
             help="Path to the data file to generate metadata for."
             ),
     ],
+    sources_dir_path: Annotated[
+        Path,
+        typer.Argument(
+            help="Path to the directory containing source data configs."
+            ),
+    ],
     data_dictionary: Annotated[
         str,
         typer.Option(
@@ -64,7 +70,7 @@ def generate(
 ) -> None:
     """To call gen_meta.py."""
 
-    package = run_generate(data_path, data_dictionary, bbox, temporal)
+    package = run_generate(data_path, sources_dir_path, data_dictionary, bbox, temporal)
 
     if save:
         with package.output_file.open(mode="w") as file:

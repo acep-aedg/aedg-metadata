@@ -43,7 +43,12 @@ aedg_metadata generate public_communities -d public --bbox infer -t none --save
 
 
 
-aedg_metadata generate data/public_fuel_prices/public_fuel_prices.csv --bbox infer -t specify --save
+aedg_metadata generate \
+    data/public_fuel_prices/public_fuel_prices.csv \
+    ~/repos/aedg-etl-2024/data-sources \
+    --bbox infer \
+    -t specify \
+    --save
 
 
 

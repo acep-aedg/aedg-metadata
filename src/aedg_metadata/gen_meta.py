@@ -18,6 +18,7 @@ from .helpers import check_fields, check_schema, parse_csv_header
 
 def run_generate(
     data_path: str | Path,
+    sources_dir_path: str | Path,
     data_dictionary: str,
     bbox_opt: ExtentTypes,
     temporal_opt: ExtentTypes,
@@ -25,7 +26,7 @@ def run_generate(
     """Use the class to make a new package."""
 
     print(f"\nProcessing: {Path(data_path).stem}")  # noqa: T201
-    new_pkg = AedgOemetadata(data_path, data_dictionary)
+    new_pkg = AedgOemetadata(data_path, sources_dir_path, data_dictionary)
     new_pkg.generate(bbox_opt, temporal_opt)
 
     # checking output
@@ -41,6 +42,7 @@ class AedgOemetadata:
     def __init__(
         self,
         data_path: str | Path,
+        sources_dir_path: str | Path,
         ddict: str,
     ) -> None:
         """Kick off the process by importing the template and config files"""
@@ -83,7 +85,7 @@ class AedgOemetadata:
         # Define the directory root where data source YAML files are stored
         # self.data_source = registry_dir / "data-sources"  # for testing
         # Refer to the ETL pipeline configuration files
-        self.data_source = Path(__file__).parents[3] / "aedg-etl-2024" / "data-sources"
+        self.data_source = Path(sources_dir_path)
 
 
         self.output_file = data_dir / f"{data_stem}.json"
