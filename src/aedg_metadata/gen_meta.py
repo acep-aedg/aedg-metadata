@@ -50,7 +50,7 @@ class AedgOemetadata:
         # the template is nested dictionaries so requires deepcopy
         # see https://docs.python.org/3/library/copy.html for a clear explanation
         self.data_package = deepcopy(OEMETADATA_LATEST_TEMPLATE)
-        registry_dir = Path(__file__).parents[1] / "registry"
+        registry_dir = Path.cwd() / "registry"
 
         # Read YAML configuration file
         input_dir = Path(__file__).parents[1] / "config" / flavor
