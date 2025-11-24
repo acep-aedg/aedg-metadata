@@ -1,15 +1,21 @@
+---
+layout: page
+title: Getting Started
+permalink: /getting-started/
+nav_order: 2
+---
+
 # Getting started
 
 There are several elements to generating metadata with this system:
 
-1. This code, installed according to the [installation instructions](./index.md) with its dependencies.
-2. A [YAML configuration file](#configuration-target) that describes the data file being described.
+1. This code, installed according to the [installation instructions](index) with its dependencies.
+2. A [YAML configuration file](#configuration-files) that describes the data file being described.
 3. The suite of [registry files](./registries.md) that define the definitions of fields, license, agents etc.
 
-(configuration-target)=
 ## Configuration Files
 
-The configuration file "hardcodes" options for describing the data file. Its name and position are governed by the [implicit rules](#rules-target) defined for AEDG. It is written in [YAML](https://yaml.org/spec/1.2.2/) to be concise and human readable (if it was written in JSON, we might as well write the metadata by hand). It is read in by the system; some of its content links to the real values in the registries, while other content is input verbatum into the output metadata.
+The configuration file "hardcodes" options for describing the data file. Its name and position are governed by the [implicit rules](#implicit-rules) defined for AEDG. It is written in [YAML](https://yaml.org/spec/1.2.2/) to be concise and human readable (if it was written in JSON, we might as well write the metadata by hand). It is read in by the system; some of its content links to the real values in the registries, while other content is input verbatum into the output metadata.
 
 The format is roughly a flattened version of the `resource` section of OEMetadata using the same tags. Hopefully, these similarities make it intuitive to fill in the fields.
 
@@ -42,7 +48,6 @@ so the usage conforms to `aedg_metadata [OPTIONS] COMMAND [ARGS]...`
 
 Note: there is a practice call still hanging around as `aedg_metadata greet Name --count 5`. Don't let that bother you!
 
-(rules-target)=
 ## Implicit Rules
 
 We had to make metadata.  Lots of it.  To streamline this, there are rules that restrict this code to context of AEDG only. That isn't optimum, but it saves a lot of trouble as we are getting started. The rules are:
