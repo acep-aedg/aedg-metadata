@@ -26,15 +26,21 @@ The CLI is set-up according to `typer's` [Building a Package](https://typer.tian
 so the usage conforms to `aedg_metadata [OPTIONS] COMMAND [ARGS]...`
 
 ``` shell
-% aedg_metadata generate public_communities_monthly_generation -d public --bbox infer --save
+% aedg_metadata generate \
+    data/public_fuel_prices/public_fuel_prices.csv \
+    ~/repos/aedg-etl-2024/data-sources \
+    -dd fields.csv \
+    --bbox infer \
+    -t specify \
+    --save
+
 % aedg_metadata generate --help
 
  Usage: aedg_metadata generate [OPTIONS] CONFIG
 
- To call gen_meta.py.
-
 ╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    config      TEXT  Path to CSV or GeoJSON data (req). [default: None] [required]                                                                                                                           │
+│ *    data-path      TEXT  Path to CSV or GeoJSON data (req). [default: None] [required]
+│ *    source-dir-path      TEXT  Path to YML configs for upstream data sources listed in config.sources. In the context of AEDG, this is aedg-etl-2024 repo. (req). [default: None] [required]                                                                                                                               │
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
                                                           │
 │ --data-dictionary  -dd               TEXT                       Filename of the data dictionary stashed with the data file. If not specified, use the default fields registry file.                         │
