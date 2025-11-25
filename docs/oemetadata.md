@@ -1,11 +1,20 @@
+---
+layout: page
+title: Open Energy Metadata
+permalink: /oemedata/
+nav_order: 4
+---
 
-# Metadata Overview
+
+# Open Energy Metadata
+
+## Overview
 
 Metadata describes data so that is useful beyond the context for which the dataset was originally created. We want other people to use the data we’ve posted in Alaska Energy Data Gateway (AEDG), so we include metadata to answer the questions these potential future users might have. Metadata describes the what, where, when, how of data collection and other useful information like the units and contact information of the data collector.
 
 Metadata can be a simple text file, but AEDG also uses the metadata to build web pages. That means the encoded information must be readable to display it properly. To enable that, the metadata is written according to an agreed upon standard format. For our metadata standard, we decided to use [Open Energy Metadata (OEMetadata)](https://openenergyplatform.github.io/oemetadata/latest/), which is an offshoot of [Frictionless Data Packages](https://frictionlessdata.io/).
 
-(datapackage-target)=
+
 ## Data Packages / Frictionless
 
 AEDG follows the Data Package schema with the constraint that only a single resource (table) is described in each file. This provides the basis for describing fundamental features such as variable descriptions (data dictionary), data sources, contributors, and licenses in a standard, accessible manner. The data dictionary is contained in a section within `resources` called `schema`.
@@ -44,7 +53,6 @@ There is also a command line interface which you would invoke with:
 % frictionless validate capital-invalid.csv
 ```
 
-(oemetadata-target)=
 ## OEMetadata
 
 There were many other descriptions we wanted to add to our data that are not included in the Data Package standard. For instance, we wanted to include information about position, time, and units while leaving open the possibility of connecting with standard variables definitions. To include these elements, we utilized an extension of the Data Package standard developed by the [Open Energy Platform](https://openenergyplatform.org/): Open Energy Metadata, or OEMetadata, for short.
@@ -76,4 +84,4 @@ Open Energy Platform distributes additional tools, including:
 
 Because OEMetadata is compliant with Data Packages, it is possible to download fully described data from their database as a Data Package. See this example of the download options on the Open Energy Platform's expression of the [Windzone map for Germany](https://openenergyplatform.org/dataedit/view/climate/rli_dibt_windzone):
 
-![image](_static/oeplatform_screenshot.png)
+![image](/assets/img/oeplatform_screenshot.png)

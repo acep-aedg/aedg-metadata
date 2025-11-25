@@ -18,7 +18,7 @@ Hülk, Ludwig, Jonas Huber, Christian Hofmann, and Christoph Muschner. “Open E
 
 This packages uses `pyproject.toml` to define the dependencies instead of `requirements.txt`. It was set-up using `uv` which is the preferred package management system, but pip with `virtualenv` can also be used.
 
-Extra dependencies needed for rendering sphinx documentation (`docs`) and testing with `pytest` (`test`) are defined using optional dependencies and not groups. This is because compatibility with `pip` was important. As of 3/23/2025, `uv` was able to make "groups", but the most recent version of `pip` (v25.0.1) did not have groups enabled yet (v25.1dev seems to). Installation instructions for these extras are included.
+Extra dependencies needed for testing with `pytest` (`test`) are defined using optional dependencies and not groups. This is because compatibility with `pip` was important. As of 3/23/2025, `uv` was able to make "groups", but the most recent version of `pip` (v25.0.1) did not have groups enabled yet (v25.1dev seems to). Installation instructions for these extras are included.
 
 Clone the repository locally:
 
