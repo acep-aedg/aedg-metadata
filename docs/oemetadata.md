@@ -2,11 +2,13 @@
 layout: page
 title: Open Energy Metadata
 permalink: /oemedata/
-nav_order: 3
+nav_order: 4
 ---
 
 
-# Metadata Overview
+# Open Energy Metadata
+
+## Overview
 
 Metadata describes data so that is useful beyond the context for which the dataset was originally created. We want other people to use the data we’ve posted in Alaska Energy Data Gateway (AEDG), so we include metadata to answer the questions these potential future users might have. Metadata describes the what, where, when, how of data collection and other useful information like the units and contact information of the data collector.
 

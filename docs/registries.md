@@ -2,13 +2,15 @@
 layout: page
 title: Registries
 permalink: /registries/
-nav_order: 4
+nav_order: 5
 ---
 
 
 # Registries
 
-In world of energy metadata, a standout implementation is [Friendly Data](https://github.com/sentinel-energy/friendly_data/tree/master).  This package was developed for the [SENTINEL](https://sentinel.energy/), an energy modeling experiment. Friendly Data was based on Frictionless metadata (not OEMetadata) and seems to have ended a few years ago, but their use of "registry" files to standardize data definitions is very interesting.
+## Inspiration
+
+In the world of energy metadata, a standout implementation is [Friendly Data](https://github.com/sentinel-energy/friendly_data/tree/master).  This package was developed for the [SENTINEL](https://sentinel.energy/), an energy modeling experiment. Friendly Data was based on Frictionless metadata (not OEMetadata) and seems to have ended a few years ago, but their use of "registry" files to standardize data definitions is very interesting.
 
 AEDG Metadata generation borrows the concept of registries from Friendly Data and implements it in a couple different contexts. These files should be created with care and nurtured because the generation process pulls content from them.
 

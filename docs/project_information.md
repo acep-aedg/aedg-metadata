@@ -2,14 +2,16 @@
 layout: page
 title: Project Information
 permalink: /project_information/
-nav_order: 6
+nav_order: 7
 ---
 
-### Funding
+# Project Information
+
+## Funding
 
 This project was built with support from State of Alaska capital appropriations for the Alaska Energy Data Gateway.
 
-### Additional Information
+## Additional Information
 
 Learn more about the [Alaska Center for Energy and Power](https://www.uaf.edu/acep/about/index.php).
 
