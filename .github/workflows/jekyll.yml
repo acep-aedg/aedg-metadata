@@ -40,17 +40,22 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
           cache-version: 0
-          bundler-working-directory: docs 
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
         
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --source docs --destination _site --baseurl "${{ steps.pages.outputs.base_path }}"
+      - name: Build and Install Dependencies
+        run: |
+          # 1. Change directory to where the Gemfile is located
+          cd docs
+          # 2. Install dependencies (this uses the cached gems or installs new ones)
+          bundle install --path vendor/bundle
+          # 3. Execute the build from within the 'docs' directory
+          bundle exec jekyll build --destination ../_site --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-        
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
