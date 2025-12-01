@@ -4,6 +4,7 @@ This code is mostly from GitHub copilot 3/26/2025
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 
@@ -50,8 +51,22 @@ def main(directory: Path) -> None:
 
 
 if __name__ == "__main__":
-
-    directory = Path(__file__).parents[4] / "aedg-data-pond" / "data"
-    print(f"Processing: {directory}")  # noqa: T201
+    
+    # Check if a directory path was provided as an argument
+    if len(sys.argv) > 1:
+        # sys.argv[0] is the script name; sys.argv[1] is the first argument
+        directory_path_str = sys.argv[1]
+        directory = Path(directory_path_str)
+    else:
+        # Use the hardcoded path as a default if no argument is provided
+        print(f"Error: Please provide a data directory")
+        sys.exit(1)
+        
+    
+    print(f"Processing: {directory}")
+    
+    if not directory.is_dir():
+        print(f"Error: Directory not found at {directory}")
+        sys.exit(1)
 
     main(directory)
