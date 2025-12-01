@@ -13,7 +13,7 @@ from oemetadata.latest.template import OEMETADATA_LATEST_TEMPLATE
 
 from aedg_metadata import ExtentTypes
 
-from .helpers import check_fields, check_schema, parse_csv_header
+from .helpers import check_fields, check_schema, parse_combined_header
 
 
 def run_generate(
@@ -192,7 +192,7 @@ class AedgOemetadata:
         """Add the fields and designate the primary keys."""
 
         # the registry fields csv with each fields a row
-        con_fields = parse_csv_header(self.data_package)
+        con_fields = parse_combined_header(self.data_package)
         attributes = ['name', 'long_name', 'description', 'type', 'nullable', 'unit']
         assert set(attributes).issubset(set(self.fields.columns))
 

@@ -66,7 +66,7 @@ def generate(
         typer.Option(
             help="Write generated metadata to the file or else to the screen."
         ),
-    ] = False,
+    ] = True,
 ) -> None:
     """To call gen_meta.py."""
 

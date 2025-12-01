@@ -43,13 +43,27 @@ aedg_metadata generate public_communities -d public --bbox infer -t none --save
 
 
 
+# CSV version of this data
 aedg_metadata generate \
-    data/public_fuel_prices/public_fuel_prices.csv \
+    example_data/public_fuel_prices/public_fuel_prices.csv \
     ~/repos/aedg-etl-2024/data-sources \
     --bbox infer \
-    -t specify \
-    --save
+    -t specify
 
+# GeoJSON version of this data
+aedg_metadata generate \
+    example_data/public_fuel_prices/public_fuel_prices.geojson \
+    ~/repos/aedg-etl-2024/data-sources \
+    --bbox infer \
+    -t specify 
+
+
+aedg_metadata generate \
+    example_data/bulk_fuel/bulk_fuel.geojson \
+    ~/repos/aedg-etl-2024/data-sources \
+    -dd bulk_fuel_data_dictionary.csv \
+    --bbox infer \
+    -t specify
 
 
 aedg_metadata generate public_monthly_generation -d public --bbox infer --save
