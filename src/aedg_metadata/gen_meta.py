@@ -95,7 +95,13 @@ class AedgOemetadata:
     def prep_aedg(self) -> None:
         """Make some basic changes that will be true of all AEDG metadata"""
 
+        # Set OEMetadata context and data-pond URL
+        self.data_package["@context"] ="https://raw.githubusercontent.com/OpenEnergyPlatform/oemetadata/production/oemetadata/latest/context.json"
+        self.data_package["@id"] ="https://github.com/acep-aedg/aedg-data-pond"
+
         resource = self.data_package["resources"][0]
+
+        resource["@id"] = self.config["resource"]["path"]
 
         # None are at a single spatial location
         resource["spatial"].pop("location", None)
@@ -109,7 +115,7 @@ class AedgOemetadata:
         # everything is in US english
         resource["languages"] = ["en-US"]
         # publishing today
-        resource["publicationDate"] = f"{date.today()}"
+        resource["publicationDate"] = f"{date.today():%Y}"
         # we aren't using the OEMetadata review system
         resource.pop("review", None)
         # CSV files will always be comma delimited
