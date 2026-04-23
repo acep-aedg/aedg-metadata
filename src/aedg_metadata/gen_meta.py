@@ -331,7 +331,7 @@ class AedgOemetadata:
         all_contribs = []
         for contributor in self.config["resource"]["contributors"]:
             if contributor['date'] == "now":
-                contributor['date'] =  f"{date.today()}"
+                contributor['date'] =  f"{date.today():%Y}"
             else:
                 contributor['date'] =  str(contributor['date'])
             contributor["path"] = self.agents[contributor["organization"]]['homepage']
@@ -341,7 +341,7 @@ class AedgOemetadata:
         metadata_note = {
             'organization': self.agents['acep']['name'],
             'roles': ["DataCurator"],
-            'date': f"{date.today()}",
+            'date': f"{date.today():%Y}",
             'object': "metadata via https://github.com/acep-aedg/aedg-metadata",
             'comment': "Documented sources and defined the data dictionary using OEMetadata (Frictionless) formatted metadata https://doi.org/10.5281/zenodo.15019561.\n",
             'path': self.agents['acep']['homepage'],
