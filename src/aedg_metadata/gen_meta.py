@@ -31,7 +31,9 @@ def run_generate(
 
     # checking output
     check_schema(new_pkg.data_package)
-    check_fields(new_pkg.data_package)
+
+    # Pass the local file path into check_fields so it doesn't try to use URLs
+    check_fields(new_pkg.data_package, local_path=new_pkg.data_path)
 
     return new_pkg
 
@@ -52,10 +54,13 @@ class AedgOemetadata:
         self.data_package = deepcopy(OEMETADATA_LATEST_TEMPLATE)
         registry_dir = Path.cwd() / "registry"
 
+        # Store the local data path so we can pass it to our helper functions later
+        self.data_path = Path(data_path)
+
         # Read YAML config file
         # Assumed to be located right next to data and share the same name
-        data_stem = Path(data_path).stem
-        data_dir = Path(data_path).parents[0]
+        data_stem = self.data_path.stem
+        data_dir = self.data_path.parents[0]
 
         with (data_dir / f"{data_stem}.yml").open() as stream:
             self.config = yaml.safe_load(stream)
@@ -87,9 +92,7 @@ class AedgOemetadata:
         # Refer to the ETL pipeline configuration files
         self.data_source = Path(sources_dir_path)
 
-
         self.output_file = data_dir / f"{data_stem}.json"
-
 
 
     def prep_aedg(self) -> None:
@@ -197,8 +200,9 @@ class AedgOemetadata:
     def add_fields(self) -> None:
         """Add the fields and designate the primary keys."""
 
-        # the registry fields csv with each fields a row
-        con_fields = parse_combined_header(self.data_package)
+        # Pass our stored local_path variable so we inspect headers strictly locally
+        con_fields = parse_combined_header(self.data_package, local_path=self.data_path)
+
         attributes = ['name', 'long_name', 'description', 'type', 'nullable', 'unit']
         assert set(attributes).issubset(set(self.fields.columns))
 
