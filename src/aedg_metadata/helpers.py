@@ -1,10 +1,7 @@
-"""Functions to help things along."""
+"""Functions to inspect local files and validate metadata schemas locally."""
 from __future__ import annotations
 
 import json
-import urllib
-import urllib.error
-import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Set, Union  # noqa: UP035
 
@@ -23,13 +20,10 @@ def check_schema(package: dict[Any, Any]) -> None:
         )
 
 
-def check_fields(package: dict[Any, Any]) -> None:
-    """Function to check that all the columns in the file are described."""
-
-    columns = parse_combined_header(package)
-    fields = []
-    for field in package['resources'][0]['schema']['fields']:
-        fields.append(field['name'])
+def check_fields(package: dict[Any, Any], local_path: Union[str, Path, None] = None) -> None:
+    """Checks that all columns/properties in the local file are described in the metadata."""
+    columns = parse_combined_header(package, local_path)
+    fields = [field['name'] for field in package['resources'][0]['schema']['fields']]
 
     try:
         assert set(fields) == set(columns)
@@ -39,30 +33,28 @@ def check_fields(package: dict[Any, Any]) -> None:
         raise KeyError(msg) from e
 
 
+def _parse_csv_header_logic(file_path: Union[str, Path]) -> List[str]:
+    """Reads the first line of a local CSV file and returns the column names."""
+    path = Path(file_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Local CSV file does not exist: {path.resolve()}")
 
-def _parse_csv_header_logic(url: str) -> List[str]:
-    """Reads the first line of a CSV from a URL and splits it into column names."""
-    try:
-        with urllib.request.urlopen(url) as response:
-            header_line = next(response).decode().strip()
-    except urllib.error.HTTPError as e:
-        msg = f'Metadata references non-existent file {url}'
-        raise ValueError(msg) from e
+    with open(path, 'r', encoding='utf-8') as f:
+        header_line = next(f).strip()
+
     return header_line.split(',')
 
 
-def _parse_geojson_header_logic(url: str) -> List[str]:
-    """Fetches GeoJSON, parses features, and returns unique attribute names."""
-    data: Dict[str, Any] = {}
-    attribute_names: Set[str] = set()
-    
-    try:
-        with urllib.request.urlopen(url) as response:
-            data = json.load(response)
+def _parse_geojson_header_logic(file_path: Union[str, Path]) -> List[str]:
+    """Reads a local GeoJSON file and returns attribute property names."""
+    path = Path(file_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Local GeoJSON file does not exist: {path.resolve()}")
 
-    except (urllib.error.HTTPError, json.JSONDecodeError, Exception) as e:
-        msg = f"Error processing GeoJSON file at {url}: {type(e).__name__}"
-        raise ValueError(msg) from e
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    attribute_names: Set[str] = set()
 
     if data.get("type") == "FeatureCollection" and isinstance(data.get("features"), list):
         # Sample only the first 10 features for speed
@@ -70,32 +62,37 @@ def _parse_geojson_header_logic(url: str) -> List[str]:
             properties = feature.get("properties")
             if isinstance(properties, dict):
                 attribute_names.update(properties.keys())
-    
+
     elif data.get("type") == "Feature" and isinstance(data.get("properties"), dict):
         attribute_names.update(data["properties"].keys())
 
     elif "type" not in data:
-        raise ValueError(f'GeoJSON file at {url} is missing the mandatory "type" field.')
+        raise ValueError(f'GeoJSON file at {path} is missing the mandatory "type" field.')
 
     return sorted(list(attribute_names))
 
 
-def parse_combined_header(package: Dict[Any, Any]) -> List[str]:
+def parse_combined_header(package: Dict[Any, Any], local_path: Union[str, Path, None] = None) -> List[str]:
     """
-    Parses the header/field names from a data package, handling both CSV and GeoJSON.
+    Reads field names directly from a local CSV or GeoJSON file.
+    If local_path is not explicitly passed, resolves the filename from the package metadata.
     """
-    try:
-        url: str = package['resources'][0]['path']
-    except (KeyError, IndexError) as e:
-        raise ValueError(f"Package structure error: missing expected resource path key: {e}") from e
-
-    file_extension = Path(url.lower()).suffix
-    
-    if file_extension == '.csv':
-        return _parse_csv_header_logic(url)
-    
-    elif file_extension == '.geojson':
-        return _parse_geojson_header_logic(url)
-        
+    if local_path:
+        target_path = Path(local_path)
     else:
-        raise ValueError(f"Unsupported file type detected: {file_extension}. Must be .csv or .geojson.")
+        try:
+            raw_path = package['resources'][0]['path']
+            # Take only the filename to prevent web URLs from interfering
+            filename = Path(raw_path).name
+            target_path = Path("../aedg-data-pond/pub") / filename
+        except (KeyError, IndexError) as e:
+            raise ValueError(f"Package structure error: missing expected resource path key: {e}") from e
+
+    ext = target_path.suffix.lower()
+
+    if ext == '.csv':
+        return _parse_csv_header_logic(target_path)
+    elif ext == '.geojson':
+        return _parse_geojson_header_logic(target_path)
+    else:
+        raise ValueError(f"Unsupported local file extension: '{ext}'. Must be .csv or .geojson.")
